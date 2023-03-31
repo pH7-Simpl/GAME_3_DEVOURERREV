@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ScreenShake : MonoBehaviour
+public class MainCameraPlaying : MonoBehaviour
 {
     public float shakeDuration = 0.1f;
     public float shakeAmount = 0.2f;
@@ -8,7 +8,7 @@ public class ScreenShake : MonoBehaviour
 
     private Vector3 originalPos;
 
-    void Awake()
+    void Start()
     {
         originalPos = transform.localPosition;
     }
@@ -27,4 +27,5 @@ public class ScreenShake : MonoBehaviour
             transform.localPosition = originalPos;
         }
     }
+
 }

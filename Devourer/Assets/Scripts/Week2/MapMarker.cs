@@ -11,13 +11,15 @@ public class MapMarker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
+        MainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        MapCamera = GameObject.Find("Map Camera").GetComponent<Camera>();
         GameObject.Find("Map Camera").transform.SetParent(transform);
     }
 
     // Update is called once per frame
     void Update()
     {
-        player = GameObject.Find("Player");
         transform.position = player.transform.position;
         if (Input.GetKeyDown(KeyCode.M))
         {

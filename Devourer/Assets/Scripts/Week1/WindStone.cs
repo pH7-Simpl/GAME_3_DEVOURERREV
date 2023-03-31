@@ -4,7 +4,7 @@ public class WindStone : MonoBehaviour
 
     public void ShakeScreen()
     {
-        ScreenShake screenShake = Camera.main.GetComponent<ScreenShake>();
+        MainCameraPlaying screenShake = Camera.main.GetComponent<MainCameraPlaying>();
         if (screenShake != null)
         {
             screenShake.shakeDuration = 0.1f;
