@@ -43,7 +43,17 @@ Prefabs (All) - Eleazar Taeo Eman
 Sprites (All) - Eleazar Tadeo Eman
 <br />
 #### Scripts Addition for week 2:
-
+EnemyHB.cs - Eleazar Tadeo Eman
+<br />
+EnemyMovement.cs - Eleazar Tadeo Eman
+<br />
+EnemyStats.cs - Eleazar Tadeo Eman
+<br />
+gameManager.cs - Eleazar Tadeo Eman
+<br />
+PlayerHB.cs - Eleazar Tadeo Eman
+<br />
+PlayerStats.cs - Eleazar Tadeo Eman
 <br />
 ## Planning untuk kedepan:
 
