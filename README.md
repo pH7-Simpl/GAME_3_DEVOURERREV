@@ -55,6 +55,8 @@ PlayerHB.cs - Eleazar Tadeo Eman
 <br />
 PlayerStats.cs - Eleazar Tadeo Eman
 <br />
+ScreenShake.cs- Eleazar Tadeo Eman
+<br />
 ## Planning untuk kedepan:
 
 - Membuat musuh reguler
