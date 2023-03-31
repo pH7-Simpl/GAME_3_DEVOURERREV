@@ -42,6 +42,7 @@ Prefabs (All) - Eleazar Taeo Eman
 <br />
 Sprites (All) - Eleazar Tadeo Eman
 <br />
+#### Scripts Addition for week 2:
 
 <br />
 ## Planning untuk kedepan:
