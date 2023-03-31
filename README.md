@@ -6,7 +6,6 @@ https://github.com/pH7-Simpl/Devourer
 Credits:
 <br />
 ### Week 1
-<br />
 breathing.cs - Eleazar Tadeo Eman
 <br />
 downSlash.cs - Bayusatya Mufti Muhammad
@@ -36,7 +35,6 @@ windSlash.cs - Eleazar Tadeo Eman
 windStone.cs - Eleazar Tadeo Eman
 <br />
 ### Week 2
-<br />
 Animations (All)
 <br />
 Planning untuk kedepan:
