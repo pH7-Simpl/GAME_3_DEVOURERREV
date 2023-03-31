@@ -55,7 +55,7 @@ PlayerHB.cs - Eleazar Tadeo Eman
 <br />
 PlayerStats.cs - Eleazar Tadeo Eman
 <br />
-ScreenShake.cs- Eleazar Tadeo Eman
+ScreenShake.cs - Eleazar Tadeo Eman
 <br />
 ## Planning untuk kedepan:
 
