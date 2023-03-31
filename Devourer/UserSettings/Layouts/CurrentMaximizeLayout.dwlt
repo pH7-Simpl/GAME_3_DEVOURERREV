@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 10758
+  controlID: 11642
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 10759
+  controlID: 11643
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 10760
+  controlID: 11644
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -225,10 +225,10 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 905d0000
-      m_LastClickedID: 23952
-      m_ExpandedIDs: 24efffff3aefffff70f1ffff2cfbffff545d0000605d0000ba5d00000e5e0000
+      scrollPos: {x: 0, y: 41.333344}
+      m_SelectedIDs: a05d0000
+      m_LastClickedID: 23968
+      m_ExpandedIDs: 02d0ffff24efffff3aefffff70f1ffff2cfbffff545d0000605d0000ba5d00000e5e0000205e0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -400,7 +400,7 @@ MonoBehaviour:
       containerId: overlay-container--right
       floating: 1
       collapsed: 0
-      displayed: 1
+      displayed: 0
       snapOffset: {x: -244.66669, y: -86}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 3
@@ -561,9 +561,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0, y: 0, z: -10}
+    m_Target: {x: 12.937824, y: 0.50859207, z: -10.044962}
     speed: 2
-    m_Value: {x: 0, y: 0, z: -10}
+    m_Value: {x: 13.308616, y: 0.58544, z: -10.040803}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -614,9 +614,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 12.124355
+    m_Target: 9.659037
     speed: 2
-    m_Value: 12.124355
+    m_Value: 9.243097
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1008,7 +1008,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 23952
+  m_LastSelectedObjectID: -12294
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
