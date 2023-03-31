@@ -10,6 +10,7 @@ public class EnemyStats : MonoBehaviour
     public bool hit = false;
     private GameObject healthBar;
     public Animator animator;
+    EnemyMovement em;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.name == "windSlash")
@@ -26,7 +27,12 @@ public class EnemyStats : MonoBehaviour
             StartCoroutine(HitEffect(0.5f));
             Destroy(other.gameObject);
         }
+        if(other.gameObject.tag == "Player") {
+            PlayerStats ps = other.GetComponent<PlayerStats>();
+            ps.StartCoroutine(HitEffect(0.5f));
+        }
     }
+    
     private void OnTriggerStay2D(Collider2D other) {
         if (other.gameObject.name == "fireBreath")
         {
@@ -41,6 +47,7 @@ public class EnemyStats : MonoBehaviour
         enemyHealth = maxEnemyHealth;
         healthBar = transform.GetChild(1).gameObject;
         healthBar.SetActive(false);
+        em = GetComponent<EnemyMovement>();
     }
 
     void FixedUpdate()
@@ -51,6 +58,11 @@ public class EnemyStats : MonoBehaviour
             StartCoroutine(Die());
         }
         ShowHealthBar();
+        if(em.IsGrounded()) {
+        Vector2 pos = transform.position;
+        pos.y = 0f;
+        transform.position = pos;
+        }
     }
     private void ShowHealthBar()
     {
@@ -73,14 +85,13 @@ public class EnemyStats : MonoBehaviour
     IEnumerator HitEffect(float duration)
     {
         hit = true;
-        // Play hit effect animation or sound
         yield return new WaitForSeconds(duration);
         hit = false;
     }
     IEnumerator Die()
     {
         animator.SetBool("died", true);
-        GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         GetComponent<EnemyMovement>().enabled = false;
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);

@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private bool canDash = true;
     private bool isDashing;
     private PlayerStats ps;
+    
     private void Start()
     {
         jumpsRemaining = maxJumps;

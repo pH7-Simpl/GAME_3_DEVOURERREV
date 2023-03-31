@@ -30,7 +30,7 @@ public class EnemyMovement : MonoBehaviour
         healthBar = transform.GetChild(1).gameObject;
         speed = 4f;
         stopDistance = 2f;
-        knockbackForce = 6f;
+        knockbackForce = 3f;
     }
 
     private void Update()
@@ -77,7 +77,7 @@ public class EnemyMovement : MonoBehaviour
         }
         if(IsGrounded()) {
             Vector2 pos = transform.position;
-            pos.y = 0.5f;
+            pos.y = 0f;
             transform.position = pos;
         }
         Flip();
@@ -89,12 +89,12 @@ public class EnemyMovement : MonoBehaviour
 
     private void Move()
     {
-        rb2D.velocity = new Vector2(horizontal * speed, rb2D.velocity.y);
+        rb2D.velocity = new Vector2(horizontal * speed, 0);
     }
 
     private void Knockback()
     {
-        rb2D.velocity = new Vector2(-horizontal * knockbackForce, rb2D.velocity.y);
+        rb2D.velocity = new Vector2(-horizontal * knockbackForce, 0);
     }
 
     private void Flip()
