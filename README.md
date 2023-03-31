@@ -5,6 +5,8 @@ https://github.com/pH7-Simpl/Devourer
 
 Credits:
 <br />
+### Week 1
+<br />
 breathing.cs - Eleazar Tadeo Eman
 <br />
 downSlash.cs - Bayusatya Mufti Muhammad
@@ -32,7 +34,11 @@ waterStone.cs - Eleazar Tadeo Eman
 windSlash.cs - Eleazar Tadeo Eman
 <br />
 windStone.cs - Eleazar Tadeo Eman
-
+<br />
+### Week 2
+<br />
+Animations (All)
+<br />
 Planning untuk kedepan:
 
 - Membuat musuh reguler
