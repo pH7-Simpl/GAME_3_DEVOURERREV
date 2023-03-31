@@ -6,15 +6,15 @@ public class MapMarker : MonoBehaviour
 {
     [SerializeField] GameObject player;
     public static bool lookMap = false;
-    public Camera MainCamera; 
+    public Camera MC; 
     public Camera MapCamera; 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
-        MainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        MC = GameObject.Find("Player/Main Camera").GetComponent<Camera>();
+        MC.transform.SetParent(transform);
         MapCamera = GameObject.Find("Map Camera").GetComponent<Camera>();
-        GameObject.Find("Map Camera").transform.SetParent(transform);
     }
 
     // Update is called once per frame
@@ -30,7 +30,7 @@ public class MapMarker : MonoBehaviour
     private void ToggleMap(bool look)
     {
         lookMap = !lookMap;
-        MainCamera.enabled = look;
+        MC.enabled = look;
         MapCamera.enabled = !look;
         Time.timeScale = look ? 1f : 0f;
     }

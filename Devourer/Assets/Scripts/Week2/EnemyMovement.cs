@@ -75,8 +75,16 @@ public class EnemyMovement : MonoBehaviour
         {
             Move();
         }
-
+        if(IsGrounded()) {
+            Vector2 pos = transform.position;
+            pos.y = 0.5f;
+            transform.position = pos;
+        }
         Flip();
+    }
+    public bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, 0.01f, groundLayer);
     }
 
     private void Move()
