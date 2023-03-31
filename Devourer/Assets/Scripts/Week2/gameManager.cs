@@ -56,6 +56,7 @@ public class gameManager : MonoBehaviour
             Time.timeScale = 0f;
             mainUI.SetActive(false);
             MC.transform.SetParent(null);
+            MC.transform.position = new Vector3(0f, 0f, -5f);
             MC.orthographicSize = 100f;
         }
     }
