@@ -61,7 +61,7 @@ public class gameManager : MonoBehaviour
         }
     }
     private void UnseeMap() {
-        if(!paused) {
+        if(!paused && GameObject.Find("Player").activeSelf) {
             Time.timeScale = 1f;
             mainUI.SetActive(true);
             MC.transform.SetParent(GameObject.Find("Player").transform);
