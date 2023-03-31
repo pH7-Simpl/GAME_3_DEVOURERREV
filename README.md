@@ -36,6 +36,14 @@ windStone.cs - Eleazar Tadeo Eman
 ### Week 2
 Animations (All) - Eleazar Tadeo Eman
 <br />
+Materials (All) - Eleazar Tadeo Eman
+<br />
+Prefabs (All) - Eleazar Taeo Eman
+<br />
+Sprites (All) - Eleazar Tadeo Eman
+<br />
+
+<br />
 ## Planning untuk kedepan:
 
 - Membuat musuh reguler
