@@ -1,10 +1,9 @@
 # GAME_3_Devourer
 Devourer game project:
 <br />
-https://github.com/pH7-Simpl/Devourer
+https://github.com/pH7-Simpl/GAME_3_Devourer
 
-Credits:
-<br />
+## Credits:
 ### Week 1
 breathing.cs - Eleazar Tadeo Eman
 <br />
@@ -35,9 +34,9 @@ windSlash.cs - Eleazar Tadeo Eman
 windStone.cs - Eleazar Tadeo Eman
 <br />
 ### Week 2
-Animations (All)
+Animations (All) - Eleazar Tadeo Eman
 <br />
-Planning untuk kedepan:
+## Planning untuk kedepan:
 
 - Membuat musuh reguler
 
@@ -47,6 +46,6 @@ Planning untuk kedepan:
 
 - Buat bos (?)
 
-Kendala:
+## Kendala:
 <br />
 Untuk programming sendiri masih belum ada kendala
