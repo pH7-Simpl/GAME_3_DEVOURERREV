@@ -11,10 +11,13 @@ public class PlayerStats : MonoBehaviour
     public bool IsHit() {
         return hit;
     }
+    private bool died = false;
+    public bool IsDied() {
+        return died;
+    }
     GameObject healthBar;
     [SerializeField] GameObject MC;
     [SerializeField] private Animator animator;
-    Vector3 playerPos;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Sword")
@@ -35,7 +38,6 @@ public class PlayerStats : MonoBehaviour
 
     private void FixedUpdate()
     {
-        playerPos = transform.position;
         if (playerHealth <= 0)
         {
             playerHealth = 0;
@@ -69,11 +71,10 @@ public class PlayerStats : MonoBehaviour
     }
     private IEnumerator Die()
     {
+        died = true;
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-        transform.position = new Vector2(transform.position.x, transform.position.y);
         animator.SetBool("died", true);
         yield return new WaitForSeconds(1f);
-        MC.transform.position = playerPos;
         MC.transform.SetParent(null);
         Destroy(gameObject);
     }

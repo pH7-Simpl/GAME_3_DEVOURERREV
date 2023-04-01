@@ -10,7 +10,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] private GameObject mainUI;
     [SerializeField] private Camera MC;
     PlayerStats ps;
-    private void Start()
+    void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         ps = FindObjectOfType<PlayerStats>(); 
@@ -20,7 +20,7 @@ public class gameManager : MonoBehaviour
         seeMap = false;
     }
 
-    private void Update()
+    void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape)) {
             paused = !paused;
@@ -56,7 +56,7 @@ public class gameManager : MonoBehaviour
         mainUI.SetActive(true);
     }
     private void SeeMap() {
-        if(!paused && ps.playerHealth > 0) {
+        if(!paused && !ps.IsDied()) {
             Time.timeScale = 0f;
             mainUI.SetActive(false);
             if(MC != null) {
@@ -67,12 +67,12 @@ public class gameManager : MonoBehaviour
         }
     }
     private void UnseeMap() {
-        if(!paused && ps.playerHealth > 0) {
+        if(!paused && !ps.IsDied()) {
             Time.timeScale = 1f;
             mainUI.SetActive(true);
-            MC.orthographicSize = 5;
-            if(player != null) {
+            if(MC != null) {
                 MC.transform.SetParent(player.transform);
+                MC.orthographicSize = 5;
             }
         }
     }
