@@ -20,11 +20,11 @@ public class GeyserSeedSpawn : MonoBehaviour
         {
             if (pm.IsFacingRight())
             {
-                Instantiate(seed, transform.position + new Vector3(2.5f, 3f), transform.rotation);
+                Instantiate(seed, transform.position + new Vector3(2.5f, 0.5f), transform.rotation);
             }
             else
             {
-                Instantiate(seed, transform.position + new Vector3(-2.5f, 3f), transform.rotation);
+                Instantiate(seed, transform.position + new Vector3(-2.5f, 0.5f), transform.rotation);
             }
             currentCooldown = cooldownDuration;
         }
