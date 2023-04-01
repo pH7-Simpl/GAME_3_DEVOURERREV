@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class GeyserSprouting : MonoBehaviour
 {
@@ -9,10 +10,14 @@ public class GeyserSprouting : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Rigidbody2D otherRB = other.gameObject.GetComponent<Rigidbody2D>();
-        if (other.gameObject.layer != 6 && otherRB != null)
+        Rigidbody2D otherRB = other.GetComponent<Rigidbody2D>();
+        if (other.gameObject.layer != 6 && other.gameObject.layer != 7 && otherRB != null)
         {
-            otherRB.velocity += new Vector2(0, 20f);
+            if (other.gameObject.tag == "Enemy")
+            {
+                other.GetComponent<EnemyMovement>().SetSprouted(true);
+                otherRB.velocity += new Vector2(0, 20f);
+            }
         }
     }
     private void FixedUpdate()

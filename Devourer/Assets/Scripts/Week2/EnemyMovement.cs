@@ -19,7 +19,13 @@ public class EnemyMovement : MonoBehaviour
 
     private float horizontal;
     private bool isFacingRight = false;
-    public bool IsFacingRight() {
+    private bool sprouted = false;
+    public void SetSprouted(bool x)
+    {
+        sprouted = true;
+    }
+    public bool IsFacingRight()
+    {
         return isFacingRight;
     }
     private bool attacking = false;
@@ -39,6 +45,15 @@ public class EnemyMovement : MonoBehaviour
     private void Update()
     {
         animator.SetFloat("moving", Mathf.Abs(horizontal));
+    }
+    private IEnumerator CheckGroundedAfterDelay(float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+
+        if (IsGrounded())
+        {
+            sprouted = false;
+        }
     }
 
     private void FixedUpdate()
@@ -74,11 +89,16 @@ public class EnemyMovement : MonoBehaviour
         {
             Knockback();
         }
+        else if (sprouted)
+        {
+            StartCoroutine(CheckGroundedAfterDelay(0.1f));
+        }
         else
         {
             Move();
         }
-        if(IsGrounded()) {
+        if (IsGrounded() && !sprouted)
+        {
             Vector2 pos = transform.position;
             pos.y = 0f;
             transform.position = pos;
