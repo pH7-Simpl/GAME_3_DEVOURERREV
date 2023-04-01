@@ -33,7 +33,7 @@ public class Slashing : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.F) && currentCooldown <= 0f)
         {
-            Vector3 slashPosition = playerMovement.isFacingRight ? Vector3.right : Vector3.left;
+            Vector3 slashPosition = playerMovement.IsFacingRight() ? Vector3.right : Vector3.left;
             Instantiate(windSlashPrefab, transform.position + slashPosition + new Vector3(0, 0.01f), Quaternion.identity);
             currentCooldown = cooldownDuration;
         }

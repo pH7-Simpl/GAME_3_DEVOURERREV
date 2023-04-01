@@ -9,9 +9,11 @@ public class gameManager : MonoBehaviour
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject mainUI;
     [SerializeField] private Camera MC;
+    PlayerStats ps;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        ps = FindObjectOfType<PlayerStats>(); 
         MC = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();  
         GameObject.Find("MainCanvas/MainUI/SkillPanel/AirSkill1").SetActive(true);
         paused = false;
@@ -54,7 +56,7 @@ public class gameManager : MonoBehaviour
         mainUI.SetActive(true);
     }
     private void SeeMap() {
-        if(!paused) {
+        if(!paused && ps.playerHealth > 0) {
             Time.timeScale = 0f;
             mainUI.SetActive(false);
             if(MC != null) {
@@ -65,14 +67,12 @@ public class gameManager : MonoBehaviour
         }
     }
     private void UnseeMap() {
-        if(!paused) {
+        if(!paused && ps.playerHealth > 0) {
             Time.timeScale = 1f;
             mainUI.SetActive(true);
-            if(player != null && MC != null) {
+            MC.orthographicSize = 5;
+            if(player != null) {
                 MC.transform.SetParent(player.transform);
-            }
-            if(MC != null) {
-                MC.orthographicSize = 5;
             }
         }
     }

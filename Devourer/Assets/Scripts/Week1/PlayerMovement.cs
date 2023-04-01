@@ -19,7 +19,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject healthBar;
 
     private float horizontal;
-    public bool isFacingRight = true;
+    private bool isFacingRight = true;
+    public bool IsFacingRight() {
+        return isFacingRight;
+    }
     private bool jumping;
     private int jumpsRemaining;
     private float lastPressTime;
@@ -31,10 +34,7 @@ public class PlayerMovement : MonoBehaviour
     {
         jumpsRemaining = maxJumps;
         GameObject mainCamera = GameObject.Find("Main Camera");
-        if (mainCamera != null && mainCamera.activeSelf)
-        {
-            //mainCamera.transform.SetParent(transform);
-        }
+        mainCamera.transform.SetParent(transform);
         ps = GetComponent<PlayerStats>();
         healthBar = transform.GetChild(1).gameObject;
     }

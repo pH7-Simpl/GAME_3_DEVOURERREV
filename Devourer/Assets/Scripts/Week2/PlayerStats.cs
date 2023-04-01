@@ -11,8 +11,11 @@ public class PlayerStats : MonoBehaviour
     GameObject healthBar;
     [SerializeField] GameObject MC;
     [SerializeField] private Animator animator;
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.tag == "Sword") {
+    Vector3 playerPos;
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Sword")
+        {
             playerHealth -= 10;
             showHB = true;
             StartCoroutine(HitEffect(0.5f));
@@ -29,6 +32,7 @@ public class PlayerStats : MonoBehaviour
 
     void FixedUpdate()
     {
+        playerPos = transform.position;
         if (playerHealth <= 0)
         {
             playerHealth = 0;
@@ -62,11 +66,12 @@ public class PlayerStats : MonoBehaviour
     }
     IEnumerator Die()
     {
-        //MC.transform.SetParent(null);
-        GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         transform.position = new Vector2(transform.position.x, transform.position.y);
         animator.SetBool("died", true);
         yield return new WaitForSeconds(1f);
+        MC.transform.position = playerPos;
+        MC.transform.SetParent(null);
         Destroy(gameObject);
     }
 }
