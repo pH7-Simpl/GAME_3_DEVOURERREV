@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MainCameraPlaying : MonoBehaviour
 {
-    private float shakeDuration = 0.1f;
+    private float shakeDuration;
     public void SetShakeDuration(float sd) {
         shakeDuration = sd;
     } 
@@ -13,6 +13,7 @@ public class MainCameraPlaying : MonoBehaviour
     private PlayerStats playerStats;
     private void Start()
     {
+        shakeDuration = 0f;
         originalPos = transform.localPosition;
         playerStats = FindObjectOfType<PlayerStats>();
     }
