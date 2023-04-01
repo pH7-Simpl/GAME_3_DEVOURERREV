@@ -77,6 +77,7 @@ public class PlayerStats : MonoBehaviour
         animator.SetBool("died", true);
         yield return new WaitForSeconds(1f);
         MC.transform.SetParent(null);
+        FindObjectOfType<gameManager>().SetGameOver(true);
         Destroy(gameObject);
     }
 }

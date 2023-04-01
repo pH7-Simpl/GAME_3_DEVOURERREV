@@ -5,9 +5,14 @@ public class gameManager : MonoBehaviour
 {
     [SerializeField] private bool paused;
     [SerializeField] private bool seeMap;
+    [SerializeField] private bool gameOver;
+    public void SetGameOver(bool x) {
+        gameOver = x;
+    }
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject mainUI;
+    [SerializeField] private GameObject gameOverUI;
     [SerializeField] private Camera MC;
     PlayerStats ps;
     void Start()
@@ -16,38 +21,48 @@ public class gameManager : MonoBehaviour
         ps = FindObjectOfType<PlayerStats>();
         MC = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         GameObject.Find("MainCanvas/MainUI/SkillPanel/AirSkill1").SetActive(true);
+        gameOver = false;
         paused = false;
         seeMap = false;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!gameOver)
         {
-            paused = !paused;
-        }
-        if (paused)
-        {
-            PauseCommand();
-        }
-        else
-        {
-            UnpauseCommand();
-        }
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            seeMap = !seeMap;
-        }
-        if (!paused)
-        {
-            if (seeMap)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                SeeMap();
+                paused = !paused;
+            }
+            if (paused)
+            {
+                PauseCommand();
             }
             else
             {
-                UnseeMap();
+                UnpauseCommand();
             }
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                seeMap = !seeMap;
+            }
+            if (!paused)
+            {
+                if (seeMap)
+                {
+                    SeeMap();
+                }
+                else
+                {
+                    UnseeMap();
+                }
+            }
+        } else {
+            seeMap = false;
+            paused = false;
+            pauseUI.SetActive(false);
+            mainUI.SetActive(false);
+            gameOverUI.SetActive(true);
         }
     }
     public void Continue()
