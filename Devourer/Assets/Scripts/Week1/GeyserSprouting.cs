@@ -16,8 +16,8 @@ public class GeyserSprouting : MonoBehaviour
             if (other.gameObject.tag == "Enemy")
             {
                 other.GetComponent<EnemyMovement>().SetSprouted(true);
-                otherRB.velocity += new Vector2(0, 20f);
             }
+            otherRB.velocity += new Vector2(0, 20f);
         }
     }
     private void FixedUpdate()
