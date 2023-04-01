@@ -56,7 +56,7 @@ public class gameManager : MonoBehaviour
         mainUI.SetActive(true);
     }
     private void SeeMap() {
-        if(!paused && !ps.IsDied()) {
+        if(!paused) {
             Time.timeScale = 0f;
             mainUI.SetActive(false);
             if(MC != null) {
@@ -67,10 +67,10 @@ public class gameManager : MonoBehaviour
         }
     }
     private void UnseeMap() {
-        if(!paused && !ps.IsDied()) {
+        if(!paused) {
             Time.timeScale = 1f;
             mainUI.SetActive(true);
-            if(MC != null) {
+            if(MC != null && player != null) {
                 MC.transform.SetParent(player.transform);
                 MC.orthographicSize = 5;
             }

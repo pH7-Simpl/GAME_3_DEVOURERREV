@@ -11,10 +11,7 @@ public class PlayerStats : MonoBehaviour
     public bool IsHit() {
         return hit;
     }
-    private bool died = false;
-    public bool IsDied() {
-        return died;
-    }
+
     GameObject healthBar;
     [SerializeField] GameObject MC;
     [SerializeField] private Animator animator;
@@ -71,7 +68,6 @@ public class PlayerStats : MonoBehaviour
     }
     private IEnumerator Die()
     {
-        died = true;
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         animator.SetBool("died", true);
         yield return new WaitForSeconds(1f);

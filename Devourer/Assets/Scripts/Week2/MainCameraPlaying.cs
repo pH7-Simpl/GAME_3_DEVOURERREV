@@ -32,7 +32,9 @@ public class MainCameraPlaying : MonoBehaviour
         else
         {
             shakeDuration = 0f;
-            transform.localPosition = originalPos;
+            if(playerStats.playerHealth > 0) {
+                transform.localPosition = originalPos;
+            }
         }
     }
 
