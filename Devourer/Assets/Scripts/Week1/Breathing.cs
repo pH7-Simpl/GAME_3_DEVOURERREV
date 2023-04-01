@@ -6,7 +6,7 @@ public class Breathing : MonoBehaviour
     private float currentCooldown;
     [SerializeField] private GameObject fireBreath;
     private Image coolDownImage;
-    PlayerMovement pm;
+    private PlayerMovement pm;
     void Start()
     {
         coolDownImage = GameObject.Find("MainCanvas/MainUI/SkillPanel/FireSkill/Cooldown").GetComponent<Image>();

@@ -3,9 +3,9 @@ using UnityEngine;
 public class DownSlash : MonoBehaviour
 {
     private float speed = 10f;
-    GameObject player;
-    PlayerMovement pm;
-    Rigidbody2D rb;
+    private GameObject player;
+    private PlayerMovement pm;
+    private Rigidbody2D rb;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == 6 || other.gameObject.layer == 7)

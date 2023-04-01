@@ -9,7 +9,10 @@ public class Slashing : MonoBehaviour
     private Image coolDownImage2;
 
     private float currentCooldown;
-    public bool canDownSlash = false;
+    private bool canDownSlash = false;
+    public void SetCanDownSlash(bool x) {
+        canDownSlash = x;
+    }
     private PlayerMovement playerMovement;
 
     private void Start()

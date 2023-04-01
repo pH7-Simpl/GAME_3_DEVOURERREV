@@ -14,7 +14,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashingTime = 0.2f;
     [SerializeField] private float dashingCooldown = 1f;
     [SerializeField] private float knockbackForce = 10f;
-    [SerializeField] public bool dashUpgrade = false;
+    [SerializeField] private bool dashUpgrade = false;
+    public void SetDashUpgrade(bool x) {
+        dashUpgrade = x;
+    }
     [SerializeField] private Rigidbody2D rb2D;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;

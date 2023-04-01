@@ -16,7 +16,7 @@ public class WindStone : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             ShakeScreen();
-            other.gameObject.GetComponent<Slashing>().canDownSlash = true;
+            other.gameObject.GetComponent<Slashing>().SetCanDownSlash(true);
             GameObject.Find("MainCanvas/MainUI/SkillPanel/AirSkill2").SetActive(true);
             Destroy(gameObject);
             other = null;

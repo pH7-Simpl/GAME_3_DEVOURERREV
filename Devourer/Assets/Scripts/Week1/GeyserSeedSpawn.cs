@@ -14,7 +14,7 @@ public class GeyserSeedSpawn : MonoBehaviour
         currentCooldown = 0f;
         cooldownDuration = 3f;
     }
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q) && currentCooldown <= 0f)
         {

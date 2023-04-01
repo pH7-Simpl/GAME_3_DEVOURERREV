@@ -7,7 +7,7 @@ public class LightningStone : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<LightningDash>().enabled = true;
-            other.gameObject.GetComponent<PlayerMovement>().dashUpgrade = true;
+            other.gameObject.GetComponent<PlayerMovement>().SetDashUpgrade(true);
             GameObject.Find("MainCanvas/MainUI/SkillPanel/LightningSkill").SetActive(true);
             Destroy(gameObject);
         }
