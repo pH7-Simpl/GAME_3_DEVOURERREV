@@ -18,7 +18,7 @@ public class GeyserSeedSpawn : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q) && currentCooldown <= 0f)
         {
-            if (pm.isFacingRight)
+            if (pm.IsFacingRight())
             {
                 Instantiate(seed, transform.position + new Vector3(2.5f, 3f), transform.rotation);
             }

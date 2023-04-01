@@ -20,7 +20,7 @@ public class WindSlash : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         transform.gameObject.name = "windSlash";
 
-        if (pm.isFacingRight)
+        if (pm.IsFacingRight())
         {
             rb.velocity = new Vector2(speed, 0);
         }
