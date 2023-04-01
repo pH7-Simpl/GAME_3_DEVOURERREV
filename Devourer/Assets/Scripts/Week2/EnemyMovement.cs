@@ -19,17 +19,18 @@ public class EnemyMovement : MonoBehaviour
 
     private float horizontal;
     private bool isFacingRight = false;
-    private bool sprouted = false;
-    public void SetSprouted(bool x)
-    {
-        sprouted = true;
-    }
+    private Vector2 force;
+    private Vector2 dir;
     public bool IsFacingRight()
     {
         return isFacingRight;
     }
     private bool attacking = false;
     [SerializeField] private bool foundPlayer = false;
+    [SerializeField] private bool sprouting;
+    public void SetSprouting(bool x) {
+        sprouting = x;
+    }
 
     private void Start()
     {
@@ -37,7 +38,7 @@ public class EnemyMovement : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
         es = GetComponent<EnemyStats>();
         healthBar = transform.GetChild(1).gameObject;
-        speed = 4f;
+        speed = 200f;
         stopDistance = 2f;
         knockbackForce = 3f;
     }
@@ -45,15 +46,6 @@ public class EnemyMovement : MonoBehaviour
     private void Update()
     {
         animator.SetFloat("moving", Mathf.Abs(horizontal));
-    }
-    private IEnumerator CheckGroundedAfterDelay(float delayTime)
-    {
-        yield return new WaitForSeconds(delayTime);
-
-        if (IsGrounded())
-        {
-            sprouted = false;
-        }
     }
 
     private void FixedUpdate()
@@ -89,21 +81,19 @@ public class EnemyMovement : MonoBehaviour
         {
             Knockback();
         }
-        else if (sprouted)
+        else if(sprouting)
         {
-            StartCoroutine(CheckGroundedAfterDelay(0.1f));
+            StartCoroutine(SproutDelay());
         }
         else
         {
             Move();
         }
-        if (IsGrounded() && !sprouted)
-        {
-            Vector2 pos = transform.position;
-            pos.y = 0f;
-            transform.position = pos;
-        }
         Flip();
+    }
+    private IEnumerator SproutDelay() {
+        yield return new WaitForSeconds(1f);
+        sprouting = false;
     }
     public bool IsGrounded()
     {
@@ -112,12 +102,24 @@ public class EnemyMovement : MonoBehaviour
 
     private void Move()
     {
-        rb2D.velocity = new Vector2(horizontal * speed, 0);
+        if(player != null) {
+            dir = (horizontal > 0) ? Vector2.right : Vector2.left;
+            if(IsGrounded()) {
+                rb2D.gravityScale = 0f;
+                dir.y = 0f;
+                force = dir * speed * Time.deltaTime;
+                rb2D.velocity = force;
+            } else {
+                rb2D.gravityScale = 2f;
+            }
+        } else {
+            rb2D.velocity = Vector2.zero;
+        }
     }
 
     private void Knockback()
     {
-        rb2D.velocity = new Vector2(-horizontal * knockbackForce, 0);
+        rb2D.velocity = new Vector2(-horizontal * knockbackForce, rb2D.velocity.y);
     }
 
     private void Flip()

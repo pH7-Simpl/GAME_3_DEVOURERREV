@@ -267,7 +267,7 @@ Rigidbody2D:
   m_Mass: 15
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: eccc5e3b3ba57e54d93b3d1c647c9be7, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 0
@@ -336,7 +336,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a512157403391424bbb9f046675999e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 100
 --- !u!95 &8409029390760202293
 Animator:
   serializedVersion: 5
