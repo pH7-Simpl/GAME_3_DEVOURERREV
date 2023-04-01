@@ -34,7 +34,7 @@ public class EnemyStats : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             PlayerStats ps = other.GetComponent<PlayerStats>();
-            ps.StartCoroutine(HitEffect(0.5f));
+            StartCoroutine(HitEffect(0.5f));
         }
     }
 

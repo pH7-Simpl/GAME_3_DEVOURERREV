@@ -9,9 +9,10 @@ public class GeyserSprouting : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer != 6 && other.gameObject.GetComponent<Rigidbody2D>() != null)
+        Rigidbody2D otherRB = other.gameObject.GetComponent<Rigidbody2D>();
+        if (other.gameObject.layer != 6 && otherRB != null)
         {
-            other.gameObject.GetComponent<Rigidbody2D>().velocity += new Vector2(0, 20f);
+            otherRB.velocity += new Vector2(0, 20f);
         }
     }
     private void FixedUpdate()

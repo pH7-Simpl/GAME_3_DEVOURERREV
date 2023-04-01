@@ -64,7 +64,7 @@ public class PlayerStats : MonoBehaviour
             healthBar.SetActive(false);
         }
     }
-    private IEnumerator HitEffect(float duration)
+    public IEnumerator HitEffect(float duration)
     {
         hit = true;
         // Play hit effect animation or sound
