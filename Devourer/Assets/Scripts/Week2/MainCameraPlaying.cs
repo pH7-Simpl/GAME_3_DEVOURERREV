@@ -2,19 +2,22 @@ using UnityEngine;
 
 public class MainCameraPlaying : MonoBehaviour
 {
-    public float shakeDuration = 0.1f;
-    public float shakeAmount = 0.2f;
-    public float decreaseFactor = 1.0f;
+    private float shakeDuration = 0.1f;
+    public void SetShakeDuration(float sd) {
+        shakeDuration = sd;
+    } 
+    private float shakeAmount = 0.2f;
+    private float decreaseFactor = 1.0f;
 
     private Vector3 originalPos;
     private PlayerStats playerStats;
-    void Start()
+    private void Start()
     {
         originalPos = transform.localPosition;
         playerStats = FindObjectOfType<PlayerStats>();
     }
 
-    void Update()
+    private void Update()
     {
         if (playerStats.playerHealth <= 0)
         {

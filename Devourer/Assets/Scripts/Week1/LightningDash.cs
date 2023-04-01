@@ -16,7 +16,7 @@ public class LightningDash : MonoBehaviour
     private PlayerMovement pm;
     private int wallLayerMask; // layer mask for walls
 
-    void Start()
+    private void Start()
     {
         player = GameObject.Find("Player");
         pm = GetComponent<PlayerMovement>();
@@ -29,80 +29,80 @@ public class LightningDash : MonoBehaviour
         wallLayerMask = LayerMask.GetMask("Wall"); // set layer mask for walls
     }
 
-    void Update()
-{
-    if (theDash != null)
+    private void Update()
     {
-        theDash.transform.SetParent(player.transform);
-        theDash.name = "lightningDash";
-    }
-
-    if (currentCooldown > 0f)
-    {
-        currentCooldown -= Time.deltaTime;
-        animationCooldown -= Time.deltaTime;
-
-        if (animationCooldown <= 0f && theDash != null)
-        {
-            Destroy(theDash);
-        }
-
-        if (currentCooldown >= -0.01f)
-        {
-            coolDownImage.fillAmount = currentCooldown / cooldownDuration;
-        }
-
-        return;
-    }
-
-    Vector2 playerPos = player.transform.position;
-
-    if (Input.GetKeyDown(KeyCode.D) && (Time.time - lastPressTime) < doublePressTime)
-    {
-        RaycastHit2D hit = Physics2D.Raycast(playerPos, Vector2.right, dashLength, wallLayerMask);
-
-        if (hit.collider != null)
-        {
-            playerPos.x = hit.point.x - 0.1f;
-        }
-        else
-        {
-            playerPos.x += dashLength;
-        }
-
-        player.transform.position = playerPos;
-        theDash = Instantiate(lightningDashPrefab, transform.position + new Vector3(-1.6f, 0), transform.rotation);
-        animationCooldown = 0.2f;
-        currentCooldown = cooldownDuration;
-    }
-    else if (Input.GetKeyDown(KeyCode.A) && (Time.time - lastPressTime) < doublePressTime)
-    {
-        RaycastHit2D hit = Physics2D.Raycast(playerPos, Vector2.left, dashLength, wallLayerMask);
-
-        if (hit.collider != null)
-        {
-            playerPos.x = hit.point.x + 0.5f;
-        }
-        else
-        {
-            playerPos.x -= dashLength;
-        }
-
-        player.transform.position = playerPos;
-        theDash = Instantiate(lightningDashPrefab, transform.position + new Vector3(1.6f, 0), transform.rotation);
         if (theDash != null)
         {
-            Vector3 localScale = theDash.transform.localScale;
-            localScale.x *= -1;
-            theDash.transform.localScale = localScale;
+            theDash.transform.SetParent(player.transform);
+            theDash.name = "lightningDash";
         }
-        animationCooldown = 0.2f;
-        currentCooldown = cooldownDuration;
+
+        if (currentCooldown > 0f)
+        {
+            currentCooldown -= Time.deltaTime;
+            animationCooldown -= Time.deltaTime;
+
+            if (animationCooldown <= 0f && theDash != null)
+            {
+                Destroy(theDash);
+            }
+
+            if (currentCooldown >= -0.01f)
+            {
+                coolDownImage.fillAmount = currentCooldown / cooldownDuration;
+            }
+
+            return;
+        }
+
+        Vector2 playerPos = player.transform.position;
+
+        if (Input.GetKeyDown(KeyCode.D) && (Time.time - lastPressTime) < doublePressTime)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(playerPos, Vector2.right, dashLength, wallLayerMask);
+
+            if (hit.collider != null)
+            {
+                playerPos.x = hit.point.x - 0.1f;
+            }
+            else
+            {
+                playerPos.x += dashLength;
+            }
+
+            player.transform.position = playerPos;
+            theDash = Instantiate(lightningDashPrefab, transform.position + new Vector3(-1.6f, 0), transform.rotation);
+            animationCooldown = 0.2f;
+            currentCooldown = cooldownDuration;
+        }
+        else if (Input.GetKeyDown(KeyCode.A) && (Time.time - lastPressTime) < doublePressTime)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(playerPos, Vector2.left, dashLength, wallLayerMask);
+
+            if (hit.collider != null)
+            {
+                playerPos.x = hit.point.x + 0.5f;
+            }
+            else
+            {
+                playerPos.x -= dashLength;
+            }
+
+            player.transform.position = playerPos;
+            theDash = Instantiate(lightningDashPrefab, transform.position + new Vector3(1.6f, 0), transform.rotation);
+            if (theDash != null)
+            {
+                Vector3 localScale = theDash.transform.localScale;
+                localScale.x *= -1;
+                theDash.transform.localScale = localScale;
+            }
+            animationCooldown = 0.2f;
+            currentCooldown = cooldownDuration;
+        }
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A))
+        {
+            lastPressTime = Time.time;
+        }
     }
-    else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A))
-    {
-        lastPressTime = Time.time;
-    }
-}
 
 }

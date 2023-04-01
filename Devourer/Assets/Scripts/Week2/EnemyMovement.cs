@@ -18,7 +18,10 @@ public class EnemyMovement : MonoBehaviour
     private EnemyStats es;
 
     private float horizontal;
-    public bool isFacingRight = false;
+    private bool isFacingRight = false;
+    public bool IsFacingRight() {
+        return isFacingRight;
+    }
     private bool attacking = false;
     [SerializeField] private bool foundPlayer = false;
 
@@ -58,7 +61,7 @@ public class EnemyMovement : MonoBehaviour
             rb2D.velocity = new Vector2(0f, 0f);
         }
 
-        if (player != null && !es.hit)
+        if (player != null && !es.IsHit())
         {
             if (!foundPlayer && Vector2.Distance(transform.position, player.transform.position) <= stopDistance && Mathf.Abs(player.transform.position.y - transform.position.y) <= 0.5f)
             {
@@ -67,7 +70,7 @@ public class EnemyMovement : MonoBehaviour
             }
         }
 
-        if (es.hit)
+        if (es.IsHit())
         {
             Knockback();
         }

@@ -7,7 +7,10 @@ public class PlayerStats : MonoBehaviour
     public int playerHealth = 0;
     private float showHBCooldown = 0f;
     private bool showHB = false;
-    public bool hit = false;
+    private bool hit = false;
+    public bool IsHit() {
+        return hit;
+    }
     GameObject healthBar;
     [SerializeField] GameObject MC;
     [SerializeField] private Animator animator;
@@ -22,7 +25,7 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Start()
     {
         MC = GameObject.FindGameObjectWithTag("MainCamera");
         playerHealth = maxPlayerHealth;
@@ -30,7 +33,7 @@ public class PlayerStats : MonoBehaviour
         healthBar.SetActive(false);
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         playerPos = transform.position;
         if (playerHealth <= 0)
@@ -57,14 +60,14 @@ public class PlayerStats : MonoBehaviour
             healthBar.SetActive(false);
         }
     }
-    IEnumerator HitEffect(float duration)
+    private IEnumerator HitEffect(float duration)
     {
         hit = true;
         // Play hit effect animation or sound
         yield return new WaitForSeconds(duration);
         hit = false;
     }
-    IEnumerator Die()
+    private IEnumerator Die()
     {
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         transform.position = new Vector2(transform.position.x, transform.position.y);

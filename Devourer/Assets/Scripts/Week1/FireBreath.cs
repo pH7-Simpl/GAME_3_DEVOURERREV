@@ -3,9 +3,9 @@ using UnityEngine;
 public class FireBreath : MonoBehaviour
 {
     private float breathDuration;
-    GameObject player;
-    PlayerMovement pm;
-    void Start()
+    private GameObject player;
+    private PlayerMovement pm;
+    private void Start()
     {
         breathDuration = 1.5f;
         player = GameObject.Find("Player");
@@ -20,7 +20,7 @@ public class FireBreath : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         if (breathDuration >= 0f)
         {

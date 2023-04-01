@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class GeyserSeed : MonoBehaviour
 {
-    public GameObject waterGeyser;
-    [SerializeField] public Transform groundCheck;
-    [SerializeField] public LayerMask groundLayer;
-    [SerializeField] public LayerMask wallLayer;
+    [SerializeField] private GameObject waterGeyser;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask wallLayer;
     void FixedUpdate()
     {
         if (IsGrounded())

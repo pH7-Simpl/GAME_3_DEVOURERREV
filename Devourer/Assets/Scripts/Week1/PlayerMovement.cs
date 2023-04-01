@@ -4,7 +4,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 8f;
-    [SerializeField] public float jumpPower = 5f;
+    [SerializeField] private float jumpPower = 5f;
+    public float GetJumpPower() {
+        return jumpPower;
+    }
     [SerializeField] private int maxJumps = 1;
     [SerializeField] private float doublePressTime = 0.2f;
     [SerializeField] private float dashPower = 10f;
@@ -42,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (isDashing || ps.hit)
+        if (isDashing || ps.IsHit())
         {
             return;
         }
@@ -66,11 +69,11 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        if (ps.hit)
+        if (ps.IsHit())
         {
             GameObject enemy = GameObject.Find("Enemy");
             EnemyMovement em = enemy.GetComponent<EnemyMovement>();
-            float xDirection = em.isFacingRight ? knockbackForce : -knockbackForce;
+            float xDirection = em.IsFacingRight() ? knockbackForce : -knockbackForce;
             rb2D.velocity = new Vector2(xDirection, rb2D.velocity.y);
         }
         else

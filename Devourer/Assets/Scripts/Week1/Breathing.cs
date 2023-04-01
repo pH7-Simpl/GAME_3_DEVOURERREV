@@ -4,7 +4,7 @@ public class Breathing : MonoBehaviour
 {
     private float cooldownDuration;
     private float currentCooldown;
-    public GameObject fireBreath;
+    [SerializeField] private GameObject fireBreath;
     private Image coolDownImage;
     PlayerMovement pm;
     void Start()

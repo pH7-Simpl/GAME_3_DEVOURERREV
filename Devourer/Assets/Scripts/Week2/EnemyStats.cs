@@ -6,10 +6,14 @@ public class EnemyStats : MonoBehaviour
     private int maxEnemyHealth = 100;
     public int enemyHealth = 0;
     private float showHBCooldown = 0f;
-    public bool showHB = false;
-    public bool hit = false;
+    private bool showHB = false;
+    private bool hit = false;
+    public bool IsHit()
+    {
+        return hit;
+    }
     private GameObject healthBar;
-    public Animator animator;
+    private Animator animator;
     EnemyMovement em;
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -27,13 +31,15 @@ public class EnemyStats : MonoBehaviour
             StartCoroutine(HitEffect(0.5f));
             Destroy(other.gameObject);
         }
-        if(other.gameObject.tag == "Player") {
+        if (other.gameObject.tag == "Player")
+        {
             PlayerStats ps = other.GetComponent<PlayerStats>();
             ps.StartCoroutine(HitEffect(0.5f));
         }
     }
-    
-    private void OnTriggerStay2D(Collider2D other) {
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
         if (other.gameObject.name == "fireBreath")
         {
             enemyHealth -= 1;
@@ -62,10 +68,11 @@ public class EnemyStats : MonoBehaviour
             StartCoroutine(Die());
         }
         ShowHealthBar();
-        if(em.IsGrounded()) {
-        Vector2 pos = transform.position;
-        pos.y = 0f;
-        transform.position = pos;
+        if (em.IsGrounded())
+        {
+            Vector2 pos = transform.position;
+            pos.y = 0f;
+            transform.position = pos;
         }
     }
     private void ShowHealthBar()

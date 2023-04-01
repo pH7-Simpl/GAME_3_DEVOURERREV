@@ -2,12 +2,12 @@ using UnityEngine;
 public class WindStone : MonoBehaviour
 {
 
-    public void ShakeScreen()
+    private void ShakeScreen()
     {
         MainCameraPlaying screenShake = Camera.main.GetComponent<MainCameraPlaying>();
         if (screenShake != null)
         {
-            screenShake.shakeDuration = 0.1f;
+            screenShake.SetShakeDuration(0.1f);
         }
     }
 

@@ -10,7 +10,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] private GameObject mainUI;
     [SerializeField] private Camera MC;
     PlayerStats ps;
-    void Start()
+    private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         ps = FindObjectOfType<PlayerStats>(); 
@@ -20,7 +20,7 @@ public class gameManager : MonoBehaviour
         seeMap = false;
     }
 
-    void Update()
+    private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape)) {
             paused = !paused;

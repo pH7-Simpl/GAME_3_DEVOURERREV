@@ -4,9 +4,9 @@ public class GeyserSeedSpawn : MonoBehaviour
 {
     private float cooldownDuration;
     private float currentCooldown;
-    public GameObject seed;
+    [SerializeField] private GameObject seed;
     private Image coolDownImage;
-    PlayerMovement pm;
+    private PlayerMovement pm;
     private void Start()
     {
         pm = GetComponent<PlayerMovement>();
