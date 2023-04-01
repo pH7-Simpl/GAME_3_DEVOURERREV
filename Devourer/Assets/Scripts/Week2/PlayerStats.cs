@@ -60,8 +60,10 @@ public class PlayerStats : MonoBehaviour
     }
     IEnumerator Die()
     {
+        GameObject.FindGameObjectWithTag("MainCamera").transform.SetParent(null);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+        transform.position = new Vector2(transform.position.x, transform.position.y);
         animator.SetBool("died", true);
-        GameObject.Find("Main Camera").transform.SetParent(null);
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }

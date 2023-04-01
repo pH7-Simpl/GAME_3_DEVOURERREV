@@ -5,12 +5,14 @@ public class gameManager : MonoBehaviour
 {
     [SerializeField] private bool paused;
     [SerializeField] private bool seeMap;
+    [SerializeField] private GameObject player;
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject mainUI;
     [SerializeField] private Camera MC;
     void Start()
     {
-        MC = GameObject.Find("Main Camera").GetComponent<Camera>();  
+        player = GameObject.FindGameObjectWithTag("Player");
+        MC = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();  
         GameObject.Find("MainCanvas/MainUI/SkillPanel/AirSkill1").SetActive(true);
         paused = false;
         seeMap = false;
@@ -55,17 +57,23 @@ public class gameManager : MonoBehaviour
         if(!paused) {
             Time.timeScale = 0f;
             mainUI.SetActive(false);
-            MC.transform.SetParent(null);
-            MC.transform.position = new Vector3(0f, 0f, -5f);
-            MC.orthographicSize = 100f;
+            if(MC != null) {
+                MC.transform.SetParent(null);
+                MC.transform.position = new Vector3(0f, 0f, -5f);
+                MC.orthographicSize = 100f;
+            }
         }
     }
     private void UnseeMap() {
-        if(!paused && GameObject.Find("Player").activeSelf) {
+        if(!paused) {
             Time.timeScale = 1f;
             mainUI.SetActive(true);
-            MC.transform.SetParent(GameObject.Find("Player").transform);
-            MC.orthographicSize = 5;
+            if(player !=null && MC !=null) {
+                MC.transform.SetParent(player.transform);
+            }
+            if(MC != null) {
+                MC.orthographicSize = 5;
+            }
         }
     }
     public void Restart() {

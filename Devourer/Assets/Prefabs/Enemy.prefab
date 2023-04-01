@@ -323,6 +323,10 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  wallDetectionDistance: 0.1
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
   isFacingRight: 0
   foundPlayer: 0
 --- !u!114 &5833636002499319923

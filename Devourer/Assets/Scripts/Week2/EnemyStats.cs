@@ -40,6 +40,10 @@ public class EnemyStats : MonoBehaviour
             showHB = true;
             StartCoroutine(HitEffect(1f));
         }
+        if (other.gameObject.layer == 7)
+        {
+            StartCoroutine(HitEffect(0.1f));
+        }
     }
 
     void Start()
