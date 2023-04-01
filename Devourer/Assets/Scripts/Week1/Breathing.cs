@@ -19,7 +19,7 @@ public class Breathing : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && currentCooldown <= 0f)
         {
-            if (pm.isFacingRight)
+            if (pm.IsFacingRight())
             {
                 Instantiate(fireBreath, transform.position + new Vector3(1.5f, 0.1f), transform.rotation);
             }
