@@ -24,7 +24,6 @@ public class EnemyAI : MonoBehaviour
     }
     private bool showHB;
     private bool hit;
-    private bool groundHit;
     private GameObject healthBar;
     private float showHBCooldown = 0f;
     private bool hasCollided;
@@ -93,7 +92,6 @@ public class EnemyAI : MonoBehaviour
         enemyHealth = 100f;
         InvokeRepeating("UpdatePath", 0f, 0.5f);
         hit = false;
-        groundHit = false;
         showHB = false;
         maxEnemyHealth = 100f;
         enemyHealth = maxEnemyHealth;
