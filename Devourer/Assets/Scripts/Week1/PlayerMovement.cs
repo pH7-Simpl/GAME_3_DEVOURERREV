@@ -76,8 +76,10 @@ public class PlayerMovement : MonoBehaviour
         {
             GameObject enemy = GameObject.Find("Enemy");
             EnemyMovement em = enemy.GetComponent<EnemyMovement>();
-            float xDirection = em.IsFacingRight() ? knockbackForce : -knockbackForce;
-            rb2D.velocity = new Vector2(xDirection, rb2D.velocity.y);
+            if(em != null) {
+                float xDirection = em.IsFacingRight() ? knockbackForce : -knockbackForce;
+                rb2D.velocity = new Vector2(xDirection, rb2D.velocity.y);
+            }
         }
         else
         {
