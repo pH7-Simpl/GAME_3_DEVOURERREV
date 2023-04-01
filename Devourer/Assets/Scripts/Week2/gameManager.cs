@@ -10,6 +10,8 @@ public class gameManager : MonoBehaviour
         gameOver = x;
     }
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject Soldier;
+    [SerializeField] private GameObject Drone;
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject mainUI;
     [SerializeField] private GameObject gameOverUI;
@@ -17,6 +19,7 @@ public class gameManager : MonoBehaviour
     PlayerStats ps;
     void Start()
     {
+        Instantiate(Drone, new Vector3(5f, 5f, 0f), Quaternion.identity);
         player = GameObject.FindGameObjectWithTag("Player");
         ps = FindObjectOfType<PlayerStats>();
         MC = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();

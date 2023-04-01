@@ -1,22 +1,22 @@
 using UnityEngine;
 
-public class EnemyHB : MonoBehaviour
+public class EnemyHBAI : MonoBehaviour
 {
     private GameObject enemy;
     private GameObject health;
-    private EnemyStats es;
+    private EnemyAI eAI;
 
     private void Start()
     {
         enemy = transform.parent.gameObject;
-        es = enemy.GetComponent<EnemyStats>();
+        eAI = enemy.GetComponent<EnemyAI>();
         health = transform.Find("health").gameObject;
     }
 
     private void Update()
     {
         Vector3 healthScale = health.transform.localScale;
-        healthScale.x = es.GetEnemyHealth() / 100f;
+        healthScale.x = eAI.GetEnemyHealth() / 100f;
         health.transform.localScale = healthScale;
     }
 }

@@ -14,9 +14,42 @@ public class EnemyAI : MonoBehaviour
     private bool reachEndOfPath;
     private Seeker seeker;
     private Rigidbody2D rb;
+    private Vector2 dir;
+    private Vector2 force;
+    private float dis;
+    private float maxEnemyHealth;
+    private float enemyHealth;
+    public float GetEnemyHealth() {
+        return enemyHealth;
+    }
+    private bool showHB;
+    private bool hit;
+    public bool IsHit() {
+        return hit;
+    }
     // Start is called before the first frame update
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.name == "windSlash")
+        {
+            enemyHealth -= 25;
+            showHB = true;
+            StartCoroutine(HitEffect(0.5f));
+            Destroy(other.gameObject);
+        }
+        if (other.gameObject.name == "lightningDash")
+        {
+            enemyHealth -= 25;
+            showHB = true;
+            StartCoroutine(HitEffect(0.5f));
+            Destroy(other.gameObject);
+        }
+        if(other.gameObject.tag == "Player") {
+            Debug.Log("Test");
+        }
+    }
     void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         speed = 400f;
         nextWaypointDistance = 3f;
         currentWayPoint = 0;
@@ -24,8 +57,11 @@ public class EnemyAI : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         enemyGFX = transform.Find("FlyEnemyGFX");
-
+        enemyHealth = 100f;
         InvokeRepeating("UpdatePath", 0f, 0.5f);
+        showHB = false;
+        maxEnemyHealth = 100f;
+        enemyHealth = maxEnemyHealth;
     }
     private void UpdatePath()
     {
@@ -60,12 +96,12 @@ public class EnemyAI : MonoBehaviour
             reachEndOfPath = false;
         }
 
-        Vector2 dir = ((Vector2)path.vectorPath[currentWayPoint] - rb.position).normalized;
-        Vector2 force = dir * speed * Time.deltaTime;
+        dir = ((Vector2)path.vectorPath[currentWayPoint] - rb.position).normalized;
+        force = dir * speed * Time.deltaTime;
 
         rb.AddForce(force);
 
-        float dis = Vector2.Distance(rb.position, path.vectorPath[currentWayPoint]);
+        dis = Vector2.Distance(rb.position, path.vectorPath[currentWayPoint]);
 
         if (dis < nextWaypointDistance)
         {
@@ -80,5 +116,14 @@ public class EnemyAI : MonoBehaviour
         {
             enemyGFX.localScale = new Vector3(-1f, 1f, 1f);
         }
+        if(reachEndOfPath) {
+            Debug.Log("test");
+        }
+    }
+    public IEnumerator HitEffect(float duration)
+    {
+        hit = true;
+        yield return new WaitForSeconds(duration);
+        hit = false;
     }
 }

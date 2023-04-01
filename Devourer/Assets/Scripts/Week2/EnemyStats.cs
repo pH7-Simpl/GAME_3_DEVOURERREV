@@ -4,7 +4,10 @@ using UnityEngine;
 public class EnemyStats : MonoBehaviour
 {
     private int maxEnemyHealth = 100;
-    public int enemyHealth = 0;
+    private int enemyHealth = 0;
+    public int GetEnemyHealth() {
+        return enemyHealth;
+    }
     private float showHBCooldown = 0f;
     private bool showHB = false;
     private bool hit = false;
@@ -14,7 +17,7 @@ public class EnemyStats : MonoBehaviour
     }
     private GameObject healthBar;
     private Animator animator;
-    EnemyMovement em;
+    private EnemyMovement em;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.name == "windSlash")
