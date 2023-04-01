@@ -52,7 +52,7 @@ public class EnemyStats : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Start()
     {
         enemyHealth = maxEnemyHealth;
         healthBar = transform.GetChild(1).gameObject;
@@ -60,7 +60,7 @@ public class EnemyStats : MonoBehaviour
         em = GetComponent<EnemyMovement>();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (enemyHealth <= 0)
         {
@@ -93,13 +93,13 @@ public class EnemyStats : MonoBehaviour
         }
     }
 
-    IEnumerator HitEffect(float duration)
+    public IEnumerator HitEffect(float duration)
     {
         hit = true;
         yield return new WaitForSeconds(duration);
         hit = false;
     }
-    IEnumerator Die()
+    public IEnumerator Die()
     {
         animator.SetBool("died", true);
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
