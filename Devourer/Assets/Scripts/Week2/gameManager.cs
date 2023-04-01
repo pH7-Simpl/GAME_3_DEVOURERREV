@@ -57,18 +57,16 @@ public class gameManager : MonoBehaviour
         if(!paused) {
             Time.timeScale = 0f;
             mainUI.SetActive(false);
-            if(MC != null) {
-                MC.transform.SetParent(null);
-                MC.transform.position = new Vector3(0f, 0f, -5f);
-                MC.orthographicSize = 100f;
-            }
+            MC.transform.SetParent(null);
+            MC.transform.position = new Vector3(0f, 0f, -5f);
+            MC.orthographicSize = 100f;
         }
     }
     private void UnseeMap() {
         if(!paused) {
             Time.timeScale = 1f;
             mainUI.SetActive(true);
-            if(player !=null && MC !=null) {
+            if(player != null) {
                 MC.transform.SetParent(player.transform);
             }
             if(MC != null) {

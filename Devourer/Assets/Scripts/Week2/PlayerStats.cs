@@ -9,6 +9,7 @@ public class PlayerStats : MonoBehaviour
     private bool showHB = false;
     public bool hit = false;
     GameObject healthBar;
+    [SerializeField] GameObject MC;
     [SerializeField] private Animator animator;
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Sword") {
@@ -20,6 +21,7 @@ public class PlayerStats : MonoBehaviour
 
     void Start()
     {
+        MC = GameObject.FindGameObjectWithTag("MainCamera");
         playerHealth = maxPlayerHealth;
         healthBar = transform.GetChild(1).gameObject;
         healthBar.SetActive(false);
@@ -60,7 +62,7 @@ public class PlayerStats : MonoBehaviour
     }
     IEnumerator Die()
     {
-        GameObject.FindGameObjectWithTag("MainCamera").transform.SetParent(null);
+        MC.transform.SetParent(null);
         GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
         transform.position = new Vector2(transform.position.x, transform.position.y);
         animator.SetBool("died", true);
