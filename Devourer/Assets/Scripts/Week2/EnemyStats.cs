@@ -58,6 +58,7 @@ public class EnemyStats : MonoBehaviour
         healthBar = transform.GetChild(1).gameObject;
         healthBar.SetActive(false);
         em = GetComponent<EnemyMovement>();
+        animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -65,7 +66,7 @@ public class EnemyStats : MonoBehaviour
         if (enemyHealth <= 0)
         {
             enemyHealth = 0;
-            StartCoroutine(Die());
+            StartCoroutine("Die");
         }
         ShowHealthBar();
         if (em.IsGrounded())
@@ -99,7 +100,7 @@ public class EnemyStats : MonoBehaviour
         yield return new WaitForSeconds(duration);
         hit = false;
     }
-    public IEnumerator Die()
+    private IEnumerator Die()
     {
         animator.SetBool("died", true);
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
