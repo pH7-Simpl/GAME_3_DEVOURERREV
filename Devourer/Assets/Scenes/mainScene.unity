@@ -1995,6 +1995,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: 100
   hit: 0
+  MC: {fileID: 0}
   animator: {fileID: 1008127378}
 --- !u!1 &1018238242
 GameObject:
@@ -4284,6 +4285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paused: 0
   seeMap: 0
+  player: {fileID: 0}
   pauseUI: {fileID: 1247203223}
   mainUI: {fileID: 923055037}
   MC: {fileID: 0}

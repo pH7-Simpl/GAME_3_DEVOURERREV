@@ -26,11 +26,15 @@ public class PlayerMovement : MonoBehaviour
     private bool canDash = true;
     private bool isDashing;
     private PlayerStats ps;
-    
+
     private void Start()
     {
         jumpsRemaining = maxJumps;
-        GameObject.Find("Main Camera").transform.SetParent(transform);
+        GameObject mainCamera = GameObject.Find("Main Camera");
+        if (mainCamera != null && mainCamera.activeSelf)
+        {
+            //mainCamera.transform.SetParent(transform);
+        }
         ps = GetComponent<PlayerStats>();
         healthBar = transform.GetChild(1).gameObject;
     }

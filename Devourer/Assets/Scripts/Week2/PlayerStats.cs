@@ -62,7 +62,7 @@ public class PlayerStats : MonoBehaviour
     }
     IEnumerator Die()
     {
-        MC.transform.SetParent(null);
+        //MC.transform.SetParent(null);
         GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
         transform.position = new Vector2(transform.position.x, transform.position.y);
         animator.SetBool("died", true);
