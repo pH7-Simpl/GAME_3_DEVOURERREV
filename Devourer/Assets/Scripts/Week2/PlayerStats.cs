@@ -32,12 +32,17 @@ public class PlayerStats : MonoBehaviour
         healthBar = transform.GetChild(1).gameObject;
         healthBar.SetActive(false);
     }
+    private void Update() {
+        if (playerHealth <= 0)
+        {
+            playerHealth = 0;
+        }
+    }
 
     private void FixedUpdate()
     {
         if (playerHealth <= 0)
         {
-            playerHealth = 0;
             StartCoroutine(Die());
         }
         ShowHealthBar();

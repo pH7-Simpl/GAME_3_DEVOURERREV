@@ -60,12 +60,17 @@ public class EnemyStats : MonoBehaviour
         em = GetComponent<EnemyMovement>();
         animator = GetComponent<Animator>();
     }
+    private void Update() {
+        if (enemyHealth <= 0)
+        {
+            enemyHealth = 0;
+        }
+    }
 
     private void FixedUpdate()
     {
         if (enemyHealth <= 0)
         {
-            enemyHealth = 0;
             StartCoroutine("Die");
         }
         ShowHealthBar();
