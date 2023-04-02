@@ -43,29 +43,32 @@ Prefabs (All) - Eleazar Taeo Eman
 Sprites (All) - Eleazar Tadeo Eman
 <br />
 #### Scripts Addition for week 2:
+EnemyAI.cs - EleazarTadeoEman
+<br />
 EnemyHB.cs - Eleazar Tadeo Eman
 <br />
 EnemyMovement.cs - Eleazar Tadeo Eman
 <br />
 EnemyStats.cs - Eleazar Tadeo Eman
 <br />
+FlyEnemyGFX.cs - EleazarTadeo Eman
+<br />
 gameManager.cs - Eleazar Tadeo Eman
+<br />
+MainCameraPlaying.cs - Eleazar Tadeo Eman
+<br />
+MapMarker.cs - Bayusatya Mufti Muhammad
 <br />
 PlayerHB.cs - Eleazar Tadeo Eman
 <br />
 PlayerStats.cs - Eleazar Tadeo Eman
 <br />
-ScreenShake.cs - Eleazar Tadeo Eman
+RevealMap.cs - Bayusatya Mufti Muhammad
 <br />
 ## Planning untuk kedepan:
+- membuat mapnya serta mekanisme mapnya
 
-- Membuat musuh reguler
-
-- Mulai mengimplementasikan skill kepada musuh dan objek
-
-- Kalau bisa segera membuat mapnya serta mekanisme mapnya
-
-- Buat bos (?)
+- Buat bos 
 
 ## Kendala:
 <br />
