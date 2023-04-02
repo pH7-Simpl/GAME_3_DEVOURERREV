@@ -28,7 +28,8 @@ public class EnemyMovement : MonoBehaviour
     private bool attacking;
     [SerializeField] private bool foundPlayer;
     [SerializeField] private bool sprouting;
-    public void SetSprouting(bool x) {
+    public void SetSprouting(bool x)
+    {
         sprouting = x;
     }
 
@@ -83,11 +84,12 @@ public class EnemyMovement : MonoBehaviour
         {
             Knockback();
         }
-        else if(sprouting)
+        else if (sprouting)
         {
             StartCoroutine(SproutDelay());
         }
-        else if(attacking) {
+        else if (attacking)
+        {
             rb2D.velocity = Vector2.zero;
         }
         else
@@ -96,7 +98,8 @@ public class EnemyMovement : MonoBehaviour
         }
         Flip();
     }
-    private IEnumerator SproutDelay() {
+    private IEnumerator SproutDelay()
+    {
         yield return new WaitForSeconds(Time.deltaTime);
         sprouting = false;
     }
@@ -107,18 +110,23 @@ public class EnemyMovement : MonoBehaviour
 
     private void Move()
     {
-        if(player != null) {
+        if (player != null)
+        {
             dir = (horizontal > 0) ? Vector2.right : Vector2.left;
-            if(IsGrounded()) {
+            if (IsGrounded())
+            {
                 rb2D.gravityScale = 0f;
                 dir.y = 0f;
                 force = dir * speed * Time.deltaTime;
                 rb2D.velocity = force;
             }
-            else {
+            else
+            {
                 rb2D.gravityScale = 2f;
             }
-        } else {
+        }
+        else
+        {
             rb2D.velocity = Vector2.zero;
         }
     }

@@ -6,7 +6,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] private bool paused;
     [SerializeField] private bool seeMap;
     [SerializeField] private bool gameOver;
-    public void SetGameOver(bool x) {
+    public void SetGameOver(bool x)
+    {
         gameOver = x;
     }
     [SerializeField] private GameObject player;
@@ -21,8 +22,6 @@ public class gameManager : MonoBehaviour
     {
         Instantiate(Drone, new Vector3(5f, 5f, 0f), Quaternion.identity);
         Instantiate(Drone, new Vector3(7f, 5f, 0f), Quaternion.identity);
-        Instantiate(Drone, new Vector3(7f, 7f, 0f), Quaternion.identity);
-        Instantiate(Drone, new Vector3(9f, 5f, 0f), Quaternion.identity);
         player = GameObject.FindGameObjectWithTag("Player");
         ps = FindObjectOfType<PlayerStats>();
         MC = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -63,7 +62,9 @@ public class gameManager : MonoBehaviour
                     UnseeMap();
                 }
             }
-        } else {
+        }
+        else
+        {
             seeMap = false;
             paused = false;
             pauseUI.SetActive(false);

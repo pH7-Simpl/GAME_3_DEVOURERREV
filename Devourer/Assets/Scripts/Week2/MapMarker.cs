@@ -6,9 +6,8 @@ public class MapMarker : MonoBehaviour
 {
     [SerializeField] GameObject player;
     public static bool lookMap = false;
-    public Camera MC; 
-    public Camera MapCamera; 
-    // Start is called before the first frame update
+    public Camera MC;
+    public Camera MapCamera;
     void Start()
     {
         player = GameObject.Find("Player");

@@ -5,7 +5,8 @@ public class EnemyStats : MonoBehaviour
 {
     private int maxEnemyHealth = 100;
     private int enemyHealth = 0;
-    public int GetEnemyHealth() {
+    public int GetEnemyHealth()
+    {
         return enemyHealth;
     }
     private float showHBCooldown = 0f;
@@ -37,9 +38,12 @@ public class EnemyStats : MonoBehaviour
         }
         if (other.gameObject.layer == 6)
         {
-            if(transform.position.y <= other.transform.position.y) {
-                rb.velocity = new Vector2(rb.velocity.x, -Mathf.Abs(rb.velocity.y)/2);
-            } else {
+            if (transform.position.y <= other.transform.position.y)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, -Mathf.Abs(rb.velocity.y) / 2);
+            }
+            else
+            {
                 transform.position = new Vector3(transform.position.x, other.transform.position.y + 1f, transform.position.z);
                 rb.velocity = new Vector2(rb.velocity.x, 0f);
             }
@@ -74,7 +78,8 @@ public class EnemyStats : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
-    private void Update() {
+    private void Update()
+    {
         if (enemyHealth <= 0)
         {
             enemyHealth = 0;

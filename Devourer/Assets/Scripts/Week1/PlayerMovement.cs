@@ -102,13 +102,11 @@ public class PlayerMovement : MonoBehaviour
     }
     private IEnumerator callBombCheck()
     {
-        GameObject enemy2 = GameObject.FindGameObjectWithTag("");
         GameObject bomb = GameObject.FindGameObjectWithTag("Bomb");
         if (bomb != null && !bombHitExecuted)
         {
-            float xDirection = (transform.position.x <= bomb.transform.position.x) ? knockbackForce : -knockbackForce;
-            float yDirection = (transform.position.y <= bomb.transform.position.y) ? -knockbackForce : knockbackForce;
-            rb2D.velocity = new Vector2(xDirection, yDirection);
+            Vector2 knockbackDirection = (transform.position - bomb.transform.position).normalized;
+            rb2D.velocity = knockbackDirection * knockbackForce;
         }
         bombHitExecuted = true;
         yield return new WaitForSeconds(Time.deltaTime);
@@ -177,7 +175,7 @@ public class PlayerMovement : MonoBehaviour
         rb2D.gravityScale = 0f;
         rb2D.velocity = new Vector2(direction * dashPower, 0);
         yield return new WaitForSeconds(dashingTime);
-        rb2D.gravityScale = 1f;
+        rb2D.gravityScale = 2f;
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;

@@ -13,11 +13,12 @@ public class GeyserSprouting : MonoBehaviour
         Rigidbody2D otherRB = other.GetComponent<Rigidbody2D>();
         if (other.gameObject.layer != 6 && other.gameObject.layer != 7 && otherRB != null)
         {
-            if(other.gameObject.tag == "Enemy") {
+            if (other.gameObject.tag == "Enemy")
+            {
                 other.GetComponent<EnemyMovement>().SetSprouting(true);
             }
             otherRB.velocity += new Vector2(0, 20f);
-            
+
         }
     }
     private void FixedUpdate()

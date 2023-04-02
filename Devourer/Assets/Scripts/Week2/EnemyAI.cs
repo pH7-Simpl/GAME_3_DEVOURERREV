@@ -62,10 +62,14 @@ public class EnemyAI : MonoBehaviour
         {
             StartCoroutine(HitEffect(0.1f));
         }
-        if(other.gameObject.layer == 6) {
-            if(transform.position.y >= other.transform.position.y) {
+        if (other.gameObject.layer == 6)
+        {
+            if (transform.position.y >= other.transform.position.y)
+            {
                 rb.velocity = new Vector2(rb.velocity.x, 1f);
-            } else {
+            }
+            else
+            {
                 rb.velocity = new Vector2(rb.velocity.x, -1f);
             }
         }
@@ -194,18 +198,18 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
-    
+
     private IEnumerator Explode()
     {
         rb.velocity = Vector2.zero;
         rb.simulated = false;
         animator.SetBool("exploded", true);
         GameObject bomb = Instantiate(detonator, transform.position, Quaternion.identity);
-        Destroy(bomb, 1f);
-        yield return new WaitForSeconds(1f);
+        Destroy(bomb, 0.5f);
+        yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
     }
-    
+
     private void ShowHealthBar()
     {
         if (showHB)

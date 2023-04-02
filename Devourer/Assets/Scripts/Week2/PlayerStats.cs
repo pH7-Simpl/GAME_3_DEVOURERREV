@@ -8,7 +8,8 @@ public class PlayerStats : MonoBehaviour
     private float showHBCooldown = 0f;
     private bool showHB = false;
     private bool hit = false;
-    public bool IsHit() {
+    public bool IsHit()
+    {
         return hit;
     }
 
@@ -38,7 +39,8 @@ public class PlayerStats : MonoBehaviour
         healthBar = transform.GetChild(1).gameObject;
         healthBar.SetActive(false);
     }
-    private void Update() {
+    private void Update()
+    {
         if (playerHealth <= 0)
         {
             playerHealth = 0;
@@ -73,7 +75,6 @@ public class PlayerStats : MonoBehaviour
     public IEnumerator HitEffect(float duration)
     {
         hit = true;
-        // Play hit effect animation or sound
         yield return new WaitForSeconds(duration);
         hit = false;
     }

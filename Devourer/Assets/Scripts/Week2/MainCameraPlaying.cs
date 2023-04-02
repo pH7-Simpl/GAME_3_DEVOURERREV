@@ -3,9 +3,10 @@ using UnityEngine;
 public class MainCameraPlaying : MonoBehaviour
 {
     private float shakeDuration;
-    public void SetShakeDuration(float sd) {
+    public void SetShakeDuration(float sd)
+    {
         shakeDuration = sd;
-    } 
+    }
     private float shakeAmount = 0.2f;
     private float decreaseFactor = 1.0f;
 
@@ -33,7 +34,8 @@ public class MainCameraPlaying : MonoBehaviour
         else
         {
             shakeDuration = 0f;
-            if(playerStats.playerHealth > 0) {
+            if (playerStats.playerHealth > 0)
+            {
                 transform.localPosition = originalPos;
             }
         }

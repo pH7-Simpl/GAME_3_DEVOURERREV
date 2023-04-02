@@ -10,7 +10,8 @@ public class Slashing : MonoBehaviour
 
     private float currentCooldown;
     private bool canDownSlash = false;
-    public void SetCanDownSlash(bool x) {
+    public void SetCanDownSlash(bool x)
+    {
         canDownSlash = x;
     }
     private PlayerMovement playerMovement;
@@ -44,7 +45,8 @@ public class Slashing : MonoBehaviour
         {
             currentCooldown -= Time.deltaTime;
         }
-        if(currentCooldown >= -0.01f) {
+        if (currentCooldown >= -0.01f)
+        {
             coolDownImage1.fillAmount = Mathf.Clamp01(currentCooldown / cooldownDuration);
             coolDownImage2.fillAmount = Mathf.Clamp01(currentCooldown / cooldownDuration);
         }

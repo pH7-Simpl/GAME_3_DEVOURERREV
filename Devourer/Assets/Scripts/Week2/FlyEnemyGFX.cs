@@ -6,7 +6,6 @@ using Pathfinding;
 public class FlyEnemyGFX : MonoBehaviour
 {
     public AIPath aiPath;
-    // Update is called once per frame
     private void Update()
     {
         if (aiPath.desiredVelocity.x >= 0.01)
