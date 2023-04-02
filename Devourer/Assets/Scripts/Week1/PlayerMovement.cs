@@ -102,6 +102,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private IEnumerator callBombCheck()
     {
+        GameObject enemy2 = GameObject.FindGameObjectWithTag("");
         GameObject bomb = GameObject.FindGameObjectWithTag("Bomb");
         if (bomb != null && !bombHitExecuted)
         {
