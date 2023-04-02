@@ -79,7 +79,7 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForSeconds(Time.deltaTime);
         hasCollided = false;
     }
-    void Start()
+    private void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         speed = 400f;
@@ -212,5 +212,9 @@ public class EnemyAI : MonoBehaviour
             healthBar.SetActive(false);
         }
     }
-    
+    private IEnumerator Explode()
+    {
+        showHB = true;
+        yield return new WaitForSeconds(1f);
+    }
 }
