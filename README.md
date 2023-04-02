@@ -72,4 +72,4 @@ RevealMap.cs - Bayusatya Mufti Muhammad
 
 ## Kendala:
 <br />
-Untuk programming sendiri masih belum ada kendala
+Untuk programming sendiri masih belum ada kendala kecuali kurangnya waktu pembuatan game
