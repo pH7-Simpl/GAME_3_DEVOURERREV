@@ -150,7 +150,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    IEnumerator Attack()
+    private IEnumerator Attack()
     {
         attacking = true;
         animator.SetBool("attacking", attacking);
