@@ -51,6 +51,7 @@ public class EnemyStats : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             PlayerStats ps = other.GetComponent<PlayerStats>();
+            rb.gravityScale = 0f;
             StartCoroutine(HitEffect(0.5f));
         }
     }
