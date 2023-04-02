@@ -65,12 +65,12 @@ public class EnemyMovement : MonoBehaviour
         else
         {
             horizontal = 0f;
-            rb2D.velocity = new Vector2(0f, 0f);
+            rb2D.velocity = Vector2.zero;
         }
 
         if (player != null && !es.IsHit())
         {
-            if (!foundPlayer && Vector2.Distance(transform.position, player.transform.position) <= stopDistance && Mathf.Abs(player.transform.position.y - transform.position.y) <= 0.5f)
+            if (!foundPlayer && Vector2.Distance(transform.position, player.transform.position) <= stopDistance && Mathf.Abs(player.transform.position.y - transform.position.y) <= 0.5f && IsGrounded())
             {
                 foundPlayer = true;
                 StartCoroutine(Attack());
@@ -85,6 +85,9 @@ public class EnemyMovement : MonoBehaviour
         {
             StartCoroutine(SproutDelay());
         }
+        else if(attacking) {
+            rb2D.velocity = Vector2.zero;
+        }
         else
         {
             Move();
@@ -92,7 +95,7 @@ public class EnemyMovement : MonoBehaviour
         Flip();
     }
     private IEnumerator SproutDelay() {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(Time.deltaTime);
         sprouting = false;
     }
     public bool IsGrounded()
@@ -109,7 +112,8 @@ public class EnemyMovement : MonoBehaviour
                 dir.y = 0f;
                 force = dir * speed * Time.deltaTime;
                 rb2D.velocity = force;
-            } else {
+            }
+            else {
                 rb2D.gravityScale = 2f;
             }
         } else {
@@ -119,7 +123,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Knockback()
     {
-        rb2D.velocity = new Vector2(-horizontal * knockbackForce, rb2D.velocity.y);
+        rb2D.velocity = new Vector2(-horizontal * knockbackForce, 0);
     }
 
     private void Flip()
@@ -143,11 +147,11 @@ public class EnemyMovement : MonoBehaviour
         GameObject sword = null;
         if (isFacingRight)
         {
-            sword = Instantiate(swordCol, transform.position + new Vector3(1.25f, 0.065f), transform.rotation);
+            sword = Instantiate(swordCol, transform.position + new Vector3(1.25f, 0.065f), transform.rotation, transform);
         }
         else
         {
-            sword = Instantiate(swordCol, transform.position + new Vector3(-1.25f, 0.065f), transform.rotation);
+            sword = Instantiate(swordCol, transform.position + new Vector3(-1.25f, 0.065f), transform.rotation, transform);
         }
         Destroy(sword, Time.deltaTime);
         yield return new WaitForSeconds(0.5f);

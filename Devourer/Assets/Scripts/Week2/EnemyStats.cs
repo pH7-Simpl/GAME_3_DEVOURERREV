@@ -35,18 +35,19 @@ public class EnemyStats : MonoBehaviour
             StartCoroutine(HitEffect(0.5f));
             Destroy(other.gameObject);
         }
-        if (other.gameObject.tag == "Player")
-        {
-            PlayerStats ps = other.GetComponent<PlayerStats>();
-            StartCoroutine(HitEffect(0.5f));
-        }
         if (other.gameObject.layer == 6)
         {
             if(transform.position.y <= other.transform.position.y) {
                 rb.velocity = new Vector2(rb.velocity.x, -Mathf.Abs(rb.velocity.y)/2);
             } else {
-                rb.velocity = new Vector2(rb.velocity.x, 0);
+                transform.position = new Vector3(transform.position.x, other.transform.position.y + 1f, transform.position.z);
+                rb.velocity = new Vector2(rb.velocity.x, 0f);
             }
+        }
+        if (other.gameObject.tag == "Player")
+        {
+            PlayerStats ps = other.GetComponent<PlayerStats>();
+            StartCoroutine(HitEffect(0.5f));
         }
     }
 

@@ -5,7 +5,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 8f;
     [SerializeField] private float jumpPower = 5f;
-    public float GetJumpPower() {
+    public float GetJumpPower()
+    {
         return jumpPower;
     }
     [SerializeField] private int maxJumps = 1;
@@ -15,7 +16,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashingCooldown = 1f;
     [SerializeField] private float knockbackForce = 10f;
     [SerializeField] private bool dashUpgrade = false;
-    public void SetDashUpgrade(bool x) {
+    public void SetDashUpgrade(bool x)
+    {
         dashUpgrade = x;
     }
     [SerializeField] private Rigidbody2D rb2D;
@@ -26,7 +28,8 @@ public class PlayerMovement : MonoBehaviour
 
     private float horizontal;
     private bool isFacingRight = true;
-    public bool IsFacingRight() {
+    public bool IsFacingRight()
+    {
         return isFacingRight;
     }
     private bool jumping;
@@ -74,11 +77,16 @@ public class PlayerMovement : MonoBehaviour
 
         if (ps.IsHit())
         {
-            GameObject enemy = GameObject.Find("Enemy");
-            EnemyMovement em = enemy.GetComponent<EnemyMovement>();
-            if(em != null) {
-                float xDirection = em.IsFacingRight() ? knockbackForce : -knockbackForce;
-                rb2D.velocity = new Vector2(xDirection, rb2D.velocity.y);
+            GameObject sword = GameObject.FindGameObjectWithTag("Sword");
+            if (sword != null)
+            {
+                GameObject enemy = sword.transform.parent.gameObject;
+                EnemyMovement em = enemy.GetComponent<EnemyMovement>();
+                if (em != null)
+                {
+                    float xDirection = em.IsFacingRight() ? knockbackForce : -knockbackForce;
+                    rb2D.velocity = new Vector2(xDirection, rb2D.velocity.y);
+                }
             }
         }
         else
