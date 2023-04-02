@@ -34,14 +34,9 @@ windSlash.cs - Eleazar Tadeo Eman
 windStone.cs - Eleazar Tadeo Eman
 <br />
 ### Week 2
-Animations (All) - Eleazar Tadeo Eman
+Semua package dalam game ini dibuat oleh Eleazar Tadeo Eman kecuali script dan aset Image dan untuk pada bagian prefab, prefab yang dibuat oleh Bayusatya Mufti Muhammad adalah:
 <br />
-Materials (All) - Eleazar Tadeo Eman
-<br />
-Prefabs (All) - Eleazar Taeo Eman
-<br />
-Sprites (All) - Eleazar Tadeo Eman
-<br />
+MapArea, MapGrid, MapMask, MaskGrid, PlayArea, dan PlayerMarker prefab
 #### Scripts Addition for week 2:
 EnemyAI.cs - EleazarTadeoEman
 <br />
