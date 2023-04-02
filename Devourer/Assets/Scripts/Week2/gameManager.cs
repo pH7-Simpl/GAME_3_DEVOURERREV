@@ -103,7 +103,7 @@ public class gameManager : MonoBehaviour
         {
             MC.transform.SetParent(null);
             MC.transform.position = new Vector3(0f, 0f, -5f);
-            MC.orthographicSize = 100f;
+            MC.orthographicSize = 50f;
         }
     }
     private void UnseeMap()
