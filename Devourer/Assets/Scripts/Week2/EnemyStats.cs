@@ -61,7 +61,7 @@ public class EnemyStats : MonoBehaviour
         {
             enemyHealth -= 1;
             showHB = true;
-            StartCoroutine(HitEffect(1f));
+            StartCoroutine(HitEffect(1.5f));
         }
         if (other.gameObject.layer == 7)
         {
