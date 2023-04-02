@@ -35,9 +35,10 @@ public class PlayerMovement : MonoBehaviour
     private bool jumping;
     private int jumpsRemaining;
     private float lastPressTime;
-    private bool canDash = true;
+    private bool canDash;
     private bool isDashing;
     private PlayerStats ps;
+    private bool bombHitExecuted;
 
     private void Start()
     {
@@ -46,6 +47,8 @@ public class PlayerMovement : MonoBehaviour
         mainCamera.transform.SetParent(transform);
         ps = GetComponent<PlayerStats>();
         healthBar = transform.GetChild(1).gameObject;
+        canDash = true;
+        bombHitExecuted = false;
     }
 
 
@@ -74,7 +77,6 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-
         if (ps.IsHit())
         {
             GameObject sword = GameObject.FindGameObjectWithTag("Sword");
@@ -88,11 +90,29 @@ public class PlayerMovement : MonoBehaviour
                     rb2D.velocity = new Vector2(xDirection, rb2D.velocity.y);
                 }
             }
+            if (!bombHitExecuted)
+            {
+                StartCoroutine(callBombCheck());
+            }
         }
         else
         {
             rb2D.velocity = new Vector2(horizontal * speed, rb2D.velocity.y);
         }
+    }
+    private IEnumerator callBombCheck()
+    {
+        GameObject bomb = GameObject.FindGameObjectWithTag("Bomb");
+        if (bomb != null && !bombHitExecuted)
+        {
+            float xDirection = (transform.position.x <= bomb.transform.position.x) ? knockbackForce : -knockbackForce;
+            float yDirection = (transform.position.y <= bomb.transform.position.y) ? -knockbackForce : knockbackForce;
+            rb2D.velocity = new Vector2(xDirection, yDirection);
+        }
+        bombHitExecuted = true;
+        yield return new WaitForSeconds(Time.deltaTime);
+        bombHitExecuted = false;
+
     }
     public bool IsGrounded()
     {

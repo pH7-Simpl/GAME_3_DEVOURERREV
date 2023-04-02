@@ -442,6 +442,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  detonator: {fileID: 8829812169676542431, guid: a5cfeaebd9189e943ba0213b5ea4c4ed, type: 3}
+  animator: {fileID: 0}
 --- !u!50 &7421889115612272644
 Rigidbody2D:
   serializedVersion: 4

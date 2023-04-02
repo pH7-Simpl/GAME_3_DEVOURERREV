@@ -25,8 +25,8 @@ public class EnemyMovement : MonoBehaviour
     {
         return isFacingRight;
     }
-    private bool attacking = false;
-    [SerializeField] private bool foundPlayer = false;
+    private bool attacking;
+    [SerializeField] private bool foundPlayer;
     [SerializeField] private bool sprouting;
     public void SetSprouting(bool x) {
         sprouting = x;
@@ -41,6 +41,8 @@ public class EnemyMovement : MonoBehaviour
         speed = 200f;
         stopDistance = 2f;
         knockbackForce = 3f;
+        attacking = false;
+        foundPlayer = false;
     }
 
     private void Update()

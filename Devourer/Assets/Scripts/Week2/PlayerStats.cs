@@ -23,6 +23,12 @@ public class PlayerStats : MonoBehaviour
             showHB = true;
             StartCoroutine(HitEffect(0.5f));
         }
+        if (other.gameObject.tag == "Bomb")
+        {
+            playerHealth -= 25;
+            showHB = true;
+            StartCoroutine(HitEffect(0.5f));
+        }
     }
 
     private void Start()

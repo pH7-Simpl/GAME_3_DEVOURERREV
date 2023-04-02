@@ -27,6 +27,9 @@ public class EnemyAI : MonoBehaviour
     private GameObject healthBar;
     private float showHBCooldown = 0f;
     private bool hasCollided;
+    [SerializeField] private GameObject detonator;
+    [SerializeField] private Animator animator;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (hasCollided)
@@ -47,20 +50,14 @@ public class EnemyAI : MonoBehaviour
             StartCoroutine(HitEffect(0.5f));
             Destroy(other.gameObject);
         }
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" || other.gameObject.name == "fireBreath")
         {
-            Debug.Log("Test");
+            StartCoroutine(Explode());
         }
         StartCoroutine(ColliderRefresher());
     }
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.name == "fireBreath")
-        {
-            enemyHealth -= 1;
-            showHB = true;
-            StartCoroutine(HitEffect(0.3f));
-        }
         if (other.gameObject.layer == 7)
         {
             StartCoroutine(HitEffect(0.1f));
@@ -97,6 +94,7 @@ public class EnemyAI : MonoBehaviour
         enemyHealth = maxEnemyHealth;
         healthBar = transform.GetChild(1).gameObject;
         hasCollided = false;
+        animator = transform.GetChild(0).GetComponent<Animator>();
     }
     private void UpdatePath()
     {
@@ -190,11 +188,24 @@ public class EnemyAI : MonoBehaviour
     }
     private IEnumerator Die()
     {
-        //die animation
-        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+        animator.SetBool("died", true);
+        rb.velocity = Vector2.zero;
+        rb.simulated = false;
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
+    
+    private IEnumerator Explode()
+    {
+        rb.velocity = Vector2.zero;
+        rb.simulated = false;
+        animator.SetBool("exploded", true);
+        GameObject bomb = Instantiate(detonator, transform.position, Quaternion.identity);
+        Destroy(bomb, 1f);
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
+    }
+    
     private void ShowHealthBar()
     {
         if (showHB)
@@ -211,10 +222,5 @@ public class EnemyAI : MonoBehaviour
         {
             healthBar.SetActive(false);
         }
-    }
-    private IEnumerator Explode()
-    {
-        showHB = true;
-        yield return new WaitForSeconds(1f);
     }
 }
