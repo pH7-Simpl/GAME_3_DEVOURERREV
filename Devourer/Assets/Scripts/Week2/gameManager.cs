@@ -22,6 +22,9 @@ public class gameManager : MonoBehaviour
     {
         Instantiate(Drone, new Vector3(5f, 5f, 0f), Quaternion.identity);
         Instantiate(Drone, new Vector3(7f, 5f, 0f), Quaternion.identity);
+        Instantiate(Soldier, new Vector3(-5f, 5f, 0f), Quaternion.identity);
+        Instantiate(Soldier, new Vector3(-13f, 8f, 0f), Quaternion.identity);
+        Instantiate(Soldier, new Vector3(4f, 11f, 0f), Quaternion.identity);
         player = GameObject.FindGameObjectWithTag("Player");
         ps = FindObjectOfType<PlayerStats>();
         MC = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
