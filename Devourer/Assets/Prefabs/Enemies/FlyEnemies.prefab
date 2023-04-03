@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 7421889114024693375}
   m_Layer: 0
   m_Name: FlyEnemyGFX
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 2238192651397750851}
   m_Layer: 0
   m_Name: FlyEnemies
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

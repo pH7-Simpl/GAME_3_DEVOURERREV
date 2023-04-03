@@ -42,6 +42,18 @@ public class DoorMechanism : MonoBehaviour
     {
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         player.GetComponent<PlayerMovement>().enabled = false;
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies) {
+            EnemyMovement enemy1 = enemy.GetComponent<EnemyMovement>();
+            EnemyAI enemy2 = enemy.GetComponent<EnemyAI>();
+            if(enemy1 != null) {
+                enemy1.enabled = false;
+            }
+            if(enemy2 != null) {
+                enemy2.enabled = false;
+            }
+            enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        }
         setSkillEnabledIfAlreadyUnlocked(false);
         mainCamera = Camera.main.gameObject;
         MainCameraPlaying mcp = mainCamera.GetComponent<MainCameraPlaying>();
@@ -59,7 +71,6 @@ public class DoorMechanism : MonoBehaviour
             elapsedTime += Time.deltaTime;
         }
         animator.SetBool("opened", true);
-        GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<Collider2D>().enabled = false;
         yield return new WaitForSeconds(1f);
         elapsedTime = 0f;
@@ -74,6 +85,16 @@ public class DoorMechanism : MonoBehaviour
         player.GetComponent<PlayerMovement>().enabled = true;
         setSkillEnabledIfAlreadyUnlocked(true);
         mcp.enabled = true;
+        foreach (GameObject enemy in enemies) {
+            EnemyMovement enemy1 = enemy.GetComponent<EnemyMovement>();
+            EnemyAI enemy2 = enemy.GetComponent<EnemyAI>();
+            if(enemy1 != null) {
+                enemy1.enabled = true;
+            }
+            if(enemy2 != null) {
+                enemy2.enabled = true;
+            }
+        }
     }
 
     public void doorTest()
