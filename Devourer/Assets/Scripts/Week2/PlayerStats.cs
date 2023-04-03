@@ -7,7 +7,13 @@ public class PlayerStats : MonoBehaviour
     public int playerHealth = 0;
     private float showHBCooldown = 0f;
     private bool showHB = false;
+    public void SetShowHB(bool x) {
+        showHB = x;
+    }
     private bool hit = false;
+    public void SetHit(bool x) {
+        hit = x;
+    }
     public bool IsHit()
     {
         return hit;
@@ -21,12 +27,6 @@ public class PlayerStats : MonoBehaviour
         if (other.gameObject.tag == "Sword")
         {
             playerHealth -= 10;
-            showHB = true;
-            StartCoroutine(HitEffect(0.5f));
-        }
-        if (other.gameObject.tag == "Bomb")
-        {
-            playerHealth -= 25;
             showHB = true;
             StartCoroutine(HitEffect(0.5f));
         }

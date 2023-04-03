@@ -14,7 +14,7 @@ public class LightningDash : MonoBehaviour
     private GameObject theDash = null;
     private GameObject player;
     private PlayerMovement pm;
-    private int wallLayerMask; // layer mask for walls
+    private int wallLayerMask;
 
     private void Start()
     {
@@ -26,7 +26,7 @@ public class LightningDash : MonoBehaviour
         currentCooldown = 0f;
         animationCooldown = 0f;
         cooldownDuration = 1f;
-        wallLayerMask = LayerMask.GetMask("Wall"); // set layer mask for walls
+        wallLayerMask = LayerMask.GetMask("Wall");
     }
 
     private void Update()
@@ -71,7 +71,7 @@ public class LightningDash : MonoBehaviour
             }
 
             player.transform.position = playerPos;
-            theDash = Instantiate(lightningDashPrefab, transform.position + new Vector3(-1.6f, 0), transform.rotation);
+            theDash = Instantiate(lightningDashPrefab, transform.position + new Vector3(-1.6f, 0.01f), transform.rotation);
             animationCooldown = 0.2f;
             currentCooldown = cooldownDuration;
         }
@@ -89,7 +89,7 @@ public class LightningDash : MonoBehaviour
             }
 
             player.transform.position = playerPos;
-            theDash = Instantiate(lightningDashPrefab, transform.position + new Vector3(1.6f, 0), transform.rotation);
+            theDash = Instantiate(lightningDashPrefab, transform.position + new Vector3(1.6f, 0.01f), transform.rotation);
             if (theDash != null)
             {
                 Vector3 localScale = theDash.transform.localScale;
