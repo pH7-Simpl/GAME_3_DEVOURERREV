@@ -18,7 +18,7 @@ public class WindSlash : MonoBehaviour
         player = GameObject.Find("Player");
         pm = player.GetComponent<PlayerMovement>();
         rb = GetComponent<Rigidbody2D>();
-        transform.gameObject.name = "windSlash";
+        transform.gameObject.name = "WindSlash";
 
         if (pm.IsFacingRight())
         {

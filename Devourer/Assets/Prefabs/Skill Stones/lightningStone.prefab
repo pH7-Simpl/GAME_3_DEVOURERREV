@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -5343367149554072194}
   - component: {fileID: -7753795226733811013}
   m_Layer: 0
-  m_Name: lightningStone
+  m_Name: LightningStone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

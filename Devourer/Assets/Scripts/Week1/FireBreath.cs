@@ -11,7 +11,7 @@ public class FireBreath : MonoBehaviour
         player = GameObject.Find("Player");
         transform.SetParent(player.transform);
         pm = player.GetComponent<PlayerMovement>();
-        transform.gameObject.name = "fireBreath";
+        transform.gameObject.name = "FireBreath";
         if (!pm.IsFacingRight())
         {
             Vector3 localScale = transform.localScale;

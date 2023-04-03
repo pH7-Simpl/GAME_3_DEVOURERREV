@@ -22,14 +22,14 @@ public class EnemyStats : MonoBehaviour
     private Rigidbody2D rb;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.name == "windSlash")
+        if (other.gameObject.name == "WindSlash")
         {
             enemyHealth -= 25;
             showHB = true;
             StartCoroutine(HitEffect(0.5f));
             Destroy(other.gameObject);
         }
-        if (other.gameObject.name == "lightningDash")
+        if (other.gameObject.name == "LightningDash")
         {
             enemyHealth -= 25;
             showHB = true;
@@ -58,7 +58,7 @@ public class EnemyStats : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.name == "fireBreath")
+        if (other.gameObject.name == "FireBreath")
         {
             enemyHealth -= 1;
             showHB = true;

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3781525185840935887}
   - component: {fileID: 241181580923884996}
   m_Layer: 0
-  m_Name: windStone
+  m_Name: WindStone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

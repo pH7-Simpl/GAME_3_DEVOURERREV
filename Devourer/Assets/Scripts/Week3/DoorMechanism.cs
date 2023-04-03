@@ -62,6 +62,10 @@ public class DoorMechanism : MonoBehaviour
         {
             gm.SetSeeMap(false);
         }
+        player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         player.GetComponent<PlayerMovement>().enabled = false;
+    }
+    public void doorTest() {
+        opened = true;
     }
 }

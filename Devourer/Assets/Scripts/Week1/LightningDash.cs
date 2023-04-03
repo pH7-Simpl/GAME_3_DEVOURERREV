@@ -34,7 +34,7 @@ public class LightningDash : MonoBehaviour
         if (theDash != null)
         {
             theDash.transform.SetParent(player.transform);
-            theDash.name = "lightningDash";
+            theDash.name = "LightningDash";
         }
 
         if (currentCooldown > 0f)

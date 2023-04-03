@@ -6,7 +6,7 @@ public class GeyserSprouting : MonoBehaviour
     private float duration = 0.4f;
     private void Start()
     {
-        gameObject.name = "waterSprout";
+        gameObject.name = "WaterSprout";
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -1238530019610338746}
   - component: {fileID: 5525558105312017408}
   m_Layer: 0
-  m_Name: fireStone
+  m_Name: FireStone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

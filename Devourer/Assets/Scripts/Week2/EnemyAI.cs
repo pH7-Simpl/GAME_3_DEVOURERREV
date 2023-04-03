@@ -36,21 +36,21 @@ public class EnemyAI : MonoBehaviour
         {
             return;
         }
-        if (other.gameObject.name == "windSlash")
+        if (other.gameObject.name == "WindSlash")
         {
             Destroy(other.gameObject);
             enemyHealth -= 25;
             showHB = true;
             StartCoroutine(HitEffect(0.5f));
         }
-        if (other.gameObject.name == "lightningDash")
+        if (other.gameObject.name == "LightningDash")
         {
             enemyHealth -= 25;
             showHB = true;
             StartCoroutine(HitEffect(0.5f));
             Destroy(other.gameObject);
         }
-        if (other.gameObject.tag == "Player" || other.gameObject.name == "fireBreath")
+        if (other.gameObject.tag == "Player" || other.gameObject.name == "FireBreath")
         {
             StartCoroutine(Explode());
         }

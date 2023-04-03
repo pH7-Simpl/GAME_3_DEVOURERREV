@@ -20,7 +20,7 @@ public class DownSlash : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(0, -speed);
         player.GetComponent<Rigidbody2D>().velocity = new Vector2(player.transform.position.x, pm.GetJumpPower() * 1.1f);
-        transform.gameObject.name = "windSlash";
+        transform.gameObject.name = "WindSlash";
     }
 
     private void Update()
