@@ -17,9 +17,7 @@ public class WaterStone : MonoBehaviour
             ShakeScreen();
             other.gameObject.GetComponent<GeyserSeedSpawn>().enabled = true;
             GameObject.Find("MainCanvas/MainUI/SkillPanel/WaterSkill").SetActive(true);
-            GameObject keterangan =  GameObject.Find("MainCanvas/MainUI/SkillAcquired");
-            keterangan.SetActive(true);
-            keterangan.GetComponent<SkillAcquiredNotification>().ShowNotification("WATER SPROUT", "Q");
+            GameObject.Find("MainCanvas/MainUI/SkillAcquired").GetComponent<SkillAcquiredNotification>().ShowNotification("WATER SPROUT", "Q");
             Destroy(gameObject);
         }
     }

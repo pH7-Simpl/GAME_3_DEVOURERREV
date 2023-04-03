@@ -18,9 +18,7 @@ public class LightningStone : MonoBehaviour
             other.gameObject.GetComponent<LightningDash>().enabled = true;
             other.gameObject.GetComponent<PlayerMovement>().SetDashUpgrade(true);
             GameObject.Find("MainCanvas/MainUI/SkillPanel/LightningSkill").SetActive(true);
-            GameObject keterangan =  GameObject.Find("MainCanvas/MainUI/SkillAcquired");
-            keterangan.SetActive(true);
-            keterangan.GetComponent<SkillAcquiredNotification>().ShowNotification("LIGHTNING DASH", "A or D twice");
+            GameObject.Find("MainCanvas/MainUI/SkillAcquired").GetComponent<SkillAcquiredNotification>().ShowNotification("LIGHTNING DASH", "A or D twice");
             Destroy(gameObject);
         }
     }

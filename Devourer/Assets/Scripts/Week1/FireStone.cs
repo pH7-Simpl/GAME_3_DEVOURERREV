@@ -17,9 +17,7 @@ public class FireStone : MonoBehaviour
             ShakeScreen();
             other.gameObject.GetComponent<Breathing>().enabled = true;
             GameObject.Find("MainCanvas/MainUI/SkillPanel/FireSkill").SetActive(true);
-            GameObject keterangan =  GameObject.Find("MainCanvas/MainUI/SkillAcquired");
-            keterangan.SetActive(true);
-            keterangan.GetComponent<SkillAcquiredNotification>().ShowNotification("FIRE BREATH", "E");
+            GameObject.Find("MainCanvas/MainUI/SkillAcquired").GetComponent<SkillAcquiredNotification>().ShowNotification("FIRE BREATH", "E");
             Destroy(gameObject);
         }
     }
