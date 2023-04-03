@@ -17,6 +17,7 @@ public class Breathing : MonoBehaviour
         pm = GetComponent<PlayerMovement>();
         cooldownDuration = 3.5f;
         currentCooldown = 0f;
+        canSkill = true;
     }
 
     void Update()

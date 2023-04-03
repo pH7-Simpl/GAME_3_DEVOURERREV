@@ -17,6 +17,7 @@ public class GeyserSeedSpawn : MonoBehaviour
         coolDownImage = GameObject.Find("MainCanvas/MainUI/SkillPanel/WaterSkill/Cooldown").GetComponent<Image>();
         currentCooldown = 0f;
         cooldownDuration = 3f;
+        canSkill = true;
     }
     private void Update()
     {

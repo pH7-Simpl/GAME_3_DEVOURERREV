@@ -31,6 +31,7 @@ public class LightningDash : MonoBehaviour
         animationCooldown = 0f;
         cooldownDuration = 1f;
         wallLayerMask = LayerMask.GetMask("Wall");
+        canSkill = true;
     }
 
     private void Update()
