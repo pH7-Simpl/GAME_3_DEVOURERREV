@@ -8,6 +8,7 @@ TagManager:
   - Sword
   - Bomb
   - Skill
+  - Door
   layers:
   - Default
   - TransparentFX

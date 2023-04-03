@@ -111,11 +111,6 @@ public class DoorMechanism : MonoBehaviour
             }
         }
     }
-
-    public void doorTest()
-    {
-        opened = true;
-    }
     private void setSkillEnabledIfAlreadyUnlocked(bool x)
     {
         s.SetCanSkill(x);
