@@ -196,7 +196,7 @@ public class PlayerMovement : MonoBehaviour
             if(GameObject.Find("WindStone") == null) {
                 GetComponent<WindStone>().enabled = false;
             } else {
-
+                GetComponent<WindStone>().enabled = true;
             }
         }
     }

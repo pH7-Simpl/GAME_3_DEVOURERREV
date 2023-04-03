@@ -16,25 +16,28 @@ public class GeyserSeedSpawn : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && currentCooldown <= 0f)
+        if (Time.timeScale != 0)
         {
-            if (pm.IsFacingRight())
+            if (Input.GetKeyDown(KeyCode.Q) && currentCooldown <= 0f)
             {
-                Instantiate(seed, transform.position + new Vector3(2.5f, 0.5f), transform.rotation);
+                if (pm.IsFacingRight())
+                {
+                    Instantiate(seed, transform.position + new Vector3(2.5f, 0.5f), transform.rotation);
+                }
+                else
+                {
+                    Instantiate(seed, transform.position + new Vector3(-2.5f, 0.5f), transform.rotation);
+                }
+                currentCooldown = cooldownDuration;
             }
             else
             {
-                Instantiate(seed, transform.position + new Vector3(-2.5f, 0.5f), transform.rotation);
+                currentCooldown -= Time.deltaTime;
             }
-            currentCooldown = cooldownDuration;
-        }
-        else
-        {
-            currentCooldown -= Time.deltaTime;
-        }
-        if (currentCooldown >= -0.01f)
-        {
-            coolDownImage.fillAmount = Mathf.Clamp01(currentCooldown / cooldownDuration);
+            if (currentCooldown >= -0.01f)
+            {
+                coolDownImage.fillAmount = Mathf.Clamp01(currentCooldown / cooldownDuration);
+            }
         }
     }
 }

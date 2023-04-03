@@ -27,28 +27,31 @@ public class Slashing : MonoBehaviour
 
     private void Update()
     {
-        if (!playerMovement.IsGrounded() && Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.Space) && currentCooldown <= 0f)
+        if (Time.timeScale != 0)
         {
-            if (canDownSlash)
+            if (!playerMovement.IsGrounded() && Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.Space) && currentCooldown <= 0f)
             {
-                Instantiate(downSlashPrefab, transform.position + Vector3.down, Quaternion.identity);
+                if (canDownSlash)
+                {
+                    Instantiate(downSlashPrefab, transform.position + Vector3.down, Quaternion.identity);
+                    currentCooldown = cooldownDuration;
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.F) && currentCooldown <= 0f)
+            {
+                Vector3 slashPosition = playerMovement.IsFacingRight() ? Vector3.right : Vector3.left;
+                Instantiate(windSlashPrefab, transform.position + slashPosition + new Vector3(0, 0.01f), Quaternion.identity);
                 currentCooldown = cooldownDuration;
             }
-        }
-        else if (Input.GetKeyDown(KeyCode.F) && currentCooldown <= 0f)
-        {
-            Vector3 slashPosition = playerMovement.IsFacingRight() ? Vector3.right : Vector3.left;
-            Instantiate(windSlashPrefab, transform.position + slashPosition + new Vector3(0, 0.01f), Quaternion.identity);
-            currentCooldown = cooldownDuration;
-        }
-        else
-        {
-            currentCooldown -= Time.deltaTime;
-        }
-        if (currentCooldown >= -0.01f)
-        {
-            coolDownImage1.fillAmount = Mathf.Clamp01(currentCooldown / cooldownDuration);
-            coolDownImage2.fillAmount = Mathf.Clamp01(currentCooldown / cooldownDuration);
+            else
+            {
+                currentCooldown -= Time.deltaTime;
+            }
+            if (currentCooldown >= -0.01f)
+            {
+                coolDownImage1.fillAmount = Mathf.Clamp01(currentCooldown / cooldownDuration);
+                coolDownImage2.fillAmount = Mathf.Clamp01(currentCooldown / cooldownDuration);
+            }
         }
     }
 }
