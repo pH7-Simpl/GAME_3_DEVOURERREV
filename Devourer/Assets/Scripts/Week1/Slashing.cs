@@ -10,6 +10,10 @@ public class Slashing : MonoBehaviour
 
     private float currentCooldown;
     private bool canDownSlash = false;
+    private bool canSkill;
+    public void SetCanSkill(bool x) {
+        canSkill = x;
+    }
     public void SetCanDownSlash(bool x)
     {
         canDownSlash = x;
@@ -23,11 +27,12 @@ public class Slashing : MonoBehaviour
         coolDownImage2 = GameObject.Find("MainCanvas/MainUI/SkillPanel/AirSkill2/Cooldown").GetComponent<Image>();
         cooldownDuration = 2f;
         currentCooldown = 0f;
+        canSkill = true;
     }
 
     private void Update()
     {
-        if (Time.timeScale != 0)
+        if (Time.timeScale != 0 && canSkill)
         {
             if (!playerMovement.IsGrounded() && Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.Space) && currentCooldown <= 0f)
             {

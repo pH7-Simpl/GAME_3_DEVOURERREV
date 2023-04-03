@@ -15,6 +15,10 @@ public class LightningDash : MonoBehaviour
     private GameObject player;
     private PlayerMovement pm;
     private int wallLayerMask;
+    private bool canSkill;
+    public void SetCanSkill(bool x) {
+        canSkill = x;
+    }
 
     private void Start()
     {
@@ -31,7 +35,7 @@ public class LightningDash : MonoBehaviour
 
     private void Update()
     {
-        if (Time.timeScale != 0)
+        if (Time.timeScale != 0 && canSkill)
         {
             if (theDash != null)
             {

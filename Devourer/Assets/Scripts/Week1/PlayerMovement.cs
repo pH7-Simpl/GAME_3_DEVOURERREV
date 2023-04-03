@@ -191,13 +191,4 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
-    private void checkPause() {
-        if(Time.timeScale == 0) {
-            if(GameObject.Find("WindStone") == null) {
-                GetComponent<WindStone>().enabled = false;
-            } else {
-                GetComponent<WindStone>().enabled = true;
-            }
-        }
-    }
 }

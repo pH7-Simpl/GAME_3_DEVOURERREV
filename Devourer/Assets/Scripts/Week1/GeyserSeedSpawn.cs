@@ -7,6 +7,10 @@ public class GeyserSeedSpawn : MonoBehaviour
     [SerializeField] private GameObject seed;
     private Image coolDownImage;
     private PlayerMovement pm;
+    private bool canSkill;
+    public void SetCanSkill(bool x) {
+        canSkill = x;
+    }
     private void Start()
     {
         pm = GetComponent<PlayerMovement>();
@@ -16,7 +20,7 @@ public class GeyserSeedSpawn : MonoBehaviour
     }
     private void Update()
     {
-        if (Time.timeScale != 0)
+        if (Time.timeScale != 0 && canSkill)
         {
             if (Input.GetKeyDown(KeyCode.Q) && currentCooldown <= 0f)
             {

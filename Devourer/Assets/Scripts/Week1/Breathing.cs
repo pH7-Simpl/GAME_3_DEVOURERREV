@@ -7,6 +7,10 @@ public class Breathing : MonoBehaviour
     [SerializeField] private GameObject fireBreath;
     private Image coolDownImage;
     private PlayerMovement pm;
+    private bool canSkill;
+    public void SetCanSkill(bool x) {
+        canSkill = x;
+    }
     void Start()
     {
         coolDownImage = GameObject.Find("MainCanvas/MainUI/SkillPanel/FireSkill/Cooldown").GetComponent<Image>();
@@ -17,7 +21,7 @@ public class Breathing : MonoBehaviour
 
     void Update()
     {
-        if (Time.timeScale != 0)
+        if (Time.timeScale != 0 && canSkill)
         {
             if (Input.GetKeyDown(KeyCode.E) && currentCooldown <= 0f)
             {

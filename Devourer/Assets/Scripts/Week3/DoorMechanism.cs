@@ -8,7 +8,11 @@ public class DoorMechanism : MonoBehaviour
     private GameObject mainCamera;
     private Animator animator;
     private GameObject player;
-    gameManager gm;
+    private gameManager gm;
+    private Slashing s;
+    private GeyserSeedSpawn gss;
+    private LightningDash ld;
+    private Breathing b;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -16,6 +20,10 @@ public class DoorMechanism : MonoBehaviour
         animator = GetComponent<Animator>();
         gm = GameObject.Find("gameManager").GetComponent<gameManager>();
         player = GameObject.FindGameObjectWithTag("Player");
+        s = player.GetComponent<Slashing>();
+        gss = player.GetComponent<GeyserSeedSpawn>();
+        ld = player.GetComponent<LightningDash>();
+        b = player.GetComponent<Breathing>();
     }
 
     // Update is called once per frame
@@ -44,6 +52,7 @@ public class DoorMechanism : MonoBehaviour
         }
         animator.SetBool("opened", opened);
         GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
         whileAnimation();
         yield return new WaitForSeconds(1f);
         lerpTime = 0f;
@@ -55,7 +64,9 @@ public class DoorMechanism : MonoBehaviour
             yield return null;
         }
         player.GetComponent<PlayerMovement>().enabled = true;
+        Time.timeScale = 1f;
         opened = false;
+        setSkillEnabledIfAlreadyUnlocked(true);
     }
     private void whileAnimation() {
         if (gm.IsSeeMap())
@@ -64,8 +75,15 @@ public class DoorMechanism : MonoBehaviour
         }
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         player.GetComponent<PlayerMovement>().enabled = false;
+        setSkillEnabledIfAlreadyUnlocked(false);
     }
     public void doorTest() {
         opened = true;
+    }
+    private void setSkillEnabledIfAlreadyUnlocked(bool x) {
+        s.SetCanSkill(x);
+        gss.SetCanSkill(x);
+        ld.SetCanSkill(x);
+        b.SetCanSkill(x);
     }
 }
