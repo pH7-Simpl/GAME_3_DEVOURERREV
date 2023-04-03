@@ -34,6 +34,8 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
+        maxPlayerHealth = 100;
+        showHBCooldown = 0f;
         MC = GameObject.FindGameObjectWithTag("MainCamera");
         playerHealth = maxPlayerHealth;
         healthBar = transform.GetChild(1).gameObject;

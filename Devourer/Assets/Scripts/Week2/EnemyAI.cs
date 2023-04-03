@@ -25,7 +25,7 @@ public class EnemyAI : MonoBehaviour
     private bool showHB;
     private bool hit;
     private GameObject healthBar;
-    private float showHBCooldown = 0f;
+    private float showHBCooldown;
     private bool hasCollided;
     [SerializeField] private GameObject detonator;
     [SerializeField] private Animator animator;
@@ -80,7 +80,7 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForSeconds(Time.deltaTime);
         hasCollided = false;
     }
-    private void Start()
+    private void Awake()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         speed = 400f;
@@ -94,6 +94,7 @@ public class EnemyAI : MonoBehaviour
         InvokeRepeating("UpdatePath", 0f, 0.5f);
         hit = false;
         showHB = false;
+        showHBCooldown = 0f;
         maxEnemyHealth = 100f;
         enemyHealth = maxEnemyHealth;
         healthBar = transform.GetChild(1).gameObject;

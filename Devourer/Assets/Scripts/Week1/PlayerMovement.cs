@@ -3,19 +3,19 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 8f;
-    [SerializeField] private float jumpPower = 5f;
+    [SerializeField] private float speed;
+    [SerializeField] private float jumpPower;
     public float GetJumpPower()
     {
         return jumpPower;
     }
-    [SerializeField] private int maxJumps = 1;
-    [SerializeField] private float doublePressTime = 0.2f;
-    [SerializeField] private float dashPower = 10f;
-    [SerializeField] private float dashingTime = 0.2f;
-    [SerializeField] private float dashingCooldown = 1f;
-    [SerializeField] private float knockbackForce = 10f;
-    [SerializeField] private bool dashUpgrade = false;
+    [SerializeField] private int maxJumps;
+    [SerializeField] private float doublePressTime;
+    [SerializeField] private float dashPower;
+    [SerializeField] private float dashingTime;
+    [SerializeField] private float dashingCooldown;
+    [SerializeField] private float knockbackForce;
+    [SerializeField] private bool dashUpgrade;
     public void SetDashUpgrade(bool x)
     {
         dashUpgrade = x;
@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject healthBar;
 
     private float horizontal;
-    private bool isFacingRight = true;
+    private bool isFacingRight;
     public bool IsFacingRight()
     {
         return isFacingRight;
@@ -40,15 +40,26 @@ public class PlayerMovement : MonoBehaviour
     private PlayerStats ps;
     private bool bombHitExecuted;
 
-    private void Start()
+    private void Awake()
     {
+        speed = 8f;
+        jumpPower = 8f;
+        maxJumps = 1;
+        doublePressTime = 0.2f;
+        dashPower = 10f;
+        dashingTime = 0.2f;
+        dashingCooldown = 1f;
+        knockbackForce = 10f;
         jumpsRemaining = maxJumps;
-        GameObject mainCamera = GameObject.Find("Main Camera");
+        GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        mainCamera.transform.position = transform.position + new Vector3(0f, 0f, -5f);
         mainCamera.transform.SetParent(transform);
         ps = GetComponent<PlayerStats>();
         healthBar = transform.GetChild(1).gameObject;
+        dashUpgrade = false;
         canDash = true;
         bombHitExecuted = false;
+        isFacingRight = true;
     }
 
 

@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
 {
-    private int maxEnemyHealth = 100;
-    private int enemyHealth = 0;
+    private int maxEnemyHealth;
+    private int enemyHealth;
     public int GetEnemyHealth()
     {
         return enemyHealth;
     }
-    private float showHBCooldown = 0f;
+    private float showHBCooldown;
     private bool showHB = false;
     private bool hit = false;
     public bool IsHit()
@@ -70,8 +70,10 @@ public class EnemyStats : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void Awake()
     {
+        maxEnemyHealth = 100;
+        showHBCooldown = 0f;
         enemyHealth = maxEnemyHealth;
         healthBar = transform.GetChild(1).gameObject;
         healthBar.SetActive(false);

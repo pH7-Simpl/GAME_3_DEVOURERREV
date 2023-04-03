@@ -33,7 +33,7 @@ public class EnemyMovement : MonoBehaviour
         sprouting = x;
     }
 
-    private void Start()
+    private void Awake()
     {
         player = GameObject.Find("Player");
         rb2D = GetComponent<Rigidbody2D>();
