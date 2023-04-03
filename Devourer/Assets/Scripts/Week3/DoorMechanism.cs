@@ -4,6 +4,9 @@ using UnityEngine;
 public class DoorMechanism : MonoBehaviour
 {
     [SerializeField] private bool opened;
+    public void SetOpened(bool x) {
+        opened = x;
+    }
     private GameObject roomCollider;
     private GameObject mainCamera;
     private Animator animator;
