@@ -43,16 +43,22 @@ public class DoorMechanism : MonoBehaviour
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         player.GetComponent<PlayerMovement>().enabled = false;
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemies) {
-            EnemyMovement enemy1 = enemy.GetComponent<EnemyMovement>();
-            EnemyAI enemy2 = enemy.GetComponent<EnemyAI>();
-            if(enemy1 != null) {
-                enemy1.enabled = false;
+        foreach (GameObject enemy in enemies)
+        {
+            if (enemy != null)
+            {
+                EnemyMovement enemy1 = enemy.GetComponent<EnemyMovement>();
+                EnemyAI enemy2 = enemy.GetComponent<EnemyAI>();
+                if (enemy1 != null)
+                {
+                    enemy1.enabled = false;
+                }
+                if (enemy2 != null)
+                {
+                    enemy2.enabled = false;
+                }
+                enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             }
-            if(enemy2 != null) {
-                enemy2.enabled = false;
-            }
-            enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
         setSkillEnabledIfAlreadyUnlocked(false);
         mainCamera = Camera.main.gameObject;
@@ -85,14 +91,20 @@ public class DoorMechanism : MonoBehaviour
         player.GetComponent<PlayerMovement>().enabled = true;
         setSkillEnabledIfAlreadyUnlocked(true);
         mcp.enabled = true;
-        foreach (GameObject enemy in enemies) {
-            EnemyMovement enemy1 = enemy.GetComponent<EnemyMovement>();
-            EnemyAI enemy2 = enemy.GetComponent<EnemyAI>();
-            if(enemy1 != null) {
-                enemy1.enabled = true;
-            }
-            if(enemy2 != null) {
-                enemy2.enabled = true;
+        foreach (GameObject enemy in enemies)
+        {
+            if (enemy !=null)
+            {
+                EnemyMovement enemy1 = enemy.GetComponent<EnemyMovement>();
+                EnemyAI enemy2 = enemy.GetComponent<EnemyAI>();
+                if (enemy1 != null)
+                {
+                    enemy1.enabled = true;
+                }
+                if (enemy2 != null)
+                {
+                    enemy2.enabled = true;
+                }
             }
         }
     }
