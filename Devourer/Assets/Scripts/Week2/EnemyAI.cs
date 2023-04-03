@@ -199,6 +199,7 @@ public class EnemyAI : MonoBehaviour
         rb.velocity = Vector2.zero;
         rb.simulated = false;
         yield return new WaitForSeconds(1f);
+        ps.PFRE();
         Destroy(gameObject);
     }
 

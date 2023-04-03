@@ -128,7 +128,7 @@ public class EnemyStats : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         GetComponent<EnemyMovement>().enabled = false;
         yield return new WaitForSeconds(1f);
-        ps.PlayerGetPoints(10);
+        ps.PFRE();
         Destroy(gameObject);
     }
 }

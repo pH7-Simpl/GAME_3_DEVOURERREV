@@ -136,11 +136,13 @@ public class PlayerMovement : MonoBehaviour
         {
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;
-            Vector3 healthScale = healthBar.transform.localScale;
             localScale.x *= -1f;
-            healthScale.x *= -1f;
             transform.localScale = localScale;
-            healthBar.transform.localScale = healthScale;
+        }
+        if(isFacingRight) {
+            healthBar.transform.localScale = new Vector3(1f, 1f, 1f);
+        } else {
+            healthBar.transform.localScale = new Vector3(-1f, 1f, 1f);
         }
     }
 

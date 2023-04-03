@@ -99,14 +99,16 @@ public class PlayerStats : MonoBehaviour
         points += x;
         float elapsedTime = 0;
         float duration = 0.5f;
-        GameObject textPopup = Instantiate(pointText, transform.position, Quaternion.identity, transform);
+        GameObject textPopup = Instantiate(pointText, transform.position, Quaternion.identity);
+        textPopup.name = "Text";
         TextMesh text = textPopup.GetComponent<TextMesh>();
         Color oriColor = text.color;
         text.text = "+" + x.ToString();
+        Vector3 startPos = textPopup.transform.position;
         while (elapsedTime <= duration)
         {
             float t = elapsedTime / duration;
-            textPopup.transform.position = Vector2.Lerp(textPopup.transform.position, transform.position + Vector3.up, t);
+            textPopup.transform.position = Vector2.Lerp(startPos, startPos + Vector3.up, t);
             text.color = Color.Lerp(oriColor, new Color(oriColor.r, oriColor.g, oriColor.b, 0f), t);
             yield return new WaitForSeconds(Time.deltaTime);
             elapsedTime += Time.deltaTime;
@@ -114,7 +116,7 @@ public class PlayerStats : MonoBehaviour
         Destroy(textPopup);
     }
 
-    public void testGetPoint()
+    public void PFRE()
     {
         StartCoroutine(PlayerGetPoints(10));
     }

@@ -40,11 +40,13 @@ public class DoorMechanism : MonoBehaviour
 
     private IEnumerator openDoor()
     {
+        player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        player.GetComponent<PlayerMovement>().enabled = false;
+        setSkillEnabledIfAlreadyUnlocked(false);
         mainCamera = Camera.main.gameObject;
         MainCameraPlaying mcp = mainCamera.GetComponent<MainCameraPlaying>();
         mcp.enabled = false;
         Vector3 oriPos = GameObject.FindGameObjectWithTag("Player").transform.position + new Vector3(0, 0, -5f);
-        whileAnimation();
         Vector3 doorPos = transform.position + new Vector3(0, 0, -5f);
         float elapsedTime = 0f;
         float duration = 0.5f;
@@ -59,10 +61,8 @@ public class DoorMechanism : MonoBehaviour
         animator.SetBool("opened", true);
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<Collider2D>().enabled = false;
-        whileAnimation();
         yield return new WaitForSeconds(1f);
         elapsedTime = 0f;
-        whileAnimation();
         while (elapsedTime <= duration)
         {
             t = elapsedTime / duration;
@@ -74,16 +74,6 @@ public class DoorMechanism : MonoBehaviour
         player.GetComponent<PlayerMovement>().enabled = true;
         setSkillEnabledIfAlreadyUnlocked(true);
         mcp.enabled = true;
-    }
-    private void whileAnimation()
-    {
-        if (gm.IsSeeMap())
-        {
-            gm.SetSeeMap(false);
-        }
-        player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        player.GetComponent<PlayerMovement>().enabled = false;
-        setSkillEnabledIfAlreadyUnlocked(false);
     }
 
     public void doorTest()
