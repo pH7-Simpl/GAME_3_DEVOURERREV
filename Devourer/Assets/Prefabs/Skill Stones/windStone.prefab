@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6797311411101188706}
   - component: {fileID: 6797311411101188707}
   - component: {fileID: 6797311411101188705}
+  - component: {fileID: 3781525185840935887}
   - component: {fileID: 241181580923884996}
   m_Layer: 0
   m_Name: windStone
@@ -98,6 +99,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e3a6c653ba56746b2de3fff566526b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3781525185840935887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6797311411101188710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b904ffae77b9e2b449c062b56a97e763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverHeight: 0
+  hoverTime: 0
 --- !u!58 &241181580923884996
 CircleCollider2D:
   m_ObjectHideFlags: 0

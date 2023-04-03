@@ -6,7 +6,7 @@ public class GeyserSeed : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
-    void FixedUpdate()
+    void Update()
     {
         if (IsGrounded())
         {

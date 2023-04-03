@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6797311411101188706}
   - component: {fileID: 6797311411101188707}
-  - component: {fileID: -7753795226733811013}
   - component: {fileID: 6073362576686323830}
+  - component: {fileID: -5443533666301354494}
+  - component: {fileID: -7753795226733811013}
   m_Layer: 0
   m_Name: waterStone
   m_TagString: Untagged
@@ -86,6 +87,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6073362576686323830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6797311411101188710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b2794aba39d9e4bbdd7a7f2dab3391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-5443533666301354494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6797311411101188710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b904ffae77b9e2b449c062b56a97e763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverHeight: 0
+  hoverTime: 0
 --- !u!58 &-7753795226733811013
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -102,15 +129,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.3
---- !u!114 &6073362576686323830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6797311411101188710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b2794aba39d9e4bbdd7a7f2dab3391, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
