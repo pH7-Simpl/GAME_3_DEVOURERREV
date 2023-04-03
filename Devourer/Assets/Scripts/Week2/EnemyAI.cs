@@ -29,6 +29,7 @@ public class EnemyAI : MonoBehaviour
     private bool hasCollided;
     [SerializeField] private GameObject detonator;
     [SerializeField] private Animator animator;
+    private PlayerStats ps;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -100,6 +101,7 @@ public class EnemyAI : MonoBehaviour
         healthBar = transform.GetChild(1).gameObject;
         hasCollided = false;
         animator = transform.GetChild(0).GetComponent<Animator>();
+        ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
     }
     private void UpdatePath()
     {

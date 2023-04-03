@@ -20,6 +20,7 @@ public class EnemyStats : MonoBehaviour
     private Animator animator;
     private EnemyMovement em;
     private Rigidbody2D rb;
+    private PlayerStats ps;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.name == "WindSlash")
@@ -50,7 +51,6 @@ public class EnemyStats : MonoBehaviour
         }
         if (other.gameObject.tag == "Player")
         {
-            PlayerStats ps = other.GetComponent<PlayerStats>();
             rb.gravityScale = 0f;
             StartCoroutine(HitEffect(0.5f));
         }
@@ -77,6 +77,7 @@ public class EnemyStats : MonoBehaviour
         enemyHealth = maxEnemyHealth;
         healthBar = transform.GetChild(1).gameObject;
         healthBar.SetActive(false);
+        ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         em = GetComponent<EnemyMovement>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -127,6 +128,7 @@ public class EnemyStats : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         GetComponent<EnemyMovement>().enabled = false;
         yield return new WaitForSeconds(1f);
+        ps.PlayerGetPoints(10);
         Destroy(gameObject);
     }
 }

@@ -3,15 +3,19 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    [SerializeField] GameObject pointText;
     private int maxPlayerHealth = 100;
     public int playerHealth = 0;
     private float showHBCooldown = 0f;
+    private int points;
     private bool showHB = false;
-    public void SetShowHB(bool x) {
+    public void SetShowHB(bool x)
+    {
         showHB = x;
     }
     private bool hit = false;
-    public void SetHit(bool x) {
+    public void SetHit(bool x)
+    {
         hit = x;
     }
     public bool IsHit()
@@ -36,6 +40,7 @@ public class PlayerStats : MonoBehaviour
     {
         maxPlayerHealth = 100;
         showHBCooldown = 0f;
+        points = 0;
         MC = GameObject.FindGameObjectWithTag("MainCamera");
         playerHealth = maxPlayerHealth;
         healthBar = transform.GetChild(1).gameObject;
@@ -88,5 +93,29 @@ public class PlayerStats : MonoBehaviour
         MC.transform.SetParent(null);
         FindObjectOfType<gameManager>().SetGameOver(true);
         Destroy(gameObject);
+    }
+    public IEnumerator PlayerGetPoints(int x)
+    {
+        points += x;
+        float elapsedTime = 0;
+        float duration = 0.5f;
+        GameObject textPopup = Instantiate(pointText, transform.position, Quaternion.identity, transform);
+        TextMesh text = textPopup.GetComponent<TextMesh>();
+        Color oriColor = text.color;
+        text.text = "+" + x.ToString();
+        while (elapsedTime <= duration)
+        {
+            float t = elapsedTime / duration;
+            textPopup.transform.position = Vector2.Lerp(textPopup.transform.position, transform.position + Vector3.up, t);
+            text.color = Color.Lerp(oriColor, new Color(oriColor.r, oriColor.g, oriColor.b, 0f), t);
+            yield return new WaitForSeconds(Time.deltaTime);
+            elapsedTime += Time.deltaTime;
+        }
+        Destroy(textPopup);
+    }
+
+    public void testGetPoint()
+    {
+        StartCoroutine(PlayerGetPoints(10));
     }
 }

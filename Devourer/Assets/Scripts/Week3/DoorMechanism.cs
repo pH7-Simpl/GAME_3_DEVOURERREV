@@ -19,6 +19,7 @@ public class DoorMechanism : MonoBehaviour
         opened = false;
         animator = GetComponent<Animator>();
         gm = GameObject.Find("gameManager").GetComponent<gameManager>();
+        gm.SetDoorOpening(false);
         player = GameObject.FindGameObjectWithTag("Player");
         s = player.GetComponent<Slashing>();
         gss = player.GetComponent<GeyserSeedSpawn>();
@@ -29,46 +30,53 @@ public class DoorMechanism : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (opened && !gm.IsSeeMap())
+        if (opened)
         {
             StartCoroutine(openDoor());
+            gm.SetDoorOpening(true);
+            opened = false;
         }
     }
 
     private IEnumerator openDoor()
     {
         mainCamera = Camera.main.gameObject;
+        MainCameraPlaying mcp = mainCamera.GetComponent<MainCameraPlaying>();
+        mcp.enabled = false;
         Vector3 oriPos = GameObject.FindGameObjectWithTag("Player").transform.position + new Vector3(0, 0, -5f);
-        Vector3 camPosBeforeDoor = mainCamera.transform.position;
         whileAnimation();
         Vector3 doorPos = transform.position + new Vector3(0, 0, -5f);
-        float lerpTime = 0f;
-        float lerpDuration = 0.5f;
-        while (lerpTime < 0.5f)
+        float elapsedTime = 0f;
+        float duration = 0.5f;
+        float t = 0f;
+        while (elapsedTime <= duration)
         {
-            lerpTime += Time.deltaTime;
-            mainCamera.transform.position = Vector3.Lerp(oriPos, doorPos, lerpTime / lerpDuration);
-            yield return null;
+            t = elapsedTime / duration;
+            mainCamera.transform.position = Vector3.Lerp(oriPos, doorPos, t);
+            yield return new WaitForSeconds(Time.deltaTime);
+            elapsedTime += Time.deltaTime;
         }
-        animator.SetBool("opened", opened);
+        animator.SetBool("opened", true);
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<Collider2D>().enabled = false;
         whileAnimation();
         yield return new WaitForSeconds(1f);
-        lerpTime = 0f;
+        elapsedTime = 0f;
         whileAnimation();
-        while (lerpTime < 0.5f)
+        while (elapsedTime <= duration)
         {
-            lerpTime += Time.deltaTime;
-            mainCamera.transform.position = Vector3.Lerp(doorPos, oriPos, lerpTime / lerpDuration);
-            yield return null;
+            t = elapsedTime / duration;
+            mainCamera.transform.position = Vector3.Lerp(doorPos, oriPos, t);
+            yield return new WaitForSeconds(Time.deltaTime);
+            elapsedTime += Time.deltaTime;
         }
+        gm.SetDoorOpening(false);
         player.GetComponent<PlayerMovement>().enabled = true;
-        Time.timeScale = 1f;
-        opened = false;
         setSkillEnabledIfAlreadyUnlocked(true);
+        mcp.enabled = true;
     }
-    private void whileAnimation() {
+    private void whileAnimation()
+    {
         if (gm.IsSeeMap())
         {
             gm.SetSeeMap(false);
@@ -77,10 +85,13 @@ public class DoorMechanism : MonoBehaviour
         player.GetComponent<PlayerMovement>().enabled = false;
         setSkillEnabledIfAlreadyUnlocked(false);
     }
-    public void doorTest() {
+
+    public void doorTest()
+    {
         opened = true;
     }
-    private void setSkillEnabledIfAlreadyUnlocked(bool x) {
+    private void setSkillEnabledIfAlreadyUnlocked(bool x)
+    {
         s.SetCanSkill(x);
         gss.SetCanSkill(x);
         ld.SetCanSkill(x);

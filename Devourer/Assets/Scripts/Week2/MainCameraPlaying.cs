@@ -16,7 +16,7 @@ public class MainCameraPlaying : MonoBehaviour
     {
         shakeDuration = 0f;
         originalPos = transform.localPosition;
-        playerStats = FindObjectOfType<PlayerStats>();
+        playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
     }
 
     private void Update()

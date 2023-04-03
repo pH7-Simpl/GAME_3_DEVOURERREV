@@ -849,7 +849,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6797311411101188706, guid: 40d15682d2803b14586d0f7e3da23f9e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -115
+      value: -113
       objectReference: {fileID: 0}
     - target: {fileID: 6797311411101188706, guid: 40d15682d2803b14586d0f7e3da23f9e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -945,7 +945,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6797311411101188706, guid: 8dcfd608ee0a7c14b888a681919f0358, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -117
+      value: -111
       objectReference: {fileID: 0}
     - target: {fileID: 6797311411101188706, guid: 8dcfd608ee0a7c14b888a681919f0358, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2338,7 +2338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6797311411101188706, guid: 2cacee72208e1124d83f635c497c9a42, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -111
+      value: -117
       objectReference: {fileID: 0}
     - target: {fileID: 6797311411101188706, guid: 2cacee72208e1124d83f635c497c9a42, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3153,9 +3153,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2061162994}
-        m_TargetAssemblyTypeName: DoorMechanism, Assembly-CSharp
-        m_MethodName: doorTest
+      - m_Target: {fileID: 1008127380}
+        m_TargetAssemblyTypeName: PlayerStats, Assembly-CSharp
+        m_MethodName: testGetPoint
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3460,6 +3460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 821be579b4559ba4993ee4504a280d4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointText: {fileID: 3958797399864259241, guid: 111afc5e655f6414e8cf4fccb1cd36c0, type: 3}
   playerHealth: 100
   MC: {fileID: 0}
   animator: {fileID: 1008127378}
@@ -4518,7 +4519,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6863123173978465396, guid: adb5e68de9d75a14cba2fdd865172fb2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -113
+      value: -115
       objectReference: {fileID: 0}
     - target: {fileID: 6863123173978465396, guid: adb5e68de9d75a14cba2fdd865172fb2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7101,17 +7102,6 @@ MonoBehaviour:
   mainUI: {fileID: 923055037}
   gameOverUI: {fileID: 407736039}
   MC: {fileID: 0}
---- !u!114 &2061162994 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -6098632379747334176, guid: fe87cddded9b6f94fb8d41b2d33d421c, type: 3}
-  m_PrefabInstance: {fileID: 7598020539258354586}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89e94b2a9caf8e046a4a59c7895a1514, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2061373778 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6344386182423942588, guid: 1812f76ea11cd634dbddaf4b381b4491, type: 3}

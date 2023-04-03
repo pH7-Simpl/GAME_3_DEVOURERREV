@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 public class GeyserSeedSpawn : MonoBehaviour
 {
+    private int wallLayerMask;
+    private Vector3 spawnRange;
+    private float spawnLength;
     private float cooldownDuration;
     private float currentCooldown;
     [SerializeField] private GameObject seed;
@@ -13,26 +16,35 @@ public class GeyserSeedSpawn : MonoBehaviour
     }
     private void Start()
     {
+        wallLayerMask = LayerMask.GetMask("Wall");
         pm = GetComponent<PlayerMovement>();
         coolDownImage = GameObject.Find("MainCanvas/MainUI/SkillPanel/WaterSkill/Cooldown").GetComponent<Image>();
         currentCooldown = 0f;
         cooldownDuration = 3f;
         canSkill = true;
+        spawnLength = 2.5f;
     }
     private void Update()
     {
+        Vector2 playerPos = transform.position;
         if (Time.timeScale != 0 && canSkill)
         {
             if (Input.GetKeyDown(KeyCode.Q) && currentCooldown <= 0f)
             {
-                if (pm.IsFacingRight())
-                {
-                    Instantiate(seed, transform.position + new Vector3(2.5f, 0.5f), transform.rotation);
+                if(transform.localScale.x == 1) {
+                    spawnRange = transform.position + new Vector3(spawnLength, 0.5f);
+                    RaycastHit2D hit = Physics2D.Raycast(playerPos, Vector2.right, spawnLength, wallLayerMask);
+                    if(hit.collider != null) {
+                        spawnRange.x = hit.point.x - 0.5f;
+                    }
+                } else {
+                    spawnRange = transform.position + new Vector3(-spawnLength, 0.5f);
+                    RaycastHit2D hit = Physics2D.Raycast(playerPos, Vector2.left, spawnLength, wallLayerMask);
+                    if(hit.collider != null) {
+                        spawnRange.x = hit.point.x + 0.5f;
+                    }
                 }
-                else
-                {
-                    Instantiate(seed, transform.position + new Vector3(-2.5f, 0.5f), transform.rotation);
-                }
+                Instantiate(seed, spawnRange, transform.rotation);
                 currentCooldown = cooldownDuration;
             }
             else

@@ -5,10 +5,12 @@ public class gameManager : MonoBehaviour
 {
     [SerializeField] private bool paused;
     [SerializeField] private bool seeMap;
-    public void SetSeeMap(bool x) {
+    public void SetSeeMap(bool x)
+    {
         seeMap = x;
     }
-    public bool IsSeeMap() {
+    public bool IsSeeMap()
+    {
         return seeMap;
     }
     [SerializeField] private bool gameOver;
@@ -24,6 +26,11 @@ public class gameManager : MonoBehaviour
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private Camera MC;
     PlayerStats ps;
+    [SerializeField] private bool doorOpening;
+    public void SetDoorOpening(bool x)
+    {
+        doorOpening = x;
+    }
     void Start()
     {
         // Instantiate(Drone, new Vector3(-120f, 40f, 0f), Quaternion.identity);
@@ -38,6 +45,7 @@ public class gameManager : MonoBehaviour
         gameOver = false;
         paused = false;
         seeMap = false;
+        doorOpening = false;
     }
 
     void Update()
@@ -103,23 +111,29 @@ public class gameManager : MonoBehaviour
     }
     private void SeeMap()
     {
-        Time.timeScale = 0f;
-        mainUI.SetActive(false);
-        if (MC != null)
+        if (!doorOpening)
         {
-            MC.transform.SetParent(null);
-            MC.transform.position = new Vector3(0f, 0f, -5f);
-            MC.orthographicSize = 50f;
+            Time.timeScale = 0f;
+            mainUI.SetActive(false);
+            if (MC != null)
+            {
+                MC.transform.SetParent(null);
+                MC.transform.position = new Vector3(0f, 0f, -5f);
+                MC.orthographicSize = 50f;
+            }
         }
     }
     private void UnseeMap()
     {
-        Time.timeScale = 1f;
-        mainUI.SetActive(true);
-        if (MC != null && player != null)
+        if (!doorOpening)
         {
-            MC.transform.SetParent(player.transform);
-            MC.orthographicSize = 5;
+            Time.timeScale = 1f;
+            mainUI.SetActive(true);
+            if (MC != null && player != null)
+            {
+                MC.transform.SetParent(player.transform);
+                MC.orthographicSize = 5;
+            }
         }
     }
     public void Restart()
