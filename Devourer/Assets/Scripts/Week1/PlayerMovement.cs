@@ -113,13 +113,13 @@ public class PlayerMovement : MonoBehaviour
     }
     private IEnumerator callBombCheck()
     {
+        bombHitExecuted = true;
         GameObject bomb = GameObject.FindGameObjectWithTag("Bomb");
         if (bomb != null && !bombHitExecuted)
         {
             Vector2 knockbackDirection = (transform.position - bomb.transform.position).normalized;
             rb2D.velocity = knockbackDirection * knockbackForce;
         }
-        bombHitExecuted = true;
         yield return new WaitForSeconds(Time.deltaTime);
         bombHitExecuted = false;
 
