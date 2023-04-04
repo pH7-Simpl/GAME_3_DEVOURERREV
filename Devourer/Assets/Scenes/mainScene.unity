@@ -1189,6 +1189,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 288774528}
     m_Modifications:
+    - target: {fileID: 1558625603706831488, guid: 72ac9c4df19b0fa46b2e497368cbb08e, type: 3}
+      propertyPath: m_TagString
+      value: Marks
+      objectReference: {fileID: 0}
     - target: {fileID: 1558625603706831491, guid: 72ac9c4df19b0fa46b2e497368cbb08e, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1305,7 +1309,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1558625603706831489, guid: 72ac9c4df19b0fa46b2e497368cbb08e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 72ac9c4df19b0fa46b2e497368cbb08e, type: 3}
 --- !u!1 &288774527
 GameObject:
