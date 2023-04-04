@@ -9,7 +9,6 @@ public class BossBaS : MonoBehaviour
     [SerializeField] private GameObject windStrike;
     [SerializeField] private GameObject fireStrike;
     // Start is called before the first frame update
-    private float duration = 0f;
     private bool attacking = false;
 
     // Update is called once per frame
@@ -22,36 +21,57 @@ public class BossBaS : MonoBehaviour
     }
 
     private IEnumerator AttackSequence() {
-        AtkStart(Random.Range(0, 4));
-        yield return new WaitForSeconds(4f);
+        AttackStart(Random.Range(0, 4));
+        yield return new WaitForSeconds(4f + Random.Range(0f, 4f));
         attacking = false;
     }
-    private void AtkStart(int choice){
+    private void AttackStart(int choice){
         switch (choice){
             case 0:
-                StartCoroutine(LightningStrike());
+                LightningStrikeOnce();
             break;
             case 1:
-                StartCoroutine(WaterStrike());
+                WaterStrikeOnce();
             break;
             case 2:
-                StartCoroutine(WindStrike());
+                WindStrikeOnce();
             break;
             case 3:
-                StartCoroutine(FireStrike());
+                FireStrikeOnce();
             break;
         }
     }
+    //atack has to be under 4 seconds
+    private void LightningStrikeOnce() {
+        StartCoroutine(LightningStrike());
+    }
     private IEnumerator LightningStrike() {
+        Debug.Log("Lightning Strike");
         yield return new WaitForSeconds(1f);
+        Debug.Log("Lightning Strike Finished");
+    }
+    private void WaterStrikeOnce() {
+        StartCoroutine(WaterStrike());
     }
     private IEnumerator WaterStrike() {
+        Debug.Log("Water Strike");
         yield return new WaitForSeconds(1f);
+        Debug.Log("Water Strike Finished");
+    }
+    private void WindStrikeOnce() {
+        StartCoroutine(WindStrike());
     }
     private IEnumerator WindStrike() {
+        Debug.Log("Wind Strike");
         yield return new WaitForSeconds(1f);
+        Debug.Log("Wind Strike Finished");
+    }
+    private void FireStrikeOnce() {
+        StartCoroutine(FireStrike());
     }
     private IEnumerator FireStrike() {
+        Debug.Log("Fire Strike");
         yield return new WaitForSeconds(1f);
+        Debug.Log("Fire Strike Finished");
     }
 }

@@ -3385,7 +3385,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1008127380}
         m_TargetAssemblyTypeName: PlayerStats, Assembly-CSharp
-        m_MethodName: PFRE
+        m_MethodName: PFDE
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
