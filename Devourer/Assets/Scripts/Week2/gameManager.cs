@@ -142,10 +142,10 @@ public class gameManager : MonoBehaviour
     }
     public void Restart()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
     public void MainMenu()
     {
-        Debug.Log("Going to Main Menu");
+        SceneManager.LoadScene(1);
     }
 }
