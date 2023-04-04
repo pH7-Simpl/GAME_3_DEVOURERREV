@@ -78,7 +78,9 @@ public class DoorMechanism : MonoBehaviour
             elapsedTime += Time.deltaTime;
         }
         gm.SetDoorOpening(false);
-        player.GetComponent<PlayerMovement>().enabled = true;
+        if(player != null) {
+            player.GetComponent<PlayerMovement>().enabled = true;
+        }
         setSkillEnabledIfAlreadyUnlocked(true);
         mcp.enabled = true;
         foreach (GameObject enemy in enemies)
