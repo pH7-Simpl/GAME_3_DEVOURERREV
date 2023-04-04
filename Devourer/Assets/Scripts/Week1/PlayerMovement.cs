@@ -103,7 +103,8 @@ public class PlayerMovement : MonoBehaviour
             }
             if (!bombHitExecuted)
             {
-                StartCoroutine(callBombCheck());
+                bomb();
+                bombHitExecuted = true;
             }
         }
         else
@@ -111,9 +112,11 @@ public class PlayerMovement : MonoBehaviour
             rb2D.velocity = new Vector2(horizontal * speed, rb2D.velocity.y);
         }
     }
+    private void bomb() {
+        StartCoroutine(callBombCheck());
+    }
     private IEnumerator callBombCheck()
     {
-        bombHitExecuted = true;
         GameObject bomb = GameObject.FindGameObjectWithTag("Bomb");
         if (bomb != null && !bombHitExecuted)
         {

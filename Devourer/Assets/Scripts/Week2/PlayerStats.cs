@@ -6,13 +6,8 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] GameObject pointText;
     private int maxPlayerHealth = 100;
     public int playerHealth = 0;
-    private float showHBCooldown = 0f;
     private int points;
-    private bool showHB = false;
-    public void SetShowHB(bool x)
-    {
-        showHB = x;
-    }
+    private bool damaged = false;
     private bool hit = false;
     public void SetHit(bool x)
     {
@@ -30,21 +25,19 @@ public class PlayerStats : MonoBehaviour
     {
         if (other.gameObject.tag == "Sword")
         {
-            playerHealth -= 10;
-            showHB = true;
-            StartCoroutine(HitEffect(0.5f));
+            PlayerTakesDamage(0.5f, 10);
         }
     }
 
     private void Start()
     {
         maxPlayerHealth = 100;
-        showHBCooldown = 0f;
         points = 0;
         MC = GameObject.FindGameObjectWithTag("MainCamera");
         playerHealth = maxPlayerHealth;
         healthBar = transform.GetChild(1).gameObject;
         healthBar.SetActive(false);
+        damaged = false;
     }
     private void Update()
     {
@@ -60,33 +53,27 @@ public class PlayerStats : MonoBehaviour
         {
             StartCoroutine(Die());
         }
-        ShowHealthBar();
     }
-    private void ShowHealthBar()
+    private IEnumerator ShowHealthBar()
     {
-        if (showHB)
-        {
-            showHBCooldown = 1f;
-            healthBar.SetActive(true);
-            showHB = false;
-        }
-        if (showHBCooldown >= 0f)
-        {
-            showHBCooldown -= Time.deltaTime;
-        }
-        else
-        {
-            healthBar.SetActive(false);
-        }
+        healthBar.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        healthBar.SetActive(false);
     }
-    public void startHitEffect(float duration) {
-        StartCoroutine(HitEffect(duration));
+    public void PlayerTakesDamage(float duration, int damage) {
+        StartCoroutine(PlayerHit(duration, damage));
     }
-    public IEnumerator HitEffect(float duration)
+    private IEnumerator PlayerHit(float duration, int damage)
     {
+        if(!damaged) {
+            playerHealth -= damage;
+            StartCoroutine(ShowHealthBar());
+            damaged = true;
+        }
         hit = true;
         yield return new WaitForSeconds(duration);
         hit = false;
+        damaged = false;
     }
     private IEnumerator Die()
     {
@@ -119,7 +106,7 @@ public class PlayerStats : MonoBehaviour
         Destroy(textPopup);
     }
 
-    public void PFRE()
+    public void PFDE()
     {
         StartCoroutine(PlayerGetPoints(10));
     }

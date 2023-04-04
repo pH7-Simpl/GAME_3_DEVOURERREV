@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossAttacks : MonoBehaviour
+public class BossBaS : MonoBehaviour
 {
     [SerializeField] private GameObject lightningStrike;
     [SerializeField] private GameObject waterStrike;

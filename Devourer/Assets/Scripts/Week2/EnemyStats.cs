@@ -9,8 +9,6 @@ public class EnemyStats : MonoBehaviour
     {
         return enemyHealth;
     }
-    private float showHBCooldown;
-    private bool showHB = false;
     private bool hit = false;
     public bool IsHit()
     {
@@ -21,20 +19,17 @@ public class EnemyStats : MonoBehaviour
     private EnemyMovement em;
     private Rigidbody2D rb;
     private PlayerStats ps;
+    private bool damaged;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.name == "WindSlash")
         {
-            enemyHealth -= 25;
-            showHB = true;
-            StartCoroutine(HitEffect(0.5f));
+            EnemyTakesDamage(0.5f, 25);
             Destroy(other.gameObject);
         }
         if (other.gameObject.name == "LightningDash")
         {
-            enemyHealth -= 25;
-            showHB = true;
-            StartCoroutine(HitEffect(0.5f));
+            EnemyTakesDamage(0.5f, 25);
             Destroy(other.gameObject);
         }
         if (other.gameObject.layer == 6)
@@ -52,7 +47,7 @@ public class EnemyStats : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             rb.gravityScale = 0f;
-            StartCoroutine(HitEffect(0.5f));
+            EnemyTakesDamage(0.5f, 0);
         }
     }
 
@@ -61,19 +56,18 @@ public class EnemyStats : MonoBehaviour
         if (other.gameObject.name == "FireBreath")
         {
             enemyHealth -= 1;
-            showHB = true;
-            StartCoroutine(HitEffect(1.5f));
+            StartCoroutine(ShowHealthBar());
+            EnemyTakesDamage(1.5f, 0);
         }
         if (other.gameObject.layer == 7)
         {
-            StartCoroutine(HitEffect(0.1f));
+            EnemyTakesDamage(0.1f, 0);
         }
     }
 
     private void Awake()
     {
         maxEnemyHealth = 100;
-        showHBCooldown = 0f;
         enemyHealth = maxEnemyHealth;
         healthBar = transform.GetChild(1).gameObject;
         healthBar.SetActive(false);
@@ -96,31 +90,27 @@ public class EnemyStats : MonoBehaviour
         {
             StartCoroutine("Die");
         }
-        ShowHealthBar();
     }
-    private void ShowHealthBar()
+    private IEnumerator ShowHealthBar()
     {
-        if (showHB)
-        {
-            showHBCooldown = 1f;
-            healthBar.SetActive(true);
-            showHB = false;
-        }
-        if (showHBCooldown >= 0f)
-        {
-            showHBCooldown -= Time.deltaTime;
-        }
-        else
-        {
-            healthBar.SetActive(false);
-        }
+        healthBar.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        healthBar.SetActive(false);
     }
-
-    public IEnumerator HitEffect(float duration)
+    public void EnemyTakesDamage(float duration, int damage) {
+        StartCoroutine(EnemyHit(duration, damage));
+    }
+    private IEnumerator EnemyHit(float duration, int damage)
     {
+        if(!damaged) {
+            enemyHealth -= damage;
+            StartCoroutine(ShowHealthBar());
+            damaged = true;
+        }
         hit = true;
         yield return new WaitForSeconds(duration);
         hit = false;
+        damaged = false;
     }
     private IEnumerator Die()
     {
@@ -128,7 +118,7 @@ public class EnemyStats : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         GetComponent<EnemyMovement>().enabled = false;
         yield return new WaitForSeconds(1f);
-        ps.PFRE();
+        ps.PFDE();
         Destroy(gameObject);
     }
 }

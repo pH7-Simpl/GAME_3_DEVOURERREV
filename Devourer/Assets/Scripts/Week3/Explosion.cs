@@ -18,9 +18,7 @@ public class Explosion : MonoBehaviour
         if (other.gameObject.tag == "Player" && !executed)
         {
             executed = true;
-            ps.startHitEffect(0.5f);
-            ps.playerHealth -= 25;
-            ps.SetShowHB(true);
+            ps.PlayerTakesDamage(0.5f, 25);
         }
     }
 }
