@@ -131,8 +131,8 @@ public class EnemyStats : MonoBehaviour
         {
             t = elapsedTime / duration;
             GetComponent<SpriteRenderer>().color = Color.Lerp(targetColor, originalColor, t);
-            yield return null;
             elapsedTime += Time.deltaTime;
+            yield return null;
         }
         GetComponent<SpriteRenderer>().color = originalColor;
     }

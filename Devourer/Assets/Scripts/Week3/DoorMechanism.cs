@@ -63,8 +63,8 @@ public class DoorMechanism : MonoBehaviour
         {
             t = elapsedTime / duration;
             mainCamera.transform.position = Vector3.Lerp(oriPos, doorPos, t);
-            yield return new WaitForSeconds(Time.deltaTime);
             elapsedTime += Time.deltaTime;
+            yield return null;
         }
         animator.SetBool("opened", true);
         GetComponent<Collider2D>().enabled = false;
@@ -74,8 +74,8 @@ public class DoorMechanism : MonoBehaviour
         {
             t = elapsedTime / duration;
             mainCamera.transform.position = Vector3.Lerp(doorPos, oriPos, t);
-            yield return new WaitForSeconds(Time.deltaTime);
             elapsedTime += Time.deltaTime;
+            yield return null;
         }
         gm.SetDoorOpening(false);
         if(player != null) {

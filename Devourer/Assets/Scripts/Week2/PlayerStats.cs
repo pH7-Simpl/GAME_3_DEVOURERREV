@@ -74,7 +74,7 @@ public class PlayerStats : MonoBehaviour
         hit = false;
         damaged = false;
     }
-     private IEnumerator colorForDamaged(float duration)
+    private IEnumerator colorForDamaged(float duration)
     {
         Color originalColor = GetComponent<SpriteRenderer>().color;
         Color targetColor = Color.red;
@@ -84,8 +84,8 @@ public class PlayerStats : MonoBehaviour
         {
             t = elapsedTime / duration;
             GetComponent<SpriteRenderer>().color = Color.Lerp(targetColor, originalColor, t);
-            yield return null;
             elapsedTime += Time.deltaTime;
+            yield return null;
         }
         GetComponent<SpriteRenderer>().color = originalColor;
     }

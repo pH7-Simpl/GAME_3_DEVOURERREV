@@ -216,8 +216,8 @@ public class EnemyAI : MonoBehaviour
         {
             t = elapsedTime / duration;
             sr.color = Color.Lerp(targetColor, originalColor, t);
-            yield return null;
             elapsedTime += Time.deltaTime;
+            yield return null;
         }
         sr.color = originalColor;
     }
