@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class RevealMap : MonoBehaviour
 {
-    [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private LayerMask markLayer;
     // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -21,6 +17,6 @@ public class RevealMap : MonoBehaviour
     }
     public bool IsTouched()
     {
-        return Physics2D.OverlapBox(transform.position, transform.GetComponent<Renderer>().bounds.size, 0f, playerLayer);
+        return Physics2D.OverlapBox(transform.position, transform.GetComponent<Renderer>().bounds.size, 0f, markLayer);
     }
 }

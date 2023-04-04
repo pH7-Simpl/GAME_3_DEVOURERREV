@@ -118,13 +118,13 @@ public class gameManager : MonoBehaviour
         if (!doorOpening)
         {
             Time.timeScale = 0f;
-            mainUI.SetActive(false);
-            if (MC != null)
-            {
-                MC.transform.SetParent(null);
-                MC.transform.position = new Vector3(0f, 0f, -5f);
-                MC.orthographicSize = 50f;
-            }
+            // mainUI.SetActive(false);
+            // if (MC != null)
+            // {
+                // MC.transform.SetParent(null);
+                // MC.transform.position = new Vector3(0f, 0f, -5f);
+                // MC.orthographicSize = 50f;
+            // }
         }
     }
     private void UnseeMap()
@@ -132,12 +132,12 @@ public class gameManager : MonoBehaviour
         if (!doorOpening)
         {
             Time.timeScale = 1f;
-            mainUI.SetActive(true);
-            if (MC != null && player != null)
-            {
-                MC.transform.SetParent(player.transform);
-                MC.orthographicSize = 5;
-            }
+            // mainUI.SetActive(true);
+            // if (MC != null && player != null)
+            // {
+                // MC.transform.SetParent(player.transform);
+                // MC.orthographicSize = 5;
+            // }
         }
     }
     public void Restart()
