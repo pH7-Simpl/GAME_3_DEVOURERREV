@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
         Flip();
         Jump();
 
-        if (!dashUpgrade)
+        if (!dashUpgrade && Time.timeScale != 0)
         {
             Dashing();
         }
