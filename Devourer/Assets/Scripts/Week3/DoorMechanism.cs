@@ -3,10 +3,6 @@ using UnityEngine;
 
 public class DoorMechanism : MonoBehaviour
 {
-    [SerializeField] private bool opened;
-    public void SetOpened(bool x) {
-        opened = x;
-    }
     private GameObject roomCollider;
     private GameObject mainCamera;
     private Animator animator;
@@ -16,10 +12,8 @@ public class DoorMechanism : MonoBehaviour
     private GeyserSeedSpawn gss;
     private LightningDash ld;
     private Breathing b;
-    // Start is called before the first frame update
     private void Awake()
     {
-        opened = false;
         animator = GetComponent<Animator>();
         gm = GameObject.Find("gameManager").GetComponent<gameManager>();
         gm.SetDoorOpening(false);
@@ -29,20 +23,13 @@ public class DoorMechanism : MonoBehaviour
         ld = player.GetComponent<LightningDash>();
         b = player.GetComponent<Breathing>();
     }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        if (opened)
-        {
-            StartCoroutine(openDoor());
-            gm.SetDoorOpening(true);
-            opened = false;
-        }
+    public void openDoer() {
+        StartCoroutine(openDoor());
     }
 
     private IEnumerator openDoor()
     {
+        gm.SetDoorOpening(true);
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         player.GetComponent<PlayerMovement>().enabled = false;
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");

@@ -14,6 +14,9 @@ public class gameManager : MonoBehaviour
         return seeMap;
     }
     [SerializeField] private bool gameOver;
+    public bool GetGameOver() {
+        return gameOver;
+    }
     public void SetGameOver(bool x)
     {
         gameOver = x;
@@ -31,7 +34,7 @@ public class gameManager : MonoBehaviour
     {
         doorOpening = x;
     }
-    void Start()
+    public void Awake()
     {
         // Instantiate(Drone, new Vector3(-120f, 40f, 0f), Quaternion.identity);
         Instantiate(Drone, new Vector3(-110f, 40f, 0f), Quaternion.identity);
