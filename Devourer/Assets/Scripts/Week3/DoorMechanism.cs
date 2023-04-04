@@ -68,7 +68,7 @@ public class DoorMechanism : MonoBehaviour
         }
         animator.SetBool("opened", true);
         GetComponent<Collider2D>().enabled = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         elapsedTime = 0f;
         while (elapsedTime <= duration)
         {

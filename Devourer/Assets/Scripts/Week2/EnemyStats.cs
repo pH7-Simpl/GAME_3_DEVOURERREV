@@ -56,7 +56,6 @@ public class EnemyStats : MonoBehaviour
         if (other.gameObject.name == "FireBreath")
         {
             enemyHealth -= 1;
-            StartCoroutine(ShowHealthBar());
             EnemyTakesDamage(1.5f, 0);
         }
         if (other.gameObject.layer == 7)
@@ -91,10 +90,10 @@ public class EnemyStats : MonoBehaviour
             StartCoroutine("Die");
         }
     }
-    private IEnumerator ShowHealthBar()
+    private IEnumerator ShowHealthBar(float duration)
     {
         healthBar.SetActive(true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(duration);
         healthBar.SetActive(false);
     }
     public void EnemyTakesDamage(float duration, int damage) {
@@ -104,9 +103,9 @@ public class EnemyStats : MonoBehaviour
     {
         if(!damaged) {
             enemyHealth -= damage;
-            StartCoroutine(ShowHealthBar());
             damaged = true;
         }
+        StartCoroutine(ShowHealthBar(duration));
         hit = true;
         yield return new WaitForSeconds(duration);
         hit = false;

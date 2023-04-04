@@ -9,10 +9,6 @@ public class PlayerStats : MonoBehaviour
     private int points;
     private bool damaged = false;
     private bool hit = false;
-    public void SetHit(bool x)
-    {
-        hit = x;
-    }
     public bool IsHit()
     {
         return hit;
@@ -54,10 +50,10 @@ public class PlayerStats : MonoBehaviour
             StartCoroutine(Die());
         }
     }
-    private IEnumerator ShowHealthBar()
+    private IEnumerator ShowHealthBar(float duration)
     {
         healthBar.SetActive(true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(duration);
         healthBar.SetActive(false);
     }
     public void PlayerTakesDamage(float duration, int damage) {
@@ -67,9 +63,9 @@ public class PlayerStats : MonoBehaviour
     {
         if(!damaged) {
             playerHealth -= damage;
-            StartCoroutine(ShowHealthBar());
             damaged = true;
         }
+        StartCoroutine(ShowHealthBar(duration));
         hit = true;
         yield return new WaitForSeconds(duration);
         hit = false;
