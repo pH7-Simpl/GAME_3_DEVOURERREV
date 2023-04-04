@@ -79,6 +79,9 @@ public class PlayerStats : MonoBehaviour
             healthBar.SetActive(false);
         }
     }
+    public void startHitEffect(float duration) {
+        StartCoroutine(HitEffect(duration));
+    }
     public IEnumerator HitEffect(float duration)
     {
         hit = true;

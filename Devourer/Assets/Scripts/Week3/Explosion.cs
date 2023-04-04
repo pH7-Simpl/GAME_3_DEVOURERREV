@@ -18,15 +18,8 @@ public class Explosion : MonoBehaviour
         if (other.gameObject.tag == "Player" && !executed)
         {
             executed = true;
-            ps.SetHit(true);
+            ps.startHitEffect(0.5f);
             ps.playerHealth -= 25;
-            ps.SetShowHB(true);
-        }
-    }
-    private void OnTriggerExit2D(Collider2D other) {
-        if (other.gameObject.tag == "Player")
-        {
-            ps.SetHit(false);
             ps.SetShowHB(true);
         }
     }
