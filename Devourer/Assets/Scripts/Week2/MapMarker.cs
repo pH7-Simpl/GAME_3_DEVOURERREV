@@ -11,9 +11,10 @@ public class MapMarker : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
-        MC = GameObject.Find("Player/Main Camera").GetComponent<Camera>();
-        MC.transform.SetParent(transform);
+        MC = GameObject.Find("Main Camera").GetComponent<Camera>();
         MapCamera = GameObject.Find("Map Camera").GetComponent<Camera>();
+        MapCamera.transform.SetParent(transform);
+        MC.enabled = true;
     }
 
     // Update is called once per frame
@@ -28,9 +29,12 @@ public class MapMarker : MonoBehaviour
 
     private void ToggleMap(bool look)
     {
-        lookMap = !lookMap;
+        if (lookMap == false)
+            Time.timeScale = 1f;
+        else
+            Time.timeScale = 0f;
         MC.enabled = look;
         MapCamera.enabled = !look;
-        Time.timeScale = look ? 1f : 0f;
+        lookMap = !lookMap;
     }
 }
