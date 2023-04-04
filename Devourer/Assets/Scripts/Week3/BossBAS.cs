@@ -9,12 +9,16 @@ public class BossBaS : MonoBehaviour
     [SerializeField] private GameObject windStrike;
     [SerializeField] private GameObject fireStrike;
     // Start is called before the first frame update
+    private bool timeToAttack = false;
     private bool attacking = false;
 
     // Update is called once per frame
+    private void Awake() {
+        EnterRoomAnimation();
+    }
     void Update()
     {
-        if(!attacking) {
+        if(timeToAttack && !attacking) {
             StartCoroutine(AttackSequence());
             attacking = true;
         }
@@ -24,6 +28,12 @@ public class BossBaS : MonoBehaviour
         AttackStart(Random.Range(0, 4));
         yield return new WaitForSeconds(4f + Random.Range(0f, 4f));
         attacking = false;
+    }
+    private IEnumerator EnterRoomAnimation() {
+        //play player enter room here
+        yield return null;
+        //set time to attack here
+        timeToAttack = true;
     }
     private void AttackStart(int choice){
         switch (choice){
