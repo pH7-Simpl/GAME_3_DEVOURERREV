@@ -44,7 +44,6 @@ public class DoorOpen : MonoBehaviour
         if (EnemiesDefeated() && !doorIsOpened && pm.IsGrounded())
         {
             dm.openDoer();
-            doorIsOpened = false;
             this.enabled = false;
         }
     }
