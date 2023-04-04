@@ -4,7 +4,7 @@ using Pathfinding;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] private Transform target;
+    private Transform target;
     private float speed;
     private float nextWaypointDistance;
     private Transform enemyGFX;
