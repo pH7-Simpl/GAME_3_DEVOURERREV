@@ -107,6 +107,15 @@ public class EnemyStats : MonoBehaviour
         }
         StartCoroutine(ShowHealthBar(duration));
         hit = true;
+        Color originalColor = GetComponent<SpriteRenderer>().color;
+        Color targetColor = Color.red;
+        float t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime / duration;
+            GetComponent<SpriteRenderer>().color = Color.Lerp(targetColor, originalColor, t);
+            yield return null;
+        }
         yield return new WaitForSeconds(duration);
         hit = false;
         damaged = false;

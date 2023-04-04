@@ -25,11 +25,11 @@ public class EnemyAI : MonoBehaviour
     private bool showHB;
     private bool hit;
     private GameObject healthBar;
-    private float showHBCooldown;
     private bool hasCollided;
     [SerializeField] private GameObject detonator;
     [SerializeField] private Animator animator;
     private PlayerStats ps;
+    private bool damaged;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -39,16 +39,12 @@ public class EnemyAI : MonoBehaviour
         }
         if (other.gameObject.name == "WindSlash")
         {
+            EnemyTakesDamage(0.5f, 25);
             Destroy(other.gameObject);
-            enemyHealth -= 25;
-            showHB = true;
-            StartCoroutine(HitEffect(0.5f));
         }
         if (other.gameObject.name == "LightningDash")
         {
-            enemyHealth -= 25;
-            showHB = true;
-            StartCoroutine(HitEffect(0.5f));
+            EnemyTakesDamage(0.5f, 25);
             Destroy(other.gameObject);
         }
         if (other.gameObject.tag == "Player" || other.gameObject.name == "FireBreath")
@@ -61,7 +57,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (other.gameObject.layer == 7)
         {
-            StartCoroutine(HitEffect(0.1f));
+            EnemyTakesDamage(0.1f, 0);
         }
         if (other.gameObject.layer == 6)
         {
@@ -95,13 +91,13 @@ public class EnemyAI : MonoBehaviour
         InvokeRepeating("UpdatePath", 0f, 0.5f);
         hit = false;
         showHB = false;
-        showHBCooldown = 0f;
         maxEnemyHealth = 100f;
         enemyHealth = maxEnemyHealth;
         healthBar = transform.GetChild(1).gameObject;
         hasCollided = false;
         animator = transform.GetChild(0).GetComponent<Animator>();
         ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+        damaged = false;
     }
     private void UpdatePath()
     {
@@ -133,7 +129,6 @@ public class EnemyAI : MonoBehaviour
         {
             StartCoroutine("Die");
         }
-        ShowHealthBar();
         if (path == null)
         {
             return;
@@ -187,12 +182,39 @@ public class EnemyAI : MonoBehaviour
             Debug.Log("test");
         }
     }
-    public IEnumerator HitEffect(float duration)
+    private IEnumerator ShowHealthBar(float duration)
     {
+        healthBar.SetActive(true);
+        yield return new WaitForSeconds(duration);
+        healthBar.SetActive(false);
+    }
+    public void EnemyTakesDamage(float duration, int damage)
+    {
+        StartCoroutine(EnemyHit(duration, damage));
+    }
+    private IEnumerator EnemyHit(float duration, int damage)
+    {
+        if (!damaged)
+        {
+            enemyHealth -= damage;
+            damaged = true;
+        }
+        StartCoroutine(ShowHealthBar(duration));
         hit = true;
+        Color originalColor = GetComponent<SpriteRenderer>().color;
+        Color targetColor = Color.red;
+        float t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime / duration;
+            GetComponent<SpriteRenderer>().color = Color.Lerp(targetColor, originalColor, t);
+            yield return null;
+        }
         yield return new WaitForSeconds(duration);
         hit = false;
+        damaged = false;
     }
+
     private IEnumerator Die()
     {
         animator.SetBool("died", true);
@@ -212,23 +234,5 @@ public class EnemyAI : MonoBehaviour
         Destroy(bomb, 0.5f);
         yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
-    }
-
-    private void ShowHealthBar()
-    {
-        if (showHB)
-        {
-            showHBCooldown = 1f;
-            healthBar.SetActive(true);
-            showHB = false;
-        }
-        if (showHBCooldown >= 0f)
-        {
-            showHBCooldown -= Time.deltaTime;
-        }
-        else
-        {
-            healthBar.SetActive(false);
-        }
     }
 }

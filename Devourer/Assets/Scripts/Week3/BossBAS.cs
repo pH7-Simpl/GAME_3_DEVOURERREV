@@ -34,7 +34,7 @@ public class BossBaS : MonoBehaviour
     private IEnumerator EnterRoomAnimation() {
         //play player enter room here
         yield return null;
-        //set time to attack here
+        //bool to start attack set to true after playing animation
         timeToAttack = true;
     }
     private void AttackStart(int choice){

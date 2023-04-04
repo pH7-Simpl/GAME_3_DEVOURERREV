@@ -56,17 +56,28 @@ public class PlayerStats : MonoBehaviour
         yield return new WaitForSeconds(duration);
         healthBar.SetActive(false);
     }
-    public void PlayerTakesDamage(float duration, int damage) {
+    public void PlayerTakesDamage(float duration, int damage)
+    {
         StartCoroutine(PlayerHit(duration, damage));
     }
     private IEnumerator PlayerHit(float duration, int damage)
     {
-        if(!damaged) {
+        if (!damaged)
+        {
             playerHealth -= damage;
             damaged = true;
         }
         StartCoroutine(ShowHealthBar(duration));
         hit = true;
+        Color originalColor = GetComponent<SpriteRenderer>().color;
+        Color targetColor = Color.red;
+        float t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime / duration;
+            GetComponent<SpriteRenderer>().color = Color.Lerp(targetColor, originalColor, t);
+            yield return null;
+        }
         yield return new WaitForSeconds(duration);
         hit = false;
         damaged = false;
