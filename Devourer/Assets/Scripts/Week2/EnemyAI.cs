@@ -22,7 +22,6 @@ public class EnemyAI : MonoBehaviour
     {
         return enemyHealth;
     }
-    private bool showHB;
     private bool hit;
     private GameObject healthBar;
     private bool hasCollided;
@@ -90,7 +89,6 @@ public class EnemyAI : MonoBehaviour
         enemyHealth = 100f;
         InvokeRepeating("UpdatePath", 0f, 0.5f);
         hit = false;
-        showHB = false;
         maxEnemyHealth = 100f;
         enemyHealth = maxEnemyHealth;
         healthBar = transform.GetChild(1).gameObject;
