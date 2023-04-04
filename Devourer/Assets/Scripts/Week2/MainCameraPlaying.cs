@@ -12,13 +12,14 @@ public class MainCameraPlaying : MonoBehaviour
 
     private Vector3 originalPos;
     private PlayerStats playerStats;
-    private void Start()
+    private void Awake()
     {
+        shakeAmount = 0.2f;
+        decreaseFactor = 1.0f;
         shakeDuration = 0f;
         originalPos = transform.localPosition;
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
     }
-
     private void Update()
     {
         if (playerStats.playerHealth <= 0)
@@ -40,5 +41,6 @@ public class MainCameraPlaying : MonoBehaviour
             }
         }
     }
+
 
 }

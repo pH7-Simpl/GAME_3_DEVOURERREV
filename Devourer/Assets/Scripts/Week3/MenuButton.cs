@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuButton : MonoBehaviour
 {
+    [SerializeField] private GameObject MainUI;
+    [SerializeField] private GameObject EEUI;
     private Animator animator;
     public void StartGame()
     {
@@ -22,5 +24,9 @@ public class MenuButton : MonoBehaviour
     public void SetExit(int y) {
         animator = transform.GetChild(y).GetChild(1).GetComponent<Animator>();
         animator.SetBool("hover", false);
+    }
+    public void switchBetWeen(bool x) {
+        MainUI.SetActive(x);
+        EEUI.SetActive(!x);
     }
 }

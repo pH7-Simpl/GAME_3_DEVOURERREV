@@ -44,10 +44,7 @@ public class gameManager : MonoBehaviour
     }
     public void Awake()
     {
-        // Instantiate(Drone, new Vector3(-120f, 40f, 0f), Quaternion.identity);
         Instantiate(Drone, new Vector3(-40f, 8, 0f), Quaternion.identity);
-        // Instantiate(Soldier, new Vector3(-110f, 0f, 0f), Quaternion.identity);
-        // Instantiate(Soldier, new Vector3(-100f, 0f, 0f), Quaternion.identity);
         Instantiate(Soldier, new Vector3(-35f, 0f, 0f), Quaternion.identity);
         player = GameObject.FindGameObjectWithTag("Player");
         ps = FindObjectOfType<PlayerStats>();
