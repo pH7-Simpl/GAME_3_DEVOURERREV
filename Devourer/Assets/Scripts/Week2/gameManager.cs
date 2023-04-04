@@ -4,6 +4,10 @@ using UnityEngine.SceneManagement;
 public class gameManager : MonoBehaviour
 {
     [SerializeField] private bool paused;
+    public bool IsPaused()
+    {
+        return paused;
+    }
     [SerializeField] private bool seeMap;
     public void SetSeeMap(bool x)
     {
@@ -34,16 +38,20 @@ public class gameManager : MonoBehaviour
     {
         doorOpening = x;
     }
+    public bool GetDoorOpening()
+    {
+        return doorOpening;
+    }
     public void Awake()
     {
         // Instantiate(Drone, new Vector3(-120f, 40f, 0f), Quaternion.identity);
-        Instantiate(Drone, new Vector3(-110f, 40f, 0f), Quaternion.identity);
+        Instantiate(Drone, new Vector3(-40f, 8, 0f), Quaternion.identity);
         // Instantiate(Soldier, new Vector3(-110f, 0f, 0f), Quaternion.identity);
         // Instantiate(Soldier, new Vector3(-100f, 0f, 0f), Quaternion.identity);
-        Instantiate(Soldier, new Vector3(-90f, 0f, 0f), Quaternion.identity);
+        Instantiate(Soldier, new Vector3(-35f, 0f, 0f), Quaternion.identity);
         player = GameObject.FindGameObjectWithTag("Player");
         ps = FindObjectOfType<PlayerStats>();
-        MC = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        MC = Camera.main;
         GameObject.Find("MainCanvas/MainUI/SkillPanel/AirSkill1").SetActive(true);
         gameOver = false;
         paused = false;
@@ -67,7 +75,7 @@ public class gameManager : MonoBehaviour
             {
                 UnpauseCommand();
             }
-            if (Input.GetKeyDown(KeyCode.M))
+            if (Input.GetKeyDown(KeyCode.M) && !doorOpening)
             {
                 seeMap = !seeMap;
             }
@@ -118,13 +126,7 @@ public class gameManager : MonoBehaviour
         if (!doorOpening)
         {
             Time.timeScale = 0f;
-            // mainUI.SetActive(false);
-            // if (MC != null)
-            // {
-                // MC.transform.SetParent(null);
-                // MC.transform.position = new Vector3(0f, 0f, -5f);
-                // MC.orthographicSize = 50f;
-            // }
+            mainUI.SetActive(false);
         }
     }
     private void UnseeMap()
@@ -132,12 +134,7 @@ public class gameManager : MonoBehaviour
         if (!doorOpening)
         {
             Time.timeScale = 1f;
-            // mainUI.SetActive(true);
-            // if (MC != null && player != null)
-            // {
-                // MC.transform.SetParent(player.transform);
-                // MC.orthographicSize = 5;
-            // }
+            mainUI.SetActive(true);
         }
     }
     public void Restart()

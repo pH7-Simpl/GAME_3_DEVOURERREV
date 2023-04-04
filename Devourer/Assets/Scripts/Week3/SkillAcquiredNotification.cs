@@ -17,12 +17,12 @@ public class SkillAcquiredNotification : MonoBehaviour
         Invoke("HideNotification", displayTime);
     }
 
-    void HideNotification()
+    private void HideNotification()
     {
         StartCoroutine(SlidePanel(slideDistance, slideDuration));
     }
 
-    void SlideNotification()
+    private void SlideNotification()
     {
         StartCoroutine(SlidePanel(-slideDistance, slideDuration));
     }
