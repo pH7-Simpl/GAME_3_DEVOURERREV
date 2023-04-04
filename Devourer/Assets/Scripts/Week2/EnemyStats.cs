@@ -47,7 +47,7 @@ public class EnemyStats : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             rb.gravityScale = 0f;
-            EnemyTakesDamage(0.5f, 0);
+            EnemyKnockBack(0.5f);
         }
     }
 
@@ -60,7 +60,7 @@ public class EnemyStats : MonoBehaviour
         }
         if (other.gameObject.layer == 7)
         {
-            EnemyTakesDamage(0.1f, 0);
+            EnemyKnockBack(0.1f);
         }
     }
 
@@ -102,23 +102,39 @@ public class EnemyStats : MonoBehaviour
     private IEnumerator EnemyHit(float duration, int damage)
     {
         if(!damaged) {
+            StartCoroutine(colorForDamaged(duration));
             enemyHealth -= damage;
             damaged = true;
         }
         StartCoroutine(ShowHealthBar(duration));
         hit = true;
-        Color originalColor = GetComponent<SpriteRenderer>().color;
-        Color targetColor = Color.red;
-        float t = 0;
-        while (t < 1)
-        {
-            t += Time.deltaTime / duration;
-            GetComponent<SpriteRenderer>().color = Color.Lerp(targetColor, originalColor, t);
-            yield return null;
-        }
         yield return new WaitForSeconds(duration);
         hit = false;
         damaged = false;
+    }
+    public void EnemyKnockBack(float duration) {
+        StartCoroutine(Knockbacked(duration));
+    }
+    private IEnumerator Knockbacked(float duration)
+    {
+        hit = true;
+        yield return new WaitForSeconds(duration);
+        hit = false;
+    }
+    private IEnumerator colorForDamaged(float duration)
+    {
+        Color originalColor = GetComponent<SpriteRenderer>().color;
+        Color targetColor = Color.red;
+        float elapsedTime = 0f;
+        float t = 0;
+        while (elapsedTime <= duration)
+        {
+            t = elapsedTime / duration;
+            GetComponent<SpriteRenderer>().color = Color.Lerp(targetColor, originalColor, t);
+            yield return null;
+            elapsedTime += Time.deltaTime;
+        }
+        GetComponent<SpriteRenderer>().color = originalColor;
     }
     private IEnumerator Die()
     {

@@ -29,6 +29,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private Animator animator;
     private PlayerStats ps;
     private bool damaged;
+    private SpriteRenderer sr;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -56,7 +57,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (other.gameObject.layer == 7)
         {
-            EnemyTakesDamage(0.1f, 0);
+            EnemyKnockBack(0.1f);
         }
         if (other.gameObject.layer == 6)
         {
@@ -94,6 +95,7 @@ public class EnemyAI : MonoBehaviour
         healthBar = transform.GetChild(1).gameObject;
         hasCollided = false;
         animator = transform.GetChild(0).GetComponent<Animator>();
+        sr = transform.GetChild(0).GetComponent<SpriteRenderer>();
         ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         damaged = false;
     }
@@ -194,23 +196,39 @@ public class EnemyAI : MonoBehaviour
     {
         if (!damaged)
         {
+            StartCoroutine(colorForDamaged(duration));
             enemyHealth -= damage;
             damaged = true;
         }
         StartCoroutine(ShowHealthBar(duration));
         hit = true;
-        Color originalColor = GetComponent<SpriteRenderer>().color;
-        Color targetColor = Color.red;
-        float t = 0;
-        while (t < 1)
-        {
-            t += Time.deltaTime / duration;
-            GetComponent<SpriteRenderer>().color = Color.Lerp(targetColor, originalColor, t);
-            yield return null;
-        }
         yield return new WaitForSeconds(duration);
         hit = false;
         damaged = false;
+    }
+     private IEnumerator colorForDamaged(float duration)
+    {
+        Color originalColor = sr.color;
+        Color targetColor = Color.red;
+        float elapsedTime = 0f;
+        float t = 0;
+        while (elapsedTime <= duration)
+        {
+            t = elapsedTime / duration;
+            sr.color = Color.Lerp(targetColor, originalColor, t);
+            yield return null;
+            elapsedTime += Time.deltaTime;
+        }
+        sr.color = originalColor;
+    }
+    public void EnemyKnockBack(float duration) {
+        StartCoroutine(Knockbacked(duration));
+    }
+    private IEnumerator Knockbacked(float duration)
+    {
+        hit = true;
+        yield return new WaitForSeconds(duration);
+        hit = false;
     }
 
     private IEnumerator Die()
