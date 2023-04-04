@@ -1,18 +1,25 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class DoorOpen : MonoBehaviour
 {
+    [SerializeField] private GameObject enemy1;
+    [SerializeField] private GameObject enemy2;
     private List<GameObject> enemiesInArea = new List<GameObject>();
     private DoorMechanism dm;
     private bool doorIsOpened;
     private PlayerMovement pm;
     private gameManager gm;
     private GameObject keeptrack;
+    private bool playerEnteredRoom;
+    private bool instansiated;
+    private bool enemySpawned;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(keeptrack != null) {
+        if (keeptrack != null)
+        {
             Destroy(keeptrack);
             enemiesInArea.Remove(keeptrack);
         }
@@ -20,6 +27,10 @@ public class DoorOpen : MonoBehaviour
         {
             enemiesInArea.Add(other.gameObject);
             Debug.Log(enemiesInArea.Count);
+        }
+        if (other.CompareTag("Player"))
+        {
+            playerEnteredRoom = true;
         }
     }
 
@@ -32,6 +43,8 @@ public class DoorOpen : MonoBehaviour
     }
     private void Awake()
     {
+        playerEnteredRoom = false;
+        enemySpawned = false;
         keeptrack = new GameObject("Dummy");
         enemiesInArea.Add(keeptrack);
         dm = transform.GetChild(0).GetComponent<DoorMechanism>();
@@ -45,15 +58,25 @@ public class DoorOpen : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (gm.GetGameOver())
+        if (!gm.GetGameOver() && playerEnteredRoom)
         {
-            return;
+            if (playerEnteredRoom && instansiated)
+            {
+                StartCoroutine(spawnEnemy());
+                instansiated = false;
+            }
+            if (EnemiesDefeated() && !doorIsOpened && pm.IsGrounded() && enemySpawned)
+            {
+                dm.openDoer();
+                this.enabled = false;
+            }
         }
-        if (EnemiesDefeated() && !doorIsOpened && pm.IsGrounded())
-        {
-            dm.openDoer();
-            doorIsOpened = false;
-            this.enabled = false;
-        }
+
+    }
+    private IEnumerator spawnEnemy()
+    {
+
+        yield return new WaitForSeconds(Time.deltaTime);
+        enemySpawned = true;
     }
 }
