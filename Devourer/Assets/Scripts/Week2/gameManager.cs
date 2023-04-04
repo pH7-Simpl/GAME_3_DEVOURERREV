@@ -30,10 +30,16 @@ public class gameManager : MonoBehaviour
     [SerializeField] private GameObject Drone;
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject mainUI;
-    [SerializeField] private GameObject gameOverUI;
-    [SerializeField] private Camera MC;
-    PlayerStats ps;
-    [SerializeField] private bool doorOpening;
+    [SerializeField] private GameObject gameOverUI; 
+    private Camera MC;
+    private Camera MapCam;
+    private PlayerStats ps;
+    private bool doorOpening;
+    private bool skillTaken;
+    public void setSkillTaken(bool x) {
+        skillTaken = x;
+    }
+    private GameObject playerMarker;
     public void SetDoorOpening(bool x)
     {
         doorOpening = x;
@@ -47,6 +53,7 @@ public class gameManager : MonoBehaviour
         Instantiate(Drone, new Vector3(-40f, 8, 0f), Quaternion.identity);
         Instantiate(Soldier, new Vector3(-35f, 0f, 0f), Quaternion.identity);
         player = GameObject.FindGameObjectWithTag("Player");
+        playerMarker = GameObject.FindGameObjectWithTag("Marks");
         ps = FindObjectOfType<PlayerStats>();
         MC = Camera.main;
         GameObject.Find("MainCanvas/MainUI/SkillPanel/AirSkill1").SetActive(true);
@@ -54,10 +61,21 @@ public class gameManager : MonoBehaviour
         paused = false;
         seeMap = false;
         doorOpening = false;
+        MapCam = GameObject.Find("Map Camera").GetComponent<Camera>();
+        MapCam.transform.SetParent(transform);
+        MC.enabled = true;
+        MapCam.enabled = false; 
+        skillTaken = false;
     }
 
     void Update()
     {
+        if(player != null) {
+            if(!doorOpening) {
+                playerMarker.transform.position = player.transform.position;
+                MapCam.transform.position = player.transform.position + new Vector3(0, 0, -5f);
+            }
+        }
         if (!gameOver)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -76,7 +94,7 @@ public class gameManager : MonoBehaviour
             {
                 seeMap = !seeMap;
             }
-            if (!paused)
+            if (!paused && !skillTaken)
             {
                 if (seeMap)
                 {
@@ -86,6 +104,8 @@ public class gameManager : MonoBehaviour
                 {
                     UnseeMap();
                 }
+                MapCam.enabled = seeMap;
+                MC.enabled = !seeMap;
             }
         }
         else

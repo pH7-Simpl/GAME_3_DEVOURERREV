@@ -10811,8 +10811,6 @@ MonoBehaviour:
   pauseUI: {fileID: 1247203223}
   mainUI: {fileID: 923055037}
   gameOverUI: {fileID: 407736039}
-  MC: {fileID: 0}
-  doorOpening: 0
 --- !u!1 &2110337105
 GameObject:
   m_ObjectHideFlags: 0
