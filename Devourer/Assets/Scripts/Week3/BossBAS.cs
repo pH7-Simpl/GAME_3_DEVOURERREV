@@ -9,11 +9,13 @@ public class BossBaS : MonoBehaviour
     [SerializeField] private GameObject windStrike;
     [SerializeField] private GameObject fireStrike;
     // Start is called before the first frame update
-    private bool timeToAttack = false;
-    private bool attacking = false;
+    private bool timeToAttack;
+    private bool attacking;
 
     // Update is called once per frame
     private void Awake() {
+        timeToAttack = false;
+        attacking = false;
         EnterRoomAnimation();
     }
     void Update()
