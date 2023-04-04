@@ -142,7 +142,6 @@ public class gameManager : MonoBehaviour
     }
     public void Restart()
     {
-        doorOpening = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void MainMenu()
