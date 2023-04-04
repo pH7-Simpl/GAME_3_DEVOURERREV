@@ -142,10 +142,12 @@ public class gameManager : MonoBehaviour
     }
     public void Restart()
     {
+        gameOver = false;
         SceneManager.LoadScene(1);
     }
     public void MainMenu()
     {
+        gameOver = false;
         if(paused) {
             paused = false;
         }

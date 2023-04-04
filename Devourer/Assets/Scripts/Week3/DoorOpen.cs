@@ -18,6 +18,9 @@ public class DoorOpen : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if(other.CompareTag("Player")) {
+            playerEnteredRoom = true;
+        }
         if (keeptrack != null)
         {
             Destroy(keeptrack);
@@ -27,10 +30,6 @@ public class DoorOpen : MonoBehaviour
         {
             enemiesInArea.Add(other.gameObject);
             Debug.Log(enemiesInArea.Count);
-        }
-        if (other.CompareTag("Player"))
-        {
-            playerEnteredRoom = true;
         }
     }
 
@@ -51,6 +50,7 @@ public class DoorOpen : MonoBehaviour
         pm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         gm = FindObjectOfType<gameManager>();
         doorIsOpened = false;
+        instansiated = false;
     }
     public bool EnemiesDefeated()
     {
@@ -60,10 +60,10 @@ public class DoorOpen : MonoBehaviour
     {
         if (!gm.GetGameOver() && playerEnteredRoom)
         {
-            if (playerEnteredRoom && instansiated)
+            if (playerEnteredRoom && !instansiated)
             {
                 StartCoroutine(spawnEnemy());
-                instansiated = false;
+                instansiated = true;
             }
             if (EnemiesDefeated() && !doorIsOpened && pm.IsGrounded() && enemySpawned)
             {
@@ -75,7 +75,7 @@ public class DoorOpen : MonoBehaviour
     }
     private IEnumerator spawnEnemy()
     {
-
+        
         yield return new WaitForSeconds(Time.deltaTime);
         enemySpawned = true;
     }
