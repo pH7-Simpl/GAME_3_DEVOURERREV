@@ -16,7 +16,7 @@ public class BossBaS : MonoBehaviour
     private void Awake() {
         timeToAttack = false;
         attacking = false;
-        EnterRoomAnimation();
+        StartCoroutine(EnterRoomAnimation());
     }
     void Update()
     {
