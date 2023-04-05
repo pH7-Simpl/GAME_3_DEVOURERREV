@@ -25,7 +25,7 @@ public class Slashing : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         coolDownImage1 = GameObject.Find("MainCanvas/MainUI/SkillPanel/AirSkill1/Cooldown").GetComponent<Image>();
         coolDownImage2 = GameObject.Find("MainCanvas/MainUI/SkillPanel/AirSkill2/Cooldown").GetComponent<Image>();
-        cooldownDuration = 2f;
+        cooldownDuration = 0.75f;
         currentCooldown = 0f;
         canSkill = true;
     }

@@ -357,10 +357,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7421889115612272696}
   - component: {fileID: 7421889115612272647}
-  - component: {fileID: 7421889115612272646}
   - component: {fileID: 7421889115612272645}
   - component: {fileID: 7421889115612272644}
-  m_Layer: 3
+  - component: {fileID: 7421889115612272646}
+  m_Layer: 0
   m_Name: FlyEnemies
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -412,22 +412,6 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
---- !u!58 &7421889115612272646
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7421889115612272643}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: cbf1a4fe48f6e86449bec904be3d5b16, type: 2}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.45
 --- !u!114 &7421889115612272645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,3 +447,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &7421889115612272646
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7421889115612272643}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: cbf1a4fe48f6e86449bec904be3d5b16, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.45

@@ -75,7 +75,7 @@ public class DoorOpen : MonoBehaviour
     private IEnumerator spawnEnemy()
     {
         GetComponent<EnemySpawner>().SpawnEnemy();
-        yield return new WaitForSeconds(Time.deltaTime);
+        yield return new WaitForSeconds(0.5f);
         enemySpawned = true;
     }
 }

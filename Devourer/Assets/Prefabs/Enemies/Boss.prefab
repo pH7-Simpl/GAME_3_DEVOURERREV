@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 2704880896596602496}
   - component: {fileID: 7519021309361360012}
   - component: {fileID: 5335456980380495366}
-  - component: {fileID: 8459711542967292252}
+  - component: {fileID: 8564368686293703745}
+  - component: {fileID: 781258604321994383}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Enemy
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4170391877465558221}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.16, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -124,8 +125,29 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!60 &8459711542967292252
-PolygonCollider2D:
+--- !u!50 &8564368686293703745
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4170391877465558221}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 1
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 0
+--- !u!61 &781258604321994383
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -134,10 +156,10 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.2056309, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -147,27 +169,6 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.4375, y: -1.5}
-      - {x: 0.78125, y: -1.0625}
-      - {x: 1.03125, y: -0.96875}
-      - {x: 0.96875, y: -0.53125}
-      - {x: 1.15625, y: -0.15625}
-      - {x: 1.15625, y: 0.40625}
-      - {x: 1.09375, y: 0.59375}
-      - {x: 0.5625, y: 1.125}
-      - {x: 0.375, y: 1.25}
-      - {x: -0.1875, y: 1.3125}
-      - {x: -1.34375, y: 1.5}
-      - {x: -1.5, y: 1.5}
-      - {x: -1.5, y: -0.65625}
-      - {x: -1.46875, y: -0.65625}
-      - {x: -1.15625, y: -0.5}
-      - {x: -1.5, y: -0.8125}
-      - {x: -1.5, y: -1.5}
-      - {x: -1.40625, y: -1.5}
-      - {x: -1.03125, y: -1.28125}
-      - {x: -0.5, y: -0.5}
-      - {x: -0.46875, y: -0.96875}
-      - {x: -0.03125, y: -1.5}
+  serializedVersion: 2
+  m_Size: {x: 2.5887382, y: 3}
+  m_EdgeRadius: 0

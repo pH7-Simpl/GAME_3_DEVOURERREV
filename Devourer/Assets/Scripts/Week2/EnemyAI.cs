@@ -42,7 +42,7 @@ public class EnemyAI : MonoBehaviour
             EnemyTakesDamage(0.5f, 25);
             Destroy(other.gameObject);
         }
-        if (other.gameObject.tag == "Player" || other.gameObject.name == "FireBreath")
+        if (other.gameObject.tag == "Coll" || other.gameObject.name == "FireBreath")
         {
             StartCoroutine(Explode());
         }
