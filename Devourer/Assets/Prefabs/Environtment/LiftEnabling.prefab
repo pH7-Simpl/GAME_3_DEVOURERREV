@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1881216530768710347}
   - component: {fileID: 1881216530768710346}
   - component: {fileID: 1881216530768710389}
+  - component: {fileID: 6205197455068409550}
   m_Layer: 3
   m_Name: LiftEnabling
   m_TagString: Untagged
@@ -93,13 +94,32 @@ MonoBehaviour:
   enemy2Count: 3
   enemy3Count: 0
   enemy1Pos:
-  - {x: 50, y: 6, z: 0}
-  - {x: 52, y: 6, z: 0}
-  - {x: 54, y: 6, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   enemy2Pos:
-  - {x: 45, y: 14.5, z: 0}
-  - {x: 50, y: 14.5, z: 0}
-  - {x: 55, y: 14.5, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  enemy3Pos: []
+--- !u!114 &6205197455068409550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881216530768710345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1547c11d72331114ba33f50f216e7522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs: []
+  enemy1Count: 0
+  enemy2Count: 0
+  enemy3Count: 0
+  enemy1Pos: []
+  enemy2Pos: []
   enemy3Pos: []
 --- !u!1 &1881216531085039650
 GameObject:

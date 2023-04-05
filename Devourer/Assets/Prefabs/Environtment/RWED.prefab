@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5408905520503241171}
   - component: {fileID: 2131485381940250430}
   - component: {fileID: 2627076283468909843}
+  - component: {fileID: 536843847769800698}
   m_Layer: 3
   m_Name: RWED
   m_TagString: Untagged
@@ -83,6 +84,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 292953ac7e2e2634cabea0a3f6487f68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 8072557646251281985, guid: cc8f64c87f424b74b99871483491ac39, type: 3}
+  - {fileID: 7421889115612272643, guid: 353015d773809424ba0a92f0809ae904, type: 3}
+  - {fileID: 4170391877465558221, guid: cf4f27320fdaf114e8ed0943cb134c64, type: 3}
+  enemy1Count: 0
+  enemy2Count: 0
+  enemy3Count: 0
+  enemy1Pos: []
+  enemy2Pos: []
+  enemy3Pos: []
+--- !u!114 &536843847769800698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869507540327072266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1547c11d72331114ba33f50f216e7522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
