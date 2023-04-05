@@ -10,6 +10,7 @@ TagManager:
   - Skill
   - Door
   - Marks
+  - Coll
   layers:
   - Default
   - TransparentFX

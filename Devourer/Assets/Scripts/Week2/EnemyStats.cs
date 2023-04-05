@@ -32,6 +32,7 @@ public class EnemyStats : MonoBehaviour
             EnemyTakesDamage(0.5f, 25);
             Destroy(other.gameObject);
         }
+        
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -40,6 +41,10 @@ public class EnemyStats : MonoBehaviour
         {
             enemyHealth -= 1;
             EnemyTakesDamage(1.5f, 0);
+        }
+        if (other.gameObject.tag == "Coll")
+        {
+            EnemyKnockBack(0.5f);
         }
     }
 

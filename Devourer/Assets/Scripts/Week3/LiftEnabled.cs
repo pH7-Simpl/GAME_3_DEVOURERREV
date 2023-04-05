@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class LiftEnabled : MonoBehaviour
 {
-    [SerializeField] private GameObject enemy1;
-    [SerializeField] private GameObject enemy2;
     private List<GameObject> enemiesInArea = new List<GameObject>();
     private LiftMechanism lm;
     private bool liftEnabled;
@@ -78,7 +76,7 @@ public class LiftEnabled : MonoBehaviour
     }
     private IEnumerator spawnEnemy()
     {
-        
+        GetComponent<EnemySpawner>().SpawnEnemy();
         yield return new WaitForSeconds(Time.deltaTime);
         enemySpawned = true;
     }

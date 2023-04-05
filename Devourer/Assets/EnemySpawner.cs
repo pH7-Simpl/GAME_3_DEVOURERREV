@@ -18,11 +18,11 @@ public class EnemySpawner : MonoBehaviour
         }
         for (int i = 0; i < enemy2Count; i++)
         {
-            Instantiate(enemyPrefabs[1], enemy1Pos[i], Quaternion.identity);
+            Instantiate(enemyPrefabs[1], enemy2Pos[i], Quaternion.identity);
         }
         for (int i = 0; i < enemy3Count; i++)
         {
-            Instantiate(enemyPrefabs[2], enemy1Pos[i], Quaternion.identity);
+            Instantiate(enemyPrefabs[2], enemy3Pos[i], Quaternion.identity);
         }
     }
 }
