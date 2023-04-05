@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9110421260435666708}
   - component: {fileID: -3528456637393188146}
   - component: {fileID: 3409945551619384645}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: waterGeyser
   m_TagString: Skill
   m_Icon: {fileID: 0}

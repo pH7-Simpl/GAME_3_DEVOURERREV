@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6073362576686323830}
   - component: {fileID: -5443533666301354494}
   - component: {fileID: -7753795226733811013}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WaterStone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

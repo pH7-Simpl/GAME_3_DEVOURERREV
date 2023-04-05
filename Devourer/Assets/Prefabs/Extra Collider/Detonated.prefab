@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6256442816121095204}
   - component: {fileID: 740773581101897925}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 9174260019426939389}
   - component: {fileID: 7616554789732781910}
   - component: {fileID: -8721518094347050489}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Detonated
   m_TagString: Bomb
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2214061747370269391}
   - component: {fileID: 5582969644655228810}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

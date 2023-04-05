@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class DoorOpen : MonoBehaviour
 {
-    [SerializeField] private GameObject enemy1;
-    [SerializeField] private GameObject enemy2;
     private List<GameObject> enemiesInArea = new List<GameObject>();
     private DoorMechanism dm;
     private bool doorIsOpened;
@@ -67,6 +65,7 @@ public class DoorOpen : MonoBehaviour
             }
             if (EnemiesDefeated() && !doorIsOpened && pm.IsGrounded() && enemySpawned)
             {
+                Debug.Log(enemiesInArea.Count);
                 dm.openDoer();
                 this.enabled = false;
             }
@@ -75,7 +74,7 @@ public class DoorOpen : MonoBehaviour
     }
     private IEnumerator spawnEnemy()
     {
-        
+        GetComponent<EnemySpawner>().SpawnEnemy();
         yield return new WaitForSeconds(Time.deltaTime);
         enemySpawned = true;
     }

@@ -54,7 +54,7 @@ public class LiftMechanism : MonoBehaviour
                 }
                 Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
                 if(rb != null) {
-                    rb.velocity = Vector2.zero;
+                    enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 }
             }
         }

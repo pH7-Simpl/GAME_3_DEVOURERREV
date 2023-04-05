@@ -14,14 +14,14 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Touchables
   - Water
   - UI
   - Ground
   - Wall
-  - MapCam
   - Marker
-  - 
+  - MapCam
+  - ' '
   - 
   - 
   - 

@@ -28,8 +28,6 @@ public class gameManager : MonoBehaviour
         gameOver = x;
     }
     [SerializeField] private GameObject player;
-    [SerializeField] private GameObject Soldier;
-    [SerializeField] private GameObject Drone;
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject mainUI;
     [SerializeField] private GameObject gameOverUI; 
@@ -62,8 +60,6 @@ public class gameManager : MonoBehaviour
     }
     public void Awake()
     {
-        Instantiate(Drone, new Vector3(-40f, 8, 0f), Quaternion.identity);
-        Instantiate(Soldier, new Vector3(-35f, 0f, 0f), Quaternion.identity);
         player = GameObject.FindGameObjectWithTag("Player");
         playerMarker = Instantiate(playerMarkerObj, player.transform.position, Quaternion.identity);
         ps = FindObjectOfType<PlayerStats>();

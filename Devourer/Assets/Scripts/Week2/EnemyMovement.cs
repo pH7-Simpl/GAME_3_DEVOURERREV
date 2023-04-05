@@ -39,7 +39,7 @@ public class EnemyMovement : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
         es = GetComponent<EnemyStats>();
         healthBar = transform.GetChild(1).gameObject;
-        speed = 200f;
+        speed = 4f;
         stopDistance = 2f;
         knockbackForce = 3f;
         attacking = false;
@@ -112,28 +112,13 @@ public class EnemyMovement : MonoBehaviour
     {
         if (player != null)
         {
-            dir = (horizontal > 0) ? Vector2.right : Vector2.left;
-            if (IsGrounded())
-            {
-                rb2D.gravityScale = 0f;
-                dir.y = 0f;
-                force = dir * speed * Time.deltaTime;
-                rb2D.velocity = force;
-            }
-            else
-            {
-                rb2D.gravityScale = 2f;
-            }
-        }
-        else
-        {
-            rb2D.velocity = Vector2.zero;
+            rb2D.velocity = new Vector2(horizontal * speed, rb2D.velocity.y);
         }
     }
 
     private void Knockback()
     {
-        rb2D.velocity = new Vector2(-horizontal * knockbackForce, 0);
+        rb2D.velocity = new Vector2(-horizontal * knockbackForce, rb2D.velocity.y);
     }
 
     private void Flip()

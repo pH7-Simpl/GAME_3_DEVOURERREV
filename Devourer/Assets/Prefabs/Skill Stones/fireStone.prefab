@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6863123173978465402}
   - component: {fileID: -1238530019610338746}
   - component: {fileID: 5525558105312017408}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FireStone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 457471538705316505}
   - component: {fileID: 5408905520503241171}
   - component: {fileID: 2131485381940250430}
-  m_Layer: 0
+  - component: {fileID: 2627076283468909843}
+  m_Layer: 3
   m_Name: RWED
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,6 +73,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fb3cbbcd1b394a4cae7c7e8858b78e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2627076283468909843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869507540327072266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 292953ac7e2e2634cabea0a3f6487f68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 8072557646251281985, guid: cc8f64c87f424b74b99871483491ac39, type: 3}
+  - {fileID: 7421889115612272643, guid: 353015d773809424ba0a92f0809ae904, type: 3}
+  - {fileID: 4170391877465558221, guid: cf4f27320fdaf114e8ed0943cb134c64, type: 3}
+  enemy1Count: 0
+  enemy2Count: 0
+  enemy3Count: 0
+  enemy1Pos: []
+  enemy2Pos: []
+  enemy3Pos: []
 --- !u!1 &4592500202991278541
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +170,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 7
+  m_SortingOrder: 99
   m_Sprite: {fileID: -128256390, guid: a86d04d9df94d874fb04dabc274bb18e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

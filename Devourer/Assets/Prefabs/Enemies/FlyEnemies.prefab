@@ -441,7 +441,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a55a3389c2684a3429ce92a0352038f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   detonator: {fileID: 8829812169676542431, guid: a5cfeaebd9189e943ba0213b5ea4c4ed, type: 3}
   animator: {fileID: 0}
 --- !u!50 &7421889115612272644

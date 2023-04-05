@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7836120010421281174}
   - component: {fileID: 7836120010421281168}
   - component: {fileID: 7836120010421281169}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MapMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb2a998fcfdde7c48bce5a73f209f226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positionCheck: {fileID: 7836120010421281174}
-  playerLayer:
+  markLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 256

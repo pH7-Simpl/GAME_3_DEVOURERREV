@@ -32,23 +32,6 @@ public class EnemyStats : MonoBehaviour
             EnemyTakesDamage(0.5f, 25);
             Destroy(other.gameObject);
         }
-        if (other.gameObject.layer == 6)
-        {
-            if (transform.position.y <= other.transform.position.y)
-            {
-                rb.velocity = new Vector2(rb.velocity.x, -Mathf.Abs(rb.velocity.y) / 2);
-            }
-            else
-            {
-                transform.position = new Vector3(transform.position.x, other.transform.position.y + 1f, transform.position.z);
-                rb.velocity = new Vector2(rb.velocity.x, 0f);
-            }
-        }
-        if (other.gameObject.tag == "Player")
-        {
-            rb.gravityScale = 0f;
-            EnemyKnockBack(0.5f);
-        }
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -57,10 +40,6 @@ public class EnemyStats : MonoBehaviour
         {
             enemyHealth -= 1;
             EnemyTakesDamage(1.5f, 0);
-        }
-        if (other.gameObject.layer == 7)
-        {
-            EnemyKnockBack(0.1f);
         }
     }
 

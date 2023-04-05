@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8459711542967292252}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0629981d23cb14f992f95efb2e2c4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightningStrike: {fileID: 0}
+  lightningStrike: {fileID: 6083165782619926683, guid: b5f747b5285788849b1851f1c51d8080, type: 3}
   waterStrike: {fileID: 0}
   windStrike: {fileID: 0}
   fireStrike: {fileID: 0}

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7991099387051892985}
   - component: {fileID: 7991099387051892986}
   - component: {fileID: 5811100351187844497}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: windSlash
   m_TagString: Skill
   m_Icon: {fileID: 0}

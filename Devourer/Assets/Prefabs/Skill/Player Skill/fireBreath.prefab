@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6571980310463902452}
   - component: {fileID: 3243801504630038969}
   - component: {fileID: 8891044194205194509}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: fireBreath
   m_TagString: Skill
   m_Icon: {fileID: 0}

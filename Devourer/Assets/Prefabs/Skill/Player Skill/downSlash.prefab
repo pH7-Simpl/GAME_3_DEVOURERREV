@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8363700545694009309}
   - component: {fileID: -8704455169669014243}
   - component: {fileID: 5421107971270228896}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: downSlash
   m_TagString: Skill
   m_Icon: {fileID: 0}
