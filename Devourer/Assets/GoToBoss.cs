@@ -7,6 +7,7 @@ public class GoToBoss : MonoBehaviour
     private bool executed;
     private void Awake() {
         executed = false;
+        GetComponent<Collider2D>().enabled = false;
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Player") {

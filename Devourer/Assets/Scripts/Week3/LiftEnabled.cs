@@ -42,6 +42,7 @@ public class LiftEnabled : MonoBehaviour
     }
     private void Awake()
     {
+        transform.GetChild(0).GetChild(0).GetComponent<GoToBoss>().enabled = false;
         playerEnteredRoom = false;
         enemySpawned = false;
         keeptrack = new GameObject("Dummy");
@@ -69,6 +70,8 @@ public class LiftEnabled : MonoBehaviour
             {
                 lm.Lieft();
                 this.enabled = false;
+                transform.GetChild(0).GetChild(0).GetComponent<Collider2D>().enabled = true;
+                transform.GetChild(0).GetChild(0).GetComponent<GoToBoss>().enabled = true;
             }
         }
 

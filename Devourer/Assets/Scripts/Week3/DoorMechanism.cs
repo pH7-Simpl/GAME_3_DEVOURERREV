@@ -51,7 +51,10 @@ public class DoorMechanism : MonoBehaviour
                 {
                     enemy2.enabled = false;
                 }
-                enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
+                if(rb != null) {
+                    rb.velocity = Vector2.zero;
+                }
             }
         }
         MainCameraPlaying mcp = mainCamera.GetComponent<MainCameraPlaying>();
