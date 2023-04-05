@@ -8,6 +8,7 @@ public class gameManager : MonoBehaviour
     {
         return paused;
     }
+    [SerializeField] private GameObject MapCamObj;
     [SerializeField] private bool seeMap;
     public void SetSeeMap(bool x)
     {
@@ -61,7 +62,8 @@ public class gameManager : MonoBehaviour
         paused = false;
         seeMap = false;
         doorOpening = false;
-        MapCam = GameObject.Find("Map Camera").GetComponent<Camera>();
+        MapCam = Instantiate(MapCamObj, new Vector3(-1f, 7f, -5f), Quaternion.identity).GetComponent<Camera>();
+        MapCam.orthographicSize = 30f;
         MapCam.transform.SetParent(transform);
         MC.enabled = true;
         MapCam.enabled = false; 
@@ -73,7 +75,6 @@ public class gameManager : MonoBehaviour
         if(player != null) {
             if(!doorOpening) {
                 playerMarker.transform.position = player.transform.position;
-                MapCam.transform.position = player.transform.position + new Vector3(0, 0, -5f);
             }
         }
         if (!gameOver)

@@ -1209,9 +1209,21 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5671760702259948328, guid: 72ac9c4df19b0fa46b2e497368cbb08e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5671760702259948328, guid: 72ac9c4df19b0fa46b2e497368cbb08e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5671760702259948328, guid: 72ac9c4df19b0fa46b2e497368cbb08e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5
+      objectReference: {fileID: 0}
     - target: {fileID: 5671760702259948329, guid: 72ac9c4df19b0fa46b2e497368cbb08e, type: 3}
       propertyPath: orthographic size
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5671760702259948335, guid: 72ac9c4df19b0fa46b2e497368cbb08e, type: 3}
       propertyPath: m_IsActive
@@ -10812,6 +10824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paused: 0
+  MapCamObj: {fileID: 1473895331942276160, guid: d47bd88b79794914aa0328d334343278, type: 3}
   seeMap: 0
   gameOver: 0
   player: {fileID: 0}
