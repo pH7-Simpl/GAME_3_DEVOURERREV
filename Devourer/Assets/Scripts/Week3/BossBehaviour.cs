@@ -43,7 +43,7 @@ public class BossBehaviour : MonoBehaviour
     private IEnumerator AttackSequence() {
         animator.SetBool("blinking", true);
         //EDIT FOR EACH SKILL DEBUG HERE
-        AttackStart(Random.Range(0, 2));
+        AttackStart(Random.Range(3, 4));
         yield return new WaitForSeconds(4f + Random.Range(0f, 1f));
         animator.SetBool("blinking", false);
         attacking = false;
@@ -147,6 +147,11 @@ public class BossBehaviour : MonoBehaviour
     }
     private IEnumerator FireStrike() {
         yield return new WaitForSeconds(0.5f);
+        GameObject fs = GameObject.Instantiate(fireStrike, new Vector3(-6.66f,30.5f,0f), Quaternion.identity, transform);
+        if(Random.Range(0,2) == 0) {
+            fs.transform.position = fs.transform.position - new Vector3(0f, 3.5f, 0f);
+        }
+        fs.name = "fireStrike";
         Debug.Log("Fire Strike Finished");
     }
     private void setSkillEnabledIfAlreadyUnlocked(bool x)

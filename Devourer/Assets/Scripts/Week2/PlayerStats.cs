@@ -20,7 +20,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private Animator animator;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Sword" || other.gameObject.name == "lightningStrike" || other.gameObject.name == "windStrike")
+        if (other.gameObject.tag == "Sword" || other.gameObject.name == "lightningStrike" || other.gameObject.name == "windStrike" || other.gameObject.name == "fireStrike")
         {
             PlayerTakesDamage(0.5f, 5);
         }
@@ -94,12 +94,21 @@ public class PlayerStats : MonoBehaviour
     }
     private IEnumerator Die()
     {
-        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+        disableThisAndThat();
         animator.SetBool("died", true);
         yield return new WaitForSeconds(1f);
         MC.transform.SetParent(null);
         FindObjectOfType<gameManager>().SetGameOver(true);
         Destroy(gameObject);
+    }
+    private void disableThisAndThat() {
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+        GetComponent<Animator>().SetFloat("speed", 0f);
+        GetComponent<PlayerMovement>().enabled = false;
+        GetComponent<Slashing>().enabled = false;
+        GetComponent<GeyserSeedSpawn>().enabled = false;
+        GetComponent<LightningDash>().enabled = false;
+        GetComponent<Breathing>().enabled = false;
     }
     public IEnumerator PlayerGetPoints(int x)
     {
