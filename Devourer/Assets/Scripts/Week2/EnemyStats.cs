@@ -20,16 +20,17 @@ public class EnemyStats : MonoBehaviour
     private Rigidbody2D rb;
     private PlayerStats ps;
     private bool damaged;
+    private Color originalColor;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.name == "WindSlash")
         {
-            EnemyTakesDamage(0.5f, 25);
+            EnemyTakesDamage(0.5f, 10);
             Destroy(other.gameObject);
         }
         if (other.gameObject.name == "LightningDash")
         {
-            EnemyTakesDamage(0.5f, 25);
+            EnemyTakesDamage(0.5f, 10);
             Destroy(other.gameObject);
         }
         
@@ -39,8 +40,7 @@ public class EnemyStats : MonoBehaviour
     {
         if (other.gameObject.name == "FireBreath")
         {
-            enemyHealth -= 1;
-            EnemyTakesDamage(1.5f, 0);
+            EnemyTakesDamage(1f, 1);
         }
         if (other.gameObject.tag == "Coll")
         {
@@ -58,6 +58,7 @@ public class EnemyStats : MonoBehaviour
         em = GetComponent<EnemyMovement>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        originalColor = GetComponent<SpriteRenderer>().color;
     }
     private void Update()
     {
@@ -90,13 +91,13 @@ public class EnemyStats : MonoBehaviour
             enemyHealth -= damage;
             damaged = true;
         }
+        damaged = false;
         StartCoroutine(ShowHealthBar(duration));
         hit = true;
         animator.SetBool("hit", hit);
         yield return new WaitForSeconds(duration);
         hit = false;
         animator.SetBool("hit", hit);
-        damaged = false;
     }
     public void EnemyKnockBack(float duration) {
         StartCoroutine(Knockbacked(duration));
@@ -109,7 +110,6 @@ public class EnemyStats : MonoBehaviour
     }
     private IEnumerator colorForDamaged(float duration)
     {
-        Color originalColor = GetComponent<SpriteRenderer>().color;
         Color targetColor = Color.red;
         float elapsedTime = 0f;
         float t = 0;

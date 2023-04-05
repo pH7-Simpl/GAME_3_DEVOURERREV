@@ -20,9 +20,9 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private Animator animator;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Sword")
+        if (other.gameObject.tag == "Sword" || other.gameObject.name == "lightningStrike" || other.gameObject.name == "windStrike")
         {
-            PlayerTakesDamage(0.5f, 10);
+            PlayerTakesDamage(0.5f, 5);
         }
     }
 
@@ -70,13 +70,13 @@ public class PlayerStats : MonoBehaviour
             playerHealth -= damage;
             damaged = true;
         }
+        damaged = false;
         StartCoroutine(ShowHealthBar(duration));
         hit = true;
         animator.SetBool("hit", hit);
         yield return new WaitForSeconds(duration);
         hit = false;
         animator.SetBool("hit", hit);
-        damaged = false;
     }
     private IEnumerator colorForDamaged(float duration)
     {
@@ -126,5 +126,9 @@ public class PlayerStats : MonoBehaviour
     public void PFDE()
     {
         StartCoroutine(PlayerGetPoints(10));
+    }
+    public void PFDB()
+    {
+        StartCoroutine(PlayerGetPoints(100));
     }
 }

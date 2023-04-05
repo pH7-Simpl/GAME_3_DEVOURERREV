@@ -188,11 +188,11 @@ public class EnemyAI : MonoBehaviour
             enemyHealth -= damage;
             damaged = true;
         }
+        damaged = false;
         StartCoroutine(ShowHealthBar(duration));
         hit = true;
         yield return new WaitForSeconds(duration);
         hit = false;
-        damaged = false;
     }
      private IEnumerator colorForDamaged(float duration)
     {

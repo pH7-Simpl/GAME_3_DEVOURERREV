@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 7519021309361360012}
   - component: {fileID: 5335456980380495366}
   - component: {fileID: 8564368686293703745}
-  - component: {fileID: 781258604321994383}
+  - component: {fileID: -5414062928217127607}
+  - component: {fileID: -1645576918441157542}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Enemy
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 445700094, guid: 2afcc2819f1556b4bb5487208e68b52a, type: 3}
+  m_Sprite: {fileID: 904107857, guid: 2afcc2819f1556b4bb5487208e68b52a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightningStrike: {fileID: 6083165782619926683, guid: b5f747b5285788849b1851f1c51d8080, type: 3}
   waterStrike: {fileID: 0}
-  windStrike: {fileID: 0}
+  windStrike: {fileID: 1003604292641303502, guid: 54102d48c65dd3447b17d2788f23aeb8, type: 3}
   fireStrike: {fileID: 0}
 --- !u!95 &5335456980380495366
 Animator:
@@ -146,8 +147,20 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!61 &781258604321994383
-BoxCollider2D:
+--- !u!114 &-5414062928217127607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4170391877465558221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d1dd5409f6b46144baff5b2c6d9a75c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!60 &-1645576918441157542
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -159,7 +172,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.2056309, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -169,6 +182,25 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.5887382, y: 3}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.125, y: -1.5}
+      - {x: 0.34375, y: -1.5}
+      - {x: 0.9375, y: -0.96875}
+      - {x: 0.875, y: -0.53125}
+      - {x: 1.0625, y: -0.15625}
+      - {x: 1.0625, y: 0.40625}
+      - {x: 1, y: 0.59375}
+      - {x: 0.46875, y: 1.125}
+      - {x: 0.28125, y: 1.21875}
+      - {x: -0.84375, y: 1.34375}
+      - {x: -1.34375, y: 1.5}
+      - {x: -1.5, y: 1.5}
+      - {x: -1.5, y: -0.65625}
+      - {x: -1.46875, y: -0.65625}
+      - {x: -1.5, y: -0.75}
+      - {x: -1.5, y: -1.5}
+      - {x: -1.40625, y: -1.5}
+      - {x: -1.03125, y: -1.28125}
+      - {x: -0.5625, y: -0.59375}
+      - {x: -0.5625, y: -0.96875}
