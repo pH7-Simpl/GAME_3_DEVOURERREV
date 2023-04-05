@@ -21,17 +21,18 @@ public class EnemyStats : MonoBehaviour
     private PlayerStats ps;
     private bool damaged;
     private Color originalColor;
+    private bool showHB;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.name == "WindSlash")
         {
-            EnemyTakesDamage(0.5f, 10);
             Destroy(other.gameObject);
+            EnemyTakesDamage(0.5f, 10);
         }
         if (other.gameObject.name == "LightningDash")
         {
-            EnemyTakesDamage(0.5f, 10);
             Destroy(other.gameObject);
+            EnemyTakesDamage(0.5f, 10);
         }
         
     }
@@ -47,6 +48,12 @@ public class EnemyStats : MonoBehaviour
             EnemyKnockBack(0.5f);
         }
     }
+    private void OnTriggerExit2D(Collider2D other) {
+        if (other.gameObject.name == "FireBreath" || other.gameObject.name == "WindSlash" || other.gameObject.name == "LightningDash")
+        {
+            showHB = false;
+        }
+    }
 
     private void Awake()
     {
@@ -59,6 +66,7 @@ public class EnemyStats : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         originalColor = GetComponent<SpriteRenderer>().color;
+        showHB = false;
     }
     private void Update()
     {
@@ -83,16 +91,15 @@ public class EnemyStats : MonoBehaviour
     }
     public void EnemyTakesDamage(float duration, int damage) {
         StartCoroutine(EnemyHit(duration, damage));
+        if(!showHB) {
+            StartCoroutine(ShowHealthBar(duration));
+            StartCoroutine(colorForDamaged(duration));
+            showHB = true;
+        }
     }
     private IEnumerator EnemyHit(float duration, int damage)
     {
-        if(!damaged) {
-            StartCoroutine(colorForDamaged(duration));
-            enemyHealth -= damage;
-            damaged = true;
-        }
-        damaged = false;
-        StartCoroutine(ShowHealthBar(duration));
+        enemyHealth -= damage;
         hit = true;
         animator.SetBool("hit", hit);
         yield return new WaitForSeconds(duration);

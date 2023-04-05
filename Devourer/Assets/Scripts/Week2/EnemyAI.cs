@@ -29,18 +29,20 @@ public class EnemyAI : MonoBehaviour
     private PlayerStats ps;
     private bool damaged;
     private SpriteRenderer sr;
+    private bool showHB;
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.name == "WindSlash")
         {
-            EnemyTakesDamage(0.5f, 25);
             Destroy(other.gameObject);
+            EnemyTakesDamage(0.5f, 10);
         }
         if (other.gameObject.name == "LightningDash")
         {
-            EnemyTakesDamage(0.5f, 25);
             Destroy(other.gameObject);
+            EnemyTakesDamage(0.5f, 10);
         }
         if (other.gameObject.tag == "Coll" || other.gameObject.name == "FireBreath")
         {
@@ -65,6 +67,11 @@ public class EnemyAI : MonoBehaviour
             }
         }
     }
+    private void OnTriggerExit2D(Collider2D other) {
+        if(other.gameObject.name == "WindSlash" || other.gameObject.name == "LightningDash" || other.gameObject.name == "FireBreath") {
+            showHB = false;
+        }
+    }
     private void Awake()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -86,6 +93,7 @@ public class EnemyAI : MonoBehaviour
         sr = transform.GetChild(0).GetComponent<SpriteRenderer>();
         ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         damaged = false;
+        showHB = false;
     }
     private void UpdatePath()
     {
@@ -179,22 +187,20 @@ public class EnemyAI : MonoBehaviour
     public void EnemyTakesDamage(float duration, int damage)
     {
         StartCoroutine(EnemyHit(duration, damage));
+        if(!showHB) {
+            StartCoroutine(ShowHealthBar(duration));
+            StartCoroutine(colorForDamaged(duration));
+            showHB = true;
+        }
     }
     private IEnumerator EnemyHit(float duration, int damage)
     {
-        if (!damaged)
-        {
-            StartCoroutine(colorForDamaged(duration));
-            enemyHealth -= damage;
-            damaged = true;
-        }
-        damaged = false;
-        StartCoroutine(ShowHealthBar(duration));
+        enemyHealth -= damage;
         hit = true;
         yield return new WaitForSeconds(duration);
         hit = false;
     }
-     private IEnumerator colorForDamaged(float duration)
+    private IEnumerator colorForDamaged(float duration)
     {
         Color originalColor = sr.color;
         Color targetColor = Color.red;
