@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     [SerializeField] GameObject pointText;
+    private Color originalColor;
     private int maxPlayerHealth = 100;
     public int playerHealth = 0;
     private int points;
@@ -25,7 +26,7 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void Awake()
     {
         maxPlayerHealth = 100;
         points = 0;
@@ -34,6 +35,7 @@ public class PlayerStats : MonoBehaviour
         healthBar = transform.GetChild(1).gameObject;
         healthBar.SetActive(false);
         damaged = false;
+        originalColor = GetComponent<SpriteRenderer>().color;
     }
     private void Update()
     {
@@ -70,13 +72,14 @@ public class PlayerStats : MonoBehaviour
         }
         StartCoroutine(ShowHealthBar(duration));
         hit = true;
+        animator.SetBool("hit", hit);
         yield return new WaitForSeconds(duration);
         hit = false;
+        animator.SetBool("hit", hit);
         damaged = false;
     }
     private IEnumerator colorForDamaged(float duration)
     {
-        Color originalColor = GetComponent<SpriteRenderer>().color;
         Color targetColor = Color.red;
         float elapsedTime = 0f;
         float t = 0;

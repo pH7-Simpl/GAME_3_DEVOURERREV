@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6492465718039935029}
   - component: {fileID: 6492465718039935027}
   - component: {fileID: 6492465718039935026}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MapMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   markLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256
 --- !u!1 &6935595073205202278
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 6935595073205202279}
   - component: {fileID: 6935595073205202277}
   - component: {fileID: 6935595073205202276}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MapMask_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   markLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256
 --- !u!1 &6935595073236443823
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 6935595073236443820}
   - component: {fileID: 6935595073236443730}
   - component: {fileID: 6935595073236443821}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MapMask_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   markLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256
 --- !u!1 &6935595073567340065
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 6935595073567340070}
   - component: {fileID: 6935595073567340068}
   - component: {fileID: 6935595073567340071}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MapMask_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,7 +395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   markLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256
 --- !u!1 &6935595073651962212
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,7 +407,7 @@ GameObject:
   - component: {fileID: 6935595073651962213}
   - component: {fileID: 6935595073651962219}
   - component: {fileID: 6935595073651962218}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MapMask_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -494,7 +494,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   markLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256
 --- !u!1 &6935595073699787705
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,7 +506,7 @@ GameObject:
   - component: {fileID: 6935595073699787710}
   - component: {fileID: 6935595073699787708}
   - component: {fileID: 6935595073699787711}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MapMask_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -593,7 +593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   markLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256
 --- !u!1 &6935595073708058921
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,7 +605,7 @@ GameObject:
   - component: {fileID: 6935595073708058926}
   - component: {fileID: 6935595073708058924}
   - component: {fileID: 6935595073708058927}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MapMask_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -692,7 +692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   markLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256
 --- !u!1 &6935595073906195173
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,7 +704,7 @@ GameObject:
   - component: {fileID: 6935595073906195178}
   - component: {fileID: 6935595073906195176}
   - component: {fileID: 6935595073906195179}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MapMask_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -791,7 +791,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   markLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256
 --- !u!1 &6935595074031140495
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,7 +803,7 @@ GameObject:
   - component: {fileID: 6935595074031140492}
   - component: {fileID: 6935595074031140530}
   - component: {fileID: 6935595074031140493}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MapMask_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -890,7 +890,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   markLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256
 --- !u!1 &6935595074516088417
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,7 +902,7 @@ GameObject:
   - component: {fileID: 6935595074516088422}
   - component: {fileID: 6935595074516088420}
   - component: {fileID: 6935595074516088423}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MapMask_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -989,7 +989,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   markLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256
 --- !u!1 &6935595074961702468
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,7 +1001,7 @@ GameObject:
   - component: {fileID: 6935595074961702469}
   - component: {fileID: 6935595074961702475}
   - component: {fileID: 6935595074961702474}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MapView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22291,7 +22291,7 @@ GameObject:
   - component: {fileID: 6935595075025758227}
   - component: {fileID: 6935595075025758225}
   - component: {fileID: 6935595075025758224}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MapMask_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22378,7 +22378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   markLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256
 --- !u!1 &6935595075138645964
 GameObject:
   m_ObjectHideFlags: 0

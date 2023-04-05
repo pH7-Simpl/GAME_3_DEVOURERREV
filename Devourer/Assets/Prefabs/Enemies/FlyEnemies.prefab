@@ -360,8 +360,7 @@ GameObject:
   - component: {fileID: 7421889115612272646}
   - component: {fileID: 7421889115612272645}
   - component: {fileID: 7421889115612272644}
-  - component: {fileID: 2238192651397750851}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FlyEnemies
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -464,24 +463,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!95 &2238192651397750851
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7421889115612272643}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3d1170347eb5ac341a57695adf767bf1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0

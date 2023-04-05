@@ -24,7 +24,6 @@ public class EnemyAI : MonoBehaviour
     }
     private bool hit;
     private GameObject healthBar;
-    private bool hasCollided;
     [SerializeField] private GameObject detonator;
     [SerializeField] private Animator animator;
     private PlayerStats ps;
@@ -33,10 +32,6 @@ public class EnemyAI : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (hasCollided)
-        {
-            return;
-        }
         if (other.gameObject.name == "WindSlash")
         {
             EnemyTakesDamage(0.5f, 25);
@@ -51,7 +46,6 @@ public class EnemyAI : MonoBehaviour
         {
             StartCoroutine(Explode());
         }
-        StartCoroutine(ColliderRefresher());
     }
     private void OnTriggerStay2D(Collider2D other)
     {
@@ -71,12 +65,6 @@ public class EnemyAI : MonoBehaviour
             }
         }
     }
-    private IEnumerator ColliderRefresher()
-    {
-        hasCollided = true;
-        yield return new WaitForSeconds(Time.deltaTime);
-        hasCollided = false;
-    }
     private void Awake()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -93,7 +81,7 @@ public class EnemyAI : MonoBehaviour
         maxEnemyHealth = 100f;
         enemyHealth = maxEnemyHealth;
         healthBar = transform.GetChild(1).gameObject;
-        hasCollided = false;
+        healthBar.SetActive(false);
         animator = transform.GetChild(0).GetComponent<Animator>();
         sr = transform.GetChild(0).GetComponent<SpriteRenderer>();
         ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();

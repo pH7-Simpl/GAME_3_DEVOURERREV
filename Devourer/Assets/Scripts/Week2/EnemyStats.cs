@@ -87,8 +87,10 @@ public class EnemyStats : MonoBehaviour
         }
         StartCoroutine(ShowHealthBar(duration));
         hit = true;
+        animator.SetBool("hit", hit);
         yield return new WaitForSeconds(duration);
         hit = false;
+        animator.SetBool("hit", hit);
         damaged = false;
     }
     public void EnemyKnockBack(float duration) {

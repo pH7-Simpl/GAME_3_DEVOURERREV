@@ -14,6 +14,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb2D;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    private float attackCooldown;
 
     private EnemyStats es;
 
@@ -42,6 +43,7 @@ public class EnemyMovement : MonoBehaviour
         speed = 4f;
         stopDistance = 2f;
         knockbackForce = 3f;
+        attackCooldown = 1f;
         attacking = false;
         foundPlayer = false;
     }
@@ -63,7 +65,6 @@ public class EnemyMovement : MonoBehaviour
             {
                 horizontal = -1;
             }
-            foundPlayer = false;
         }
         else
         {
@@ -152,5 +153,7 @@ public class EnemyMovement : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         attacking = false;
         animator.SetBool("attacking", attacking);
+        yield return new WaitForSeconds(attackCooldown);
+        foundPlayer = false;
     }
 }
