@@ -70,12 +70,12 @@ public class PlayerStats : MonoBehaviour
             playerHealth -= damage;
             damaged = true;
         }
-        damaged = false;
         StartCoroutine(ShowHealthBar(duration));
         hit = true;
         animator.SetBool("hit", hit);
         yield return new WaitForSeconds(duration);
         hit = false;
+        damaged = false;
         animator.SetBool("hit", hit);
     }
     private IEnumerator colorForDamaged(float duration)

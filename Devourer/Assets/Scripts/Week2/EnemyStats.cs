@@ -26,12 +26,12 @@ public class EnemyStats : MonoBehaviour
         if (other.gameObject.name == "WindSlash")
         {
             Destroy(other.gameObject);
-            EnemyTakesDamage(0.5f, 10);
+            EnemyTakesDamage(0.5f, 25);
         }
         if (other.gameObject.name == "LightningDash")
         {
             Destroy(other.gameObject);
-            EnemyTakesDamage(0.5f, 10);
+            EnemyTakesDamage(0.5f, 25);
         }
         
     }
@@ -40,7 +40,8 @@ public class EnemyStats : MonoBehaviour
     {
         if (other.gameObject.name == "FireBreath")
         {
-            EnemyTakesDamage(1f, 1);
+            enemyHealth -=1;
+            EnemyTakesDamage(0.2f, 0);
         }
         if (other.gameObject.tag == "Coll")
         {
@@ -91,12 +92,12 @@ public class EnemyStats : MonoBehaviour
             enemyHealth -= damage;
             damaged = true;
         }
-        damaged = false;
         StartCoroutine(ShowHealthBar(duration));
         hit = true;
         animator.SetBool("hit", hit);
         yield return new WaitForSeconds(duration);
         hit = false;
+        damaged = false;
         animator.SetBool("hit", hit);
     }
     public void EnemyKnockBack(float duration) {
