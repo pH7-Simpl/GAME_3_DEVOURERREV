@@ -1,10 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class DoorMechanism : MonoBehaviour
+public class LiftMechanism : MonoBehaviour
 {
     private GameObject mainCamera;
-    private Animator animator;
     private GameObject player;
     private gameManager gm;
     private Slashing s;
@@ -13,22 +12,21 @@ public class DoorMechanism : MonoBehaviour
     private Breathing b;
     private void Awake()
     {
-        animator = GetComponent<Animator>();
         gm = GameObject.Find("gameManager").GetComponent<gameManager>();
-        gm.SetDoorOpening(false);
+        gm.SetLift1(false);
         player = GameObject.FindGameObjectWithTag("Player");
         s = player.GetComponent<Slashing>();
         gss = player.GetComponent<GeyserSeedSpawn>();
         ld = player.GetComponent<LightningDash>();
         b = player.GetComponent<Breathing>();
     }
-    public void openDoer() {
-        StartCoroutine(openDoor());
+    public void Lieft() {
+        StartCoroutine(Lift());
     }
 
-    private IEnumerator openDoor()
+    private IEnumerator Lift()
     {
-        gm.SetDoorOpening(true);
+        gm.SetLift1(true);
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         player.GetComponent<PlayerMovement>().enabled = false;
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -54,29 +52,27 @@ public class DoorMechanism : MonoBehaviour
         MainCameraPlaying mcp = mainCamera.GetComponent<MainCameraPlaying>();
         mcp.enabled = false;
         Vector3 oriPos = GameObject.FindGameObjectWithTag("Player").transform.position + new Vector3(0, 0, -5f);
-        Vector3 doorPos = transform.position + new Vector3(0, 0, -5f);
+        Vector3 liftPos = transform.position + new Vector3(0, 0, -5f);
         float elapsedTime = 0f;
         float duration = 0.5f;
         float t = 0f;
         while (elapsedTime <= duration)
         {
             t = elapsedTime / duration;
-            mainCamera.transform.position = Vector3.Lerp(oriPos, doorPos, t);
+            mainCamera.transform.position = Vector3.Lerp(oriPos, liftPos, t);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        animator.SetBool("opened", true);
-        GetComponent<Collider2D>().enabled = false;
         yield return new WaitForSeconds(3f);
         elapsedTime = 0f;
         while (elapsedTime <= duration)
         {
             t = elapsedTime / duration;
-            mainCamera.transform.position = Vector3.Lerp(doorPos, oriPos, t);
+            mainCamera.transform.position = Vector3.Lerp(liftPos, oriPos, t);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        gm.SetDoorOpening(false);
+        gm.SetLift1(false);
         if(player != null) {
             player.GetComponent<PlayerMovement>().enabled = true;
         }

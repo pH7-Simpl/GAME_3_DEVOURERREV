@@ -35,12 +35,12 @@ public class gameManager : MonoBehaviour
     private Camera MC;
     private Camera MapCam;
     private PlayerStats ps;
-    private bool doorOpening;
     private bool skillTaken;
     public void setSkillTaken(bool x) {
         skillTaken = x;
     }
     private GameObject playerMarker;
+    private bool doorOpening;
     public void SetDoorOpening(bool x)
     {
         doorOpening = x;
@@ -48,6 +48,16 @@ public class gameManager : MonoBehaviour
     public bool GetDoorOpening()
     {
         return doorOpening;
+    }
+    private bool lift1;
+    public void SetLift1(bool x)
+    {
+        lift1 = x;
+    }
+    private bool lift2;
+    public void SetLift2(bool x)
+    {
+        lift2 = x;
     }
     public void Awake()
     {
@@ -91,11 +101,11 @@ public class gameManager : MonoBehaviour
             {
                 UnpauseCommand();
             }
-            if (Input.GetKeyDown(KeyCode.M) && !doorOpening)
+            if (Input.GetKeyDown(KeyCode.M) && !doorOpening && !skillTaken && !lift1 && !lift2)
             {
                 seeMap = !seeMap;
             }
-            if (!paused && !skillTaken)
+            if (!paused)
             {
                 if (seeMap)
                 {
