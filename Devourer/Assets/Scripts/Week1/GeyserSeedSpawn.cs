@@ -14,7 +14,7 @@ public class GeyserSeedSpawn : MonoBehaviour
     public void SetCanSkill(bool x) {
         canSkill = x;
     }
-    private void Start()
+    private void Awake()
     {
         wallLayerMask = LayerMask.GetMask("Wall");
         pm = GetComponent<PlayerMovement>();
@@ -31,7 +31,7 @@ public class GeyserSeedSpawn : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Q) && currentCooldown <= 0f)
             {
-                if(transform.localScale.x == 1) {
+                if(transform.localScale.x > 0) {
                     spawnRange = transform.position + new Vector3(spawnLength, 0.5f);
                     RaycastHit2D hit = Physics2D.Raycast(playerPos, Vector2.right, spawnLength, wallLayerMask);
                     if(hit.collider != null) {

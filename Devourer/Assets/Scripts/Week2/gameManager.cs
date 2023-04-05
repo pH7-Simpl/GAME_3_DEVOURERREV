@@ -9,6 +9,7 @@ public class gameManager : MonoBehaviour
         return paused;
     }
     [SerializeField] private GameObject MapCamObj;
+    [SerializeField] private GameObject playerMarkerObj;
     [SerializeField] private bool seeMap;
     public void SetSeeMap(bool x)
     {
@@ -64,7 +65,7 @@ public class gameManager : MonoBehaviour
         Instantiate(Drone, new Vector3(-40f, 8, 0f), Quaternion.identity);
         Instantiate(Soldier, new Vector3(-35f, 0f, 0f), Quaternion.identity);
         player = GameObject.FindGameObjectWithTag("Player");
-        playerMarker = GameObject.FindGameObjectWithTag("Marks");
+        playerMarker = Instantiate(playerMarkerObj, player.transform.position, Quaternion.identity);
         ps = FindObjectOfType<PlayerStats>();
         MC = Camera.main;
         GameObject.Find("MainCanvas/MainUI/SkillPanel/AirSkill1").SetActive(true);

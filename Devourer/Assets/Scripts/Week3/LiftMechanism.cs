@@ -10,11 +10,13 @@ public class LiftMechanism : MonoBehaviour
     private GeyserSeedSpawn gss;
     private LightningDash ld;
     private Breathing b;
+    private Animator plyrAnim;
     private void Awake()
     {
         gm = GameObject.Find("gameManager").GetComponent<gameManager>();
         gm.SetLift1(false);
         player = GameObject.FindGameObjectWithTag("Player");
+        plyrAnim = player.GetComponent<Animator>();
         s = player.GetComponent<Slashing>();
         gss = player.GetComponent<GeyserSeedSpawn>();
         ld = player.GetComponent<LightningDash>();
@@ -32,6 +34,7 @@ public class LiftMechanism : MonoBehaviour
     {
         gm.SetLift1(true);
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        plyrAnim.SetFloat("speed", 0);
         player.GetComponent<PlayerMovement>().enabled = false;
         setSkillEnabledIfAlreadyUnlocked(false);
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -101,7 +104,7 @@ public class LiftMechanism : MonoBehaviour
     private IEnumerator Lift2() {
         gm.SetLift2(true);
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        player.GetComponent<PlayerMovement>().setHorizontal(0f);
+        plyrAnim.SetFloat("speed", 0);
         player.GetComponent<PlayerMovement>().enabled = false;
         setSkillEnabledIfAlreadyUnlocked(false);
         MainCameraPlaying mcp = mainCamera.GetComponent<MainCameraPlaying>();

@@ -5,6 +5,7 @@ public class DoorMechanism : MonoBehaviour
 {
     private GameObject mainCamera;
     private Animator animator;
+    private Animator plyrAnim;
     private GameObject player;
     private gameManager gm;
     private Slashing s;
@@ -17,6 +18,7 @@ public class DoorMechanism : MonoBehaviour
         gm = GameObject.Find("gameManager").GetComponent<gameManager>();
         gm.SetDoorOpening(false);
         player = GameObject.FindGameObjectWithTag("Player");
+        plyrAnim = player.GetComponent<Animator>();
         s = player.GetComponent<Slashing>();
         gss = player.GetComponent<GeyserSeedSpawn>();
         ld = player.GetComponent<LightningDash>();
@@ -31,7 +33,7 @@ public class DoorMechanism : MonoBehaviour
     {
         gm.SetDoorOpening(true);
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        player.GetComponent<PlayerMovement>().setHorizontal(0f);
+        plyrAnim.SetFloat("speed", 0);
         player.GetComponent<PlayerMovement>().enabled = false;
         setSkillEnabledIfAlreadyUnlocked(false);
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
