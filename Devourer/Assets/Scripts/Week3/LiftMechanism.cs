@@ -19,16 +19,21 @@ public class LiftMechanism : MonoBehaviour
         gss = player.GetComponent<GeyserSeedSpawn>();
         ld = player.GetComponent<LightningDash>();
         b = player.GetComponent<Breathing>();
+        mainCamera = Camera.main.gameObject;
     }
     public void Lieft() {
-        StartCoroutine(Lift());
+        StartCoroutine(Lift1());
+    }
+    public void GoToBoss() {
+        StartCoroutine(Lift2());
     }
 
-    private IEnumerator Lift()
+    private IEnumerator Lift1()
     {
         gm.SetLift1(true);
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         player.GetComponent<PlayerMovement>().enabled = false;
+        setSkillEnabledIfAlreadyUnlocked(false);
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
         {
@@ -47,8 +52,6 @@ public class LiftMechanism : MonoBehaviour
                 enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             }
         }
-        setSkillEnabledIfAlreadyUnlocked(false);
-        mainCamera = Camera.main.gameObject;
         MainCameraPlaying mcp = mainCamera.GetComponent<MainCameraPlaying>();
         mcp.enabled = false;
         Vector3 oriPos = GameObject.FindGameObjectWithTag("Player").transform.position + new Vector3(0, 0, -5f);
@@ -94,6 +97,35 @@ public class LiftMechanism : MonoBehaviour
                 }
             }
         }
+    }
+    private IEnumerator Lift2() {
+        gm.SetLift2(true);
+        player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        player.GetComponent<PlayerMovement>().setHorizontal(0f);
+        player.GetComponent<PlayerMovement>().enabled = false;
+        setSkillEnabledIfAlreadyUnlocked(false);
+        MainCameraPlaying mcp = mainCamera.GetComponent<MainCameraPlaying>();
+        mcp.enabled = false;
+        Vector3 oriLiftPos = transform.localPosition;
+        Vector3 endPos = transform.localPosition + new Vector3(0f, 26.547f, 0f);
+        float elapsedTime = 0f;
+        float duration = 3f;
+        float t = 0f;
+        while (elapsedTime < duration)
+        {
+            t = elapsedTime / duration;
+            transform.localPosition = Vector2.Lerp(oriLiftPos, endPos, t);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = endPos;
+        gm.SetLift2(false);
+        if(player != null) {
+            player.GetComponent<PlayerMovement>().enabled = true;
+        }
+        setSkillEnabledIfAlreadyUnlocked(true);
+        transform.localPosition = endPos;
+        mcp.enabled = true;
     }
     private void setSkillEnabledIfAlreadyUnlocked(bool x)
     {

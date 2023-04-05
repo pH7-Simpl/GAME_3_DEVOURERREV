@@ -27,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject healthBar;
 
     private float horizontal;
+    public void setHorizontal(float x) {
+        horizontal = x;
+    }
     private bool isFacingRight;
     public bool IsFacingRight()
     {

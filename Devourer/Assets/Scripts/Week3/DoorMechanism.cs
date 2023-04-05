@@ -21,6 +21,7 @@ public class DoorMechanism : MonoBehaviour
         gss = player.GetComponent<GeyserSeedSpawn>();
         ld = player.GetComponent<LightningDash>();
         b = player.GetComponent<Breathing>();
+        mainCamera = Camera.main.gameObject;
     }
     public void openDoer() {
         StartCoroutine(openDoor());
@@ -30,7 +31,9 @@ public class DoorMechanism : MonoBehaviour
     {
         gm.SetDoorOpening(true);
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        player.GetComponent<PlayerMovement>().setHorizontal(0f);
         player.GetComponent<PlayerMovement>().enabled = false;
+        setSkillEnabledIfAlreadyUnlocked(false);
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
         {
@@ -49,8 +52,6 @@ public class DoorMechanism : MonoBehaviour
                 enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             }
         }
-        setSkillEnabledIfAlreadyUnlocked(false);
-        mainCamera = Camera.main.gameObject;
         MainCameraPlaying mcp = mainCamera.GetComponent<MainCameraPlaying>();
         mcp.enabled = false;
         Vector3 oriPos = GameObject.FindGameObjectWithTag("Player").transform.position + new Vector3(0, 0, -5f);
