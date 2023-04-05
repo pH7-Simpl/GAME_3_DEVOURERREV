@@ -16,7 +16,6 @@ public class PlayerStats : MonoBehaviour
     }
 
     GameObject healthBar;
-    private bool showHB;
     [SerializeField] GameObject MC;
     [SerializeField] private Animator animator;
     private void OnTriggerEnter2D(Collider2D other)
@@ -24,13 +23,6 @@ public class PlayerStats : MonoBehaviour
         if (other.gameObject.tag == "Sword" || other.gameObject.name == "lightningStrike" || other.gameObject.name == "windStrike" || other.gameObject.name == "fireStrike")
         {
             PlayerTakesDamage(0.5f, 5);
-        }
-    }
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Sword" || other.gameObject.name == "lightningStrike" || other.gameObject.name == "windStrike" || other.gameObject.name == "fireStrike")
-        {
-            showHB = false;
         }
     }
 
@@ -44,7 +36,6 @@ public class PlayerStats : MonoBehaviour
         healthBar.SetActive(false);
         damaged = false;
         originalColor = GetComponent<SpriteRenderer>().color;
-        showHB = false;
     }
     private void Update()
     {
@@ -70,15 +61,17 @@ public class PlayerStats : MonoBehaviour
     public void PlayerTakesDamage(float duration, int damage)
     {
         StartCoroutine(PlayerHit(duration, damage));
-        if(!showHB) {
-            StartCoroutine(ShowHealthBar(duration));
-            StartCoroutine(colorForDamaged(duration));
-            showHB = true;
-        }
     }
     private IEnumerator PlayerHit(float duration, int damage)
     {
-        playerHealth -= damage;
+        if (!damaged)
+        {
+            StartCoroutine(colorForDamaged(duration));
+            playerHealth -= damage;
+            damaged = true;
+        }
+        damaged = false;
+        StartCoroutine(ShowHealthBar(duration));
         hit = true;
         animator.SetBool("hit", hit);
         yield return new WaitForSeconds(duration);
