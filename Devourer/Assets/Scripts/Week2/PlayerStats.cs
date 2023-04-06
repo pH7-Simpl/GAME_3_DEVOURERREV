@@ -22,8 +22,21 @@ public class PlayerStats : MonoBehaviour
     {
         if (other.gameObject.tag == "Sword" || other.gameObject.name == "lightningStrike" || other.gameObject.name == "windStrike" || other.gameObject.name == "fireStrike")
         {
-            PlayerTakesDamage(0.5f, 5);
+            PlayerTakesDamage(0.5f, 10);
         }
+    }
+    private void OnTriggerExit2D(Collider2D other) {
+        if (other.gameObject.tag == "Sword" || other.gameObject.name == "lightningStrike" || other.gameObject.name == "windStrike" || other.gameObject.name == "fireStrike")
+        {
+            Delay();
+        }
+    }
+    private void Delay() {
+        StartCoroutine(delay());
+    }
+    private IEnumerator delay() {
+        yield return new WaitForSeconds(0.5f);
+        healthBar.SetActive(false);
     }
 
     private void Awake()
@@ -52,12 +65,6 @@ public class PlayerStats : MonoBehaviour
             StartCoroutine(Die());
         }
     }
-    private IEnumerator ShowHealthBar(float duration)
-    {
-        healthBar.SetActive(true);
-        yield return new WaitForSeconds(duration);
-        healthBar.SetActive(false);
-    }
     public void PlayerTakesDamage(float duration, int damage)
     {
         StartCoroutine(PlayerHit(duration, damage));
@@ -69,8 +76,8 @@ public class PlayerStats : MonoBehaviour
             StartCoroutine(colorForDamaged(duration));
             playerHealth -= damage;
             damaged = true;
+            healthBar.SetActive(true);
         }
-        StartCoroutine(ShowHealthBar(duration));
         hit = true;
         animator.SetBool("hit", hit);
         yield return new WaitForSeconds(duration);

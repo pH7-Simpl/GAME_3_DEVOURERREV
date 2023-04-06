@@ -114,12 +114,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1547c11d72331114ba33f50f216e7522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs: []
-  enemy1Count: 0
-  enemy2Count: 0
+  enemyPrefabs:
+  - {fileID: 8072557646251281985, guid: cc8f64c87f424b74b99871483491ac39, type: 3}
+  - {fileID: 7421889115612272643, guid: 353015d773809424ba0a92f0809ae904, type: 3}
+  - {fileID: 4170391877465558221, guid: cf4f27320fdaf114e8ed0943cb134c64, type: 3}
+  enemy1Count: 3
+  enemy2Count: 3
   enemy3Count: 0
-  enemy1Pos: []
-  enemy2Pos: []
+  enemy1Pos:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  enemy2Pos:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   enemy3Pos: []
 --- !u!1 &1881216531085039650
 GameObject:
