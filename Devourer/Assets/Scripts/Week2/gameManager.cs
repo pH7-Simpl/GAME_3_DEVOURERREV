@@ -164,11 +164,6 @@ public class gameManager : MonoBehaviour
             mainUI.SetActive(true);
         }
     }
-    public void Restart()
-    {
-        gameOver = false;
-        SceneManager.LoadScene(1);
-    }
     public void MainMenu()
     {
         gameOver = false;
@@ -177,4 +172,15 @@ public class gameManager : MonoBehaviour
         }
         SceneManager.LoadScene(0);
     }
+    public void Restart()
+    {
+        gameOver = false;
+        SceneManager.LoadScene(1);
+    }
+    public void Quit()
+    {
+        Debug.Log("Application Quit");
+        Application.Quit();
+    }
+    
 }
