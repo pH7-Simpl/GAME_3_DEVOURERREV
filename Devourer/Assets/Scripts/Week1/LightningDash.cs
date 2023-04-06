@@ -54,7 +54,7 @@ public class LightningDash : MonoBehaviour
                     Destroy(theDash);
                 }
 
-                if (currentCooldown >= -5f)
+                if (currentCooldown >= -0.5f)
                 {
                     coolDownImage.fillAmount = currentCooldown / cooldownDuration;
                 }
