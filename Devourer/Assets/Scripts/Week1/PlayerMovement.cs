@@ -116,6 +116,8 @@ public class PlayerMovement : MonoBehaviour
                 rb2D.velocity = new Vector2(horizontal * speed, rb2D.velocity.y);
             } else {
                 horizontal = 0;
+                animator.SetBool("isJumping", false);
+                animator.SetFloat("speed", Mathf.Abs(horizontal));
             }
         }
     }
