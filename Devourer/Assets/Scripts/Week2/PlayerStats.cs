@@ -20,9 +20,12 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private Animator animator;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.name == "SpecialObst" || other.gameObject.tag == "Sword" || other.gameObject.name == "lightningStrike" || other.gameObject.name == "windStrike" || other.gameObject.name == "fireStrike" || other.gameObject.name == "waterStrike")
+        if (other.gameObject.tag == "Sword"|| other.gameObject.name == "SpecialObst" || other.gameObject.name == "lightningStrike" || other.gameObject.name == "windStrike" || other.gameObject.name == "fireStrike" || other.gameObject.name == "waterStrike")
         {
             PlayerTakesDamage(0.5f, 10);
+        }
+        if(other.gameObject.tag == "Sword") {
+            Destroy(other.gameObject);
         }
         if(other.gameObject.name == "SpecialObst") {
             float towards = (GetComponent<PlayerMovement>().IsFacingRight()) ? -5f : 5f;

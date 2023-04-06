@@ -75,8 +75,8 @@ public class BossBehaviour : MonoBehaviour
             yield return null;
         }
         mainCamera.transform.position = oriPos;
-        yield return new WaitForSeconds(2f);
         SetCripple(true);
+        yield return new WaitForSeconds(2f);
         timeToAttack = true;
     }
     

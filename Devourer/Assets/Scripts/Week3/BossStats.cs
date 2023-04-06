@@ -108,10 +108,8 @@ public class BossStats : BossBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        if(player != null) {
-            player.GetComponent<PlayerMovement>().enabled = true;
-        }
         SetCripple(true);
+        yield return new WaitForSeconds(Time.deltaTime);
         Destroy(gameObject);
     }
 

@@ -149,7 +149,6 @@ public class EnemyMovement : MonoBehaviour
         {
             sword = Instantiate(swordCol, transform.position + new Vector3(-1.25f, 0.065f), transform.rotation, transform);
         }
-        Destroy(sword, Time.deltaTime);
         yield return new WaitForSeconds(0.5f);
         attacking = false;
         animator.SetBool("attacking", attacking);
