@@ -36,7 +36,7 @@ public class DoorMechanism : MonoBehaviour
         float elapsedTime = 0f;
         float duration = 0.5f;
         float t = 0f;
-        while (elapsedTime <= duration)
+        while (elapsedTime < duration)
         {
             t = elapsedTime / duration;
             mainCamera.transform.position = Vector3.Lerp(oriPos, doorPos, t);
@@ -47,7 +47,7 @@ public class DoorMechanism : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         yield return new WaitForSeconds(3f);
         elapsedTime = 0f;
-        while (elapsedTime <= duration)
+        while (elapsedTime < duration)
         {
             t = elapsedTime / duration;
             mainCamera.transform.position = Vector3.Lerp(doorPos, oriPos, t);

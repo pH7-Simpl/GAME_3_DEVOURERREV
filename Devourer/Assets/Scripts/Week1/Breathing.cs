@@ -40,7 +40,7 @@ public class Breathing : MonoBehaviour
             {
                 currentCooldown -= Time.deltaTime;
             }
-            if (currentCooldown >= -0.01)
+            if (currentCooldown >= -0.5f)
             {
                 coolDownImage.fillAmount = Mathf.Clamp01(currentCooldown / cooldownDuration);
             }

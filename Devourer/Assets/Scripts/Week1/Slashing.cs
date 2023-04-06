@@ -52,7 +52,7 @@ public class Slashing : MonoBehaviour
             {
                 currentCooldown -= Time.deltaTime;
             }
-            if (currentCooldown >= -0.01f)
+            if (currentCooldown >= -0.5f)
             {
                 coolDownImage1.fillAmount = Mathf.Clamp01(currentCooldown / cooldownDuration);
                 coolDownImage2.fillAmount = Mathf.Clamp01(currentCooldown / cooldownDuration);

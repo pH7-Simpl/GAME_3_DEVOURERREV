@@ -55,7 +55,7 @@ public class BossBehaviour : MonoBehaviour
         float elapsedTime = 0f;
         float duration = 0.5f;
         float t = 0f;
-        while (elapsedTime <= duration)
+        while (elapsedTime < duration)
         {
             t = elapsedTime / duration;
             mainCamera.transform.position = Vector3.Lerp(oriPos, bossPos, t);
@@ -67,7 +67,7 @@ public class BossBehaviour : MonoBehaviour
         yield return new WaitForSeconds(1f);
         animator.SetBool("blinking", false);
         elapsedTime = 0f;
-        while (elapsedTime <= duration)
+        while (elapsedTime < duration)
         {
             t = elapsedTime / duration;
             mainCamera.transform.position = Vector3.Lerp(bossPos, oriPos, t);

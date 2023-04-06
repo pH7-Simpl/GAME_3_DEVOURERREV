@@ -51,7 +51,7 @@ public class GeyserSeedSpawn : MonoBehaviour
             {
                 currentCooldown -= Time.deltaTime;
             }
-            if (currentCooldown >= -0.01f)
+            if (currentCooldown >= -0.5f)
             {
                 coolDownImage.fillAmount = Mathf.Clamp01(currentCooldown / cooldownDuration);
             }
