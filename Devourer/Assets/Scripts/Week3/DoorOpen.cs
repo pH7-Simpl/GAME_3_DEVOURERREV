@@ -10,6 +10,7 @@ public class DoorOpen : MonoBehaviour
     private PlayerMovement pm;
     private gameManager gm;
     private GameObject keeptrack;
+    public GameObject boss;
     private bool playerEnteredRoom;
     private bool instansiated;
     private bool enemySpawned;
@@ -27,6 +28,7 @@ public class DoorOpen : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             enemiesInArea.Add(other.gameObject);
+            boss = GameObject.Find("Boss");
             Debug.Log(enemiesInArea.Count);
         }
     }

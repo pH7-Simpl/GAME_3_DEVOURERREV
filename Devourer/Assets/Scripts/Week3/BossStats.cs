@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossStats : MonoBehaviour
+public class BossStats : BossBehaviour
 {
     private int maxBossHealth;
-    private int bossHealth;
-    private Animator animator;
-    private BossBehaviour bb;
+    [SerializeField] private int bossHealth;
     private PlayerStats ps;
     private bool damaged;
     private Color originalColor;
@@ -16,10 +14,17 @@ public class BossStats : MonoBehaviour
         return died;
     }
     private void Awake() {
+        bs = this;
         maxBossHealth = 200;
         bossHealth = maxBossHealth;
         animator = GetComponent<Animator>();
-        bb = GetComponent<BossBehaviour>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        plyrAnim = player.GetComponent<Animator>();
+        s = player.GetComponent<Slashing>();
+        gss = player.GetComponent<GeyserSeedSpawn>();
+        ld = player.GetComponent<LightningDash>();
+        b = player.GetComponent<Breathing>();
+        mainCamera = Camera.main.gameObject;
         ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         damaged = false;
         originalColor = originalColor = GetComponent<SpriteRenderer>().color;
@@ -80,9 +85,32 @@ public class BossStats : MonoBehaviour
     private IEnumerator Die()
     {
         died = true;
-        animator.SetBool("died", died);
-        yield return new WaitForSeconds(1f);
+        player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        plyrAnim.SetFloat("speed", 0);
+        player.GetComponent<PlayerMovement>().enabled = false;
+        setSkillEnabledIfAlreadyUnlocked(false);
+        MainCameraPlaying mcp = mainCamera.GetComponent<MainCameraPlaying>();
+        mcp.enabled = false;
+        Vector3 oriPos = GameObject.FindGameObjectWithTag("Player").transform.position + new Vector3(0, 0, -5f);
+        Vector3 bossPos = transform.position + new Vector3(0, 0, -5f);
+        float elapsedTime = 0f;
+        float duration = 0.5f;
+        float t = 0f;
+        while (elapsedTime <= duration)
+        {
+            t = elapsedTime / duration;
+            mainCamera.transform.position = Vector3.Lerp(oriPos, bossPos, t);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        mainCamera.transform.position = bossPos;
         ps.PFBD();
+        yield return new WaitForSeconds(2f);
+        if(player != null) {
+            player.GetComponent<PlayerMovement>().enabled = true;
+        }
+        setSkillEnabledIfAlreadyUnlocked(true);
+        mcp.enabled = true;
         Destroy(gameObject);
     }
 
@@ -98,9 +126,9 @@ public class BossStats : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (bossHealth <= 0)
+        if (bossHealth <= 0 && !died)
         {
-            StartCoroutine("Die");
+            StartCoroutine(Die());
         }
     }
 }

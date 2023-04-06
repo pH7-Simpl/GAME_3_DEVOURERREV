@@ -59,6 +59,7 @@ public class DoorMechanism : MonoBehaviour
         }
         MainCameraPlaying mcp = mainCamera.GetComponent<MainCameraPlaying>();
         mcp.enabled = false;
+        Vector3 playerPoss = GameObject.FindGameObjectWithTag("Player").transform.position + new Vector3(0, 0, -5f);
         Vector3 oriPos = GameObject.FindGameObjectWithTag("Player").transform.position + new Vector3(0, 0, -5f);
         Vector3 doorPos = transform.position + new Vector3(0, 0, -5f);
         float elapsedTime = 0f;
@@ -78,7 +79,7 @@ public class DoorMechanism : MonoBehaviour
         while (elapsedTime <= duration)
         {
             t = elapsedTime / duration;
-            mainCamera.transform.position = Vector3.Lerp(doorPos, oriPos, t);
+            mainCamera.transform.position = Vector3.Lerp(doorPos, playerPoss, t);
             elapsedTime += Time.deltaTime;
             yield return null;
         }

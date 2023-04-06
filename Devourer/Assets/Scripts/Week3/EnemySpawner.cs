@@ -22,7 +22,8 @@ public class EnemySpawner : MonoBehaviour
         }
         for (int i = 0; i < enemy3Count; i++)
         {
-            Instantiate(enemyPrefabs[2], enemy3Pos[i], Quaternion.identity);
+            GameObject boss = Instantiate(enemyPrefabs[2], enemy3Pos[i], Quaternion.identity);
+            boss.name = "Boss";
         }
     }
 }

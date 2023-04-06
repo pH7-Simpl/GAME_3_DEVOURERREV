@@ -7,17 +7,18 @@ public class BossBehaviour : MonoBehaviour
     [SerializeField] private GameObject waterStrike;
     [SerializeField] private GameObject windStrike;
     [SerializeField] private GameObject fireStrike;
-    private GameObject player;
-    private Animator animator;
-    private Animator plyrAnim;
+    public GameObject player;
+    public Animator animator;
+    public Animator plyrAnim;
     private gameManager gm;
-    private Slashing s;
-    private GeyserSeedSpawn gss;
-    private LightningDash ld;
-    private Breathing b;
-    private GameObject mainCamera;
+    public Slashing s;
+    public GeyserSeedSpawn gss;
+    public LightningDash ld;
+    public Breathing b;
+    public GameObject mainCamera;
     private bool timeToAttack;
     private bool attacking;
+    public BossStats bs;
 
     private void Awake() {
         timeToAttack = false;
@@ -31,10 +32,11 @@ public class BossBehaviour : MonoBehaviour
         b = player.GetComponent<Breathing>();
         mainCamera = Camera.main.gameObject;
         StartCoroutine(EnterRoomAnimation());
+        bs = GetComponent<BossStats>();
     }
     void Update()
     {
-        if(timeToAttack && !attacking) {
+        if(timeToAttack && !attacking && !bs.GetDied()) {
             StartCoroutine(AttackSequence());
             attacking = true;
         }
@@ -43,7 +45,7 @@ public class BossBehaviour : MonoBehaviour
     private IEnumerator AttackSequence() {
         animator.SetBool("blinking", true);
         //EDIT FOR EACH SKILL DEBUG HERE
-        AttackStart(Random.Range(0, 4));
+        Attack(Random.Range(0, 4));
         yield return new WaitForSeconds(4f + Random.Range(0f, 1f));
         animator.SetBool("blinking", false);
         attacking = false;
@@ -89,7 +91,7 @@ public class BossBehaviour : MonoBehaviour
         timeToAttack = true;
     }
     
-    private void AttackStart(int choice){
+    private void Attack(int choice){
         switch (choice){
             case 0:
                 LightningStrikeOnce();
@@ -158,7 +160,7 @@ public class BossBehaviour : MonoBehaviour
         }
         fs.name = "fireStrike";
     }
-    private void setSkillEnabledIfAlreadyUnlocked(bool x)
+    public void setSkillEnabledIfAlreadyUnlocked(bool x)
     {
         s.SetCanSkill(x);
         gss.SetCanSkill(x);
