@@ -83,9 +83,6 @@ public class PlayerMovement : MonoBehaviour
             Dashing();
         }
         animator.SetFloat("speed", Mathf.Abs(horizontal));
-        if(!canMove) {
-            horizontal = 0;
-        }
     }
 
     private void FixedUpdate()
@@ -117,6 +114,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if(canMove) {
                 rb2D.velocity = new Vector2(horizontal * speed, rb2D.velocity.y);
+            } else {
+                horizontal = 0;
             }
         }
     }

@@ -53,6 +53,7 @@ public class LiftMechanism : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+        yield return new WaitForSeconds(duration);
         gm.SetLift1(false);
         SetCripple(true);
     }
@@ -72,13 +73,15 @@ public class LiftMechanism : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        gm.SetLift2(false);
         transform.localPosition = endPos;
+        yield return new WaitForSeconds(duration);
+        gm.SetLift2(false);
     }
     private void SetCripple(bool x)
     {
         if(player != null) {
             player.GetComponent<PlayerMovement>().SetCanMove(x);
+            player.GetComponent<Rigidbody2D>().velocity = (x) ? player.GetComponent<Rigidbody2D>().velocity : Vector2.zero;
         }
         mainCamera.GetComponent<MainCameraPlaying>().enabled = x;
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -86,6 +89,10 @@ public class LiftMechanism : MonoBehaviour
         {
             if (enemy != null)
             {
+                Rigidbody2D enemyRB = enemy.GetComponent<Rigidbody2D>();
+                if(enemyRB != null) {
+                    enemyRB.velocity = (x) ? enemyRB.velocity : Vector2.zero;
+                }
                 EnemyMovement enemy1 = enemy.GetComponent<EnemyMovement>();
                 EnemyAI enemy2 = enemy.GetComponent<EnemyAI>();
                 if (enemy1 != null)

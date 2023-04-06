@@ -54,6 +54,7 @@ public class DoorMechanism : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+        yield return new WaitForSeconds(duration);
         gm.SetDoorOpening(false);
         SetCripple(true);
     }
@@ -61,6 +62,7 @@ public class DoorMechanism : MonoBehaviour
     {
         if(player != null) {
             player.GetComponent<PlayerMovement>().SetCanMove(x);
+            player.GetComponent<Rigidbody2D>().velocity = (x) ? player.GetComponent<Rigidbody2D>().velocity : Vector2.zero;
         }
         mainCamera.GetComponent<MainCameraPlaying>().enabled = x;
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -68,6 +70,10 @@ public class DoorMechanism : MonoBehaviour
         {
             if (enemy != null)
             {
+                Rigidbody2D enemyRB = enemy.GetComponent<Rigidbody2D>();
+                if(enemyRB != null) {
+                    enemyRB.velocity = (x) ? enemyRB.velocity : Vector2.zero;
+                }
                 EnemyMovement enemy1 = enemy.GetComponent<EnemyMovement>();
                 EnemyAI enemy2 = enemy.GetComponent<EnemyAI>();
                 if (enemy1 != null)

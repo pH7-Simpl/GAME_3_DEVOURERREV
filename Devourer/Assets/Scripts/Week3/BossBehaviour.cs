@@ -75,8 +75,8 @@ public class BossBehaviour : MonoBehaviour
             yield return null;
         }
         mainCamera.transform.position = oriPos;
-        SetCripple(true);
         yield return new WaitForSeconds(2f);
+        SetCripple(true);
         timeToAttack = true;
     }
     
@@ -153,6 +153,7 @@ public class BossBehaviour : MonoBehaviour
     {
         if(player != null) {
             player.GetComponent<PlayerMovement>().SetCanMove(x);
+            player.GetComponent<Rigidbody2D>().velocity = (x) ? player.GetComponent<Rigidbody2D>().velocity : Vector2.zero;
         }
         mainCamera.GetComponent<MainCameraPlaying>().enabled = x;
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -160,6 +161,10 @@ public class BossBehaviour : MonoBehaviour
         {
             if (enemy != null)
             {
+                Rigidbody2D enemyRB = enemy.GetComponent<Rigidbody2D>();
+                if(enemyRB != null) {
+                    enemyRB.velocity = (x) ? enemyRB.velocity : Vector2.zero;
+                }
                 EnemyMovement enemy1 = enemy.GetComponent<EnemyMovement>();
                 EnemyAI enemy2 = enemy.GetComponent<EnemyAI>();
                 if (enemy1 != null)
