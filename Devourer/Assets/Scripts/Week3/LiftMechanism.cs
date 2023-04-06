@@ -31,7 +31,6 @@ public class LiftMechanism : MonoBehaviour
     private IEnumerator Lift1()
     {
         gm.SetLift1(true);
-        player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         SetCripple(false);
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)

@@ -49,7 +49,6 @@ public class BossBehaviour : MonoBehaviour
         attacking = false;
     }
     private IEnumerator EnterRoomAnimation() {
-        player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         SetCripple(false);
         MainCameraPlaying mcp = mainCamera.GetComponent<MainCameraPlaying>();
         mcp.enabled = false;

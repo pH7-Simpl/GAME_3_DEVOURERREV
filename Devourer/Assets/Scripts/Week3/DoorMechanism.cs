@@ -30,7 +30,6 @@ public class DoorMechanism : MonoBehaviour
     private IEnumerator openDoor()
     {
         gm.SetDoorOpening(true);
-        player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         SetCripple(false);
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
