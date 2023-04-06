@@ -32,29 +32,6 @@ public class LiftMechanism : MonoBehaviour
     {
         gm.SetLift1(true);
         SetCripple(false);
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemies)
-        {
-            if (enemy != null)
-            {
-                EnemyMovement enemy1 = enemy.GetComponent<EnemyMovement>();
-                EnemyAI enemy2 = enemy.GetComponent<EnemyAI>();
-                if (enemy1 != null)
-                {
-                    enemy1.enabled = false;
-                }
-                if (enemy2 != null)
-                {
-                    enemy2.enabled = false;
-                }
-                Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
-                if(rb != null) {
-                    enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                }
-            }
-        }
-        MainCameraPlaying mcp = mainCamera.GetComponent<MainCameraPlaying>();
-        mcp.enabled = false;
         Vector3 oriPos = GameObject.FindGameObjectWithTag("Player").transform.position + new Vector3(0, 0, -5f);
         Vector3 liftPos = transform.position + new Vector3(0, 0, -5f);
         float elapsedTime = 0f;
@@ -78,30 +55,11 @@ public class LiftMechanism : MonoBehaviour
         }
         gm.SetLift1(false);
         SetCripple(true);
-        mcp.enabled = true;
-        foreach (GameObject enemy in enemies)
-        {
-            if (enemy !=null)
-            {
-                EnemyMovement enemy1 = enemy.GetComponent<EnemyMovement>();
-                EnemyAI enemy2 = enemy.GetComponent<EnemyAI>();
-                if (enemy1 != null)
-                {
-                    enemy1.enabled = true;
-                }
-                if (enemy2 != null)
-                {
-                    enemy2.enabled = true;
-                }
-            }
-        }
     }
     private IEnumerator Lift2() {
         gm.SetLift2(true);
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         SetCripple(false);
-        MainCameraPlaying mcp = mainCamera.GetComponent<MainCameraPlaying>();
-        mcp.enabled = false;
         Vector3 oriLiftPos = transform.localPosition;
         Vector3 endPos = transform.localPosition + new Vector3(0f, 26.547f, 0f);
         float elapsedTime = 0f;
@@ -121,6 +79,24 @@ public class LiftMechanism : MonoBehaviour
     {
         if(player != null) {
             player.GetComponent<PlayerMovement>().SetCanMove(x);
+        }
+        mainCamera.GetComponent<MainCameraPlaying>().enabled = x;
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            if (enemy != null)
+            {
+                EnemyMovement enemy1 = enemy.GetComponent<EnemyMovement>();
+                EnemyAI enemy2 = enemy.GetComponent<EnemyAI>();
+                if (enemy1 != null)
+                {
+                    enemy1.enabled = x;
+                }
+                if (enemy2 != null)
+                {
+                    enemy2.enabled = x;
+                }
+            }
         }
         s.SetCanSkill(x);
         gss.SetCanSkill(x);

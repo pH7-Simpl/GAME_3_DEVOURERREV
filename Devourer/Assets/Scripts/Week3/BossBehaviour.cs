@@ -50,8 +50,6 @@ public class BossBehaviour : MonoBehaviour
     }
     private IEnumerator EnterRoomAnimation() {
         SetCripple(false);
-        MainCameraPlaying mcp = mainCamera.GetComponent<MainCameraPlaying>();
-        mcp.enabled = false;
         Vector3 oriPos = GameObject.FindGameObjectWithTag("Player").transform.position + new Vector3(0, 0, -5f);
         Vector3 bossPos = transform.position + new Vector3(0, 0, -5f);
         float elapsedTime = 0f;
@@ -78,7 +76,6 @@ public class BossBehaviour : MonoBehaviour
         }
         mainCamera.transform.position = oriPos;
         SetCripple(true);
-        mcp.enabled = true;
         yield return new WaitForSeconds(2f);
         timeToAttack = true;
     }
@@ -152,10 +149,28 @@ public class BossBehaviour : MonoBehaviour
         }
         fs.name = "fireStrike";
     }
-    public void SetCripple(bool x)
+    private void SetCripple(bool x)
     {
         if(player != null) {
             player.GetComponent<PlayerMovement>().SetCanMove(x);
+        }
+        mainCamera.GetComponent<MainCameraPlaying>().enabled = x;
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            if (enemy != null)
+            {
+                EnemyMovement enemy1 = enemy.GetComponent<EnemyMovement>();
+                EnemyAI enemy2 = enemy.GetComponent<EnemyAI>();
+                if (enemy1 != null)
+                {
+                    enemy1.enabled = x;
+                }
+                if (enemy2 != null)
+                {
+                    enemy2.enabled = x;
+                }
+            }
         }
         s.SetCanSkill(x);
         gss.SetCanSkill(x);
