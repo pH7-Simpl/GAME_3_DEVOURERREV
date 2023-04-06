@@ -62,7 +62,7 @@ public class LiftMechanism : MonoBehaviour
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         SetCripple(false);
         Vector3 oriLiftPos = transform.localPosition;
-        Vector3 endPos = transform.localPosition + new Vector3(0f, 26.547f, 0f);
+        Vector3 endPos = transform.localPosition + new Vector3(0f, 26.541f, 0f);
         float elapsedTime = 0f;
         float duration = 3f;
         float t = 0f;

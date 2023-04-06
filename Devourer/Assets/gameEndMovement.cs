@@ -1,50 +1,31 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class gameEndMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
-    public float GetJumpPower()
-    {
-        return jumpPower;
-    }
     [SerializeField] private int maxJumps;
     [SerializeField] private float doublePressTime;
     [SerializeField] private float dashPower;
     [SerializeField] private float dashingTime;
     [SerializeField] private float dashingCooldown;
-    [SerializeField] private float knockbackForce;
-    [SerializeField] private bool dashUpgrade;
-    public void SetDashUpgrade(bool x)
-    {
-        dashUpgrade = x;
-    }
     [SerializeField] private Rigidbody2D rb2D;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private Animator animator;
-    [SerializeField] private GameObject healthBar;
-    private bool canMove;
-    public void SetCanMove(bool x) {
-        canMove = x;
-    }
-    private float horizontal;
-    private bool isFacingRight;
-    public bool IsFacingRight()
-    {
-        return isFacingRight;
-    }
+    [SerializeField] public Animator animator;
+    public float horizontal;
+    public bool isFacingRight;
     private bool jumping;
     private int jumpsRemaining;
     private float lastPressTime;
     private bool canDash;
     private bool isDashing;
-    private PlayerStats ps;
-    private bool bombHitExecuted;
-
+    private zoomOut zo;
     private void Awake()
     {
+        zo = Camera.main.GetComponent<zoomOut>();
         speed = 8f;
         jumpPower = 8f;
         maxJumps = 1;
@@ -52,25 +33,18 @@ public class PlayerMovement : MonoBehaviour
         dashPower = 10f;
         dashingTime = 0.2f;
         dashingCooldown = 1f;
-        knockbackForce = 10f;
         jumpsRemaining = maxJumps;
         GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         mainCamera.transform.position = transform.position + new Vector3(0f, 0f, -5f);
         mainCamera.transform.SetParent(transform);
-        ps = GetComponent<PlayerStats>();
-        healthBar = transform.GetChild(1).gameObject;
-        dashUpgrade = false;
-        canDash = true;
-        bombHitExecuted = false;
-        isFacingRight = true;
-        canMove = true;
         isDashing = false;
+        canDash = true;
+        isFacingRight = true;
     }
-
 
     private void Update()
     {
-        if (isDashing || ps.IsHit() || !canMove)
+        if (isDashing || zo.running)
         {
             return;
         }
@@ -78,70 +52,24 @@ public class PlayerMovement : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         Flip();
         Jump();
-
-        if (!dashUpgrade && Time.timeScale != 0)
-        {
-            Dashing();
-        }
+        Dashing();
         animator.SetFloat("speed", Mathf.Abs(horizontal));
     }
-
     private void FixedUpdate()
     {
         if (isDashing)
         {
             return;
         }
-        if (ps.IsHit())
-        {
-            GameObject sword = GameObject.FindGameObjectWithTag("Sword");
-            if (sword != null)
-            {
-                GameObject enemy = sword.transform.parent.gameObject;
-                EnemyMovement em = enemy.GetComponent<EnemyMovement>();
-                if (em != null)
-                {
-                    float xDirection = em.IsFacingRight() ? knockbackForce : -knockbackForce;
-                    rb2D.velocity = new Vector2(xDirection, rb2D.velocity.y);
-                }
-            }
-            if (!bombHitExecuted)
-            {
-                bomb();
-                bombHitExecuted = true;
-            }
-        }
         else
         {
-            if(canMove) {
-                rb2D.velocity = new Vector2(horizontal * speed, rb2D.velocity.y);
-            } else {
-                horizontal = 0;
-                animator.SetBool("isJumping", false);
-                animator.SetFloat("speed", Mathf.Abs(horizontal));
-            }
+            rb2D.velocity = new Vector2(horizontal * speed, rb2D.velocity.y);
         }
-    }
-    private void bomb() {
-        StartCoroutine(callBombCheck());
-    }
-    private IEnumerator callBombCheck()
-    {
-        GameObject bomb = GameObject.FindGameObjectWithTag("Bomb");
-        if (bomb != null && !bombHitExecuted)
-        {
-            Vector2 knockbackDirection = (transform.position - bomb.transform.position).normalized;
-            rb2D.velocity = knockbackDirection * knockbackForce;
-        }
-        yield return new WaitForSeconds(Time.deltaTime);
-        bombHitExecuted = false;
-
     }
     public bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.01f, groundLayer);
     }
-
     private void Flip()
     {
         bool shouldFlip = (isFacingRight && horizontal < 0f) || (!isFacingRight && horizontal > 0f);
@@ -152,13 +80,7 @@ public class PlayerMovement : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
-        if(isFacingRight) {
-            healthBar.transform.localScale = new Vector3(1f, 1f, 1f);
-        } else {
-            healthBar.transform.localScale = new Vector3(-1f, 1f, 1f);
-        }
     }
-
     private void Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && jumpsRemaining > 0)

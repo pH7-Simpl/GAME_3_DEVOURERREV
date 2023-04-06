@@ -12,6 +12,7 @@ TagManager:
   - Marks
   - Coll
   - waterStrike
+  - Blackout
   layers:
   - Default
   - TransparentFX
