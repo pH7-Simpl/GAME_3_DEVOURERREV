@@ -30,8 +30,11 @@ public class PlayerStats : MonoBehaviour
         }
     }
     private void OnTriggerExit2D(Collider2D other) {
-        if (other.gameObject.name == "SpecialObst" || other.gameObject.tag == "Sword" || other.gameObject.name == "lightningStrike" || other.gameObject.name == "windStrike" || other.gameObject.name == "fireStrike" || other.gameObject.name == "waterStrike")
+        if (other.gameObject.name == "SpecialObst" || other.gameObject.name == "lightningStrike" || other.gameObject.name == "windStrike" || other.gameObject.name == "fireStrike" || other.gameObject.name == "waterStrike")
         {
+            Delay();
+        }
+        if(other.gameObject.tag == "Sword" || other.gameObject.tag == "Bomb") {
             Delay();
         }
     }
