@@ -10,13 +10,11 @@ public class LiftMechanism : MonoBehaviour
     private GeyserSeedSpawn gss;
     private LightningDash ld;
     private Breathing b;
-    private Animator plyrAnim;
     private void Awake()
     {
         gm = GameObject.Find("gameManager").GetComponent<gameManager>();
         gm.SetLift1(false);
         player = GameObject.FindGameObjectWithTag("Player");
-        plyrAnim = player.GetComponent<Animator>();
         s = player.GetComponent<Slashing>();
         gss = player.GetComponent<GeyserSeedSpawn>();
         ld = player.GetComponent<LightningDash>();
@@ -34,9 +32,7 @@ public class LiftMechanism : MonoBehaviour
     {
         gm.SetLift1(true);
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        plyrAnim.SetFloat("speed", 0);
-        player.GetComponent<PlayerMovement>().enabled = false;
-        setSkillEnabledIfAlreadyUnlocked(false);
+        SetCripple(false);
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
         {
@@ -82,10 +78,7 @@ public class LiftMechanism : MonoBehaviour
             yield return null;
         }
         gm.SetLift1(false);
-        if(player != null) {
-            player.GetComponent<PlayerMovement>().enabled = true;
-        }
-        setSkillEnabledIfAlreadyUnlocked(true);
+        SetCripple(true);
         mcp.enabled = true;
         foreach (GameObject enemy in enemies)
         {
@@ -107,9 +100,7 @@ public class LiftMechanism : MonoBehaviour
     private IEnumerator Lift2() {
         gm.SetLift2(true);
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        plyrAnim.SetFloat("speed", 0);
-        player.GetComponent<PlayerMovement>().enabled = false;
-        setSkillEnabledIfAlreadyUnlocked(false);
+        SetCripple(false);
         MainCameraPlaying mcp = mainCamera.GetComponent<MainCameraPlaying>();
         mcp.enabled = false;
         Vector3 oriLiftPos = transform.localPosition;
@@ -124,17 +115,14 @@ public class LiftMechanism : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        transform.position = endPos;
         gm.SetLift2(false);
-        if(player != null) {
-            player.GetComponent<PlayerMovement>().enabled = true;
-        }
-        setSkillEnabledIfAlreadyUnlocked(true);
         transform.localPosition = endPos;
-        mcp.enabled = true;
     }
-    private void setSkillEnabledIfAlreadyUnlocked(bool x)
+    private void SetCripple(bool x)
     {
+        if(player != null) {
+            player.GetComponent<PlayerMovement>().SetCanMove(x);
+        }
         s.SetCanSkill(x);
         gss.SetCanSkill(x);
         ld.SetCanSkill(x);

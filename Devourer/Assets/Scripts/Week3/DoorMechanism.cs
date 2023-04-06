@@ -5,7 +5,6 @@ public class DoorMechanism : MonoBehaviour
 {
     private GameObject mainCamera;
     private Animator animator;
-    private Animator plyrAnim;
     private GameObject player;
     private gameManager gm;
     private Slashing s;
@@ -18,7 +17,6 @@ public class DoorMechanism : MonoBehaviour
         gm = GameObject.Find("gameManager").GetComponent<gameManager>();
         gm.SetDoorOpening(false);
         player = GameObject.FindGameObjectWithTag("Player");
-        plyrAnim = player.GetComponent<Animator>();
         s = player.GetComponent<Slashing>();
         gss = player.GetComponent<GeyserSeedSpawn>();
         ld = player.GetComponent<LightningDash>();
@@ -33,9 +31,7 @@ public class DoorMechanism : MonoBehaviour
     {
         gm.SetDoorOpening(true);
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        plyrAnim.SetFloat("speed", 0);
-        player.GetComponent<PlayerMovement>().enabled = false;
-        setSkillEnabledIfAlreadyUnlocked(false);
+        SetCripple(false);
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
         {
@@ -83,10 +79,7 @@ public class DoorMechanism : MonoBehaviour
             yield return null;
         }
         gm.SetDoorOpening(false);
-        if(player != null) {
-            player.GetComponent<PlayerMovement>().enabled = true;
-        }
-        setSkillEnabledIfAlreadyUnlocked(true);
+        SetCripple(true);
         mcp.enabled = true;
         foreach (GameObject enemy in enemies)
         {
@@ -105,11 +98,15 @@ public class DoorMechanism : MonoBehaviour
             }
         }
     }
-    private void setSkillEnabledIfAlreadyUnlocked(bool x)
+    private void SetCripple(bool x)
     {
+        if(player != null) {
+            player.GetComponent<PlayerMovement>().SetCanMove(x);
+        }
         s.SetCanSkill(x);
         gss.SetCanSkill(x);
         ld.SetCanSkill(x);
         b.SetCanSkill(x);
+
     }
 }

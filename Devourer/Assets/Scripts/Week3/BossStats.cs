@@ -19,7 +19,6 @@ public class BossStats : BossBehaviour
         bossHealth = maxBossHealth;
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
-        plyrAnim = player.GetComponent<Animator>();
         s = player.GetComponent<Slashing>();
         gss = player.GetComponent<GeyserSeedSpawn>();
         ld = player.GetComponent<LightningDash>();
@@ -86,9 +85,8 @@ public class BossStats : BossBehaviour
     {
         died = true;
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        plyrAnim.SetFloat("speed", 0);
         player.GetComponent<PlayerMovement>().enabled = false;
-        setSkillEnabledIfAlreadyUnlocked(false);
+        SetCripple(false);
         MainCameraPlaying mcp = mainCamera.GetComponent<MainCameraPlaying>();
         mcp.enabled = false;
         Vector3 oriPos = GameObject.FindGameObjectWithTag("Player").transform.position + new Vector3(0, 0, -5f);
@@ -117,7 +115,7 @@ public class BossStats : BossBehaviour
         if(player != null) {
             player.GetComponent<PlayerMovement>().enabled = true;
         }
-        setSkillEnabledIfAlreadyUnlocked(true);
+        SetCripple(true);
         mcp.enabled = true;
         Destroy(gameObject);
     }

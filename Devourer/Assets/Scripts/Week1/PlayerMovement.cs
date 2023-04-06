@@ -25,7 +25,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject healthBar;
-
+    private bool canMove;
+    public void SetCanMove(bool x) {
+        canMove = x;
+    }
     private float horizontal;
     private bool isFacingRight;
     public bool IsFacingRight()
@@ -60,12 +63,13 @@ public class PlayerMovement : MonoBehaviour
         canDash = true;
         bombHitExecuted = false;
         isFacingRight = true;
+        canMove = true;
     }
 
 
     private void Update()
     {
-        if (isDashing || ps.IsHit())
+        if (isDashing || ps.IsHit() || !canMove)
         {
             return;
         }
@@ -78,8 +82,10 @@ public class PlayerMovement : MonoBehaviour
         {
             Dashing();
         }
-
         animator.SetFloat("speed", Mathf.Abs(horizontal));
+        if(!canMove) {
+            horizontal = 0;
+        }
     }
 
     private void FixedUpdate()
@@ -109,7 +115,9 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            rb2D.velocity = new Vector2(horizontal * speed, rb2D.velocity.y);
+            if(canMove) {
+                rb2D.velocity = new Vector2(horizontal * speed, rb2D.velocity.y);
+            }
         }
     }
     private void bomb() {
