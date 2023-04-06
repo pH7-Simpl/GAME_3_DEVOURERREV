@@ -6,6 +6,7 @@ public class zoomOut : GoingOutside
     public Transform player;
     public float zoomDuration = 5f;
     gameEndMovement gem;
+    CreditsLerper cl;
 
     private void Awake()
     {

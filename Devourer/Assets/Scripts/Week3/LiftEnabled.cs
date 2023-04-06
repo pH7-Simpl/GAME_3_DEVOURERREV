@@ -27,7 +27,6 @@ public class LiftEnabled : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             enemiesInArea.Add(other.gameObject);
-            Debug.Log(enemiesInArea.Count);
         }
     }
 

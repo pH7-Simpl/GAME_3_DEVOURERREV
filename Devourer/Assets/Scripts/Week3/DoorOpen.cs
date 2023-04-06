@@ -29,7 +29,6 @@ public class DoorOpen : MonoBehaviour
         {
             enemiesInArea.Add(other.gameObject);
             boss = GameObject.Find("Boss");
-            Debug.Log(enemiesInArea.Count);
         }
     }
 

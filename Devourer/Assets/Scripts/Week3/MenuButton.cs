@@ -14,7 +14,7 @@ public class MenuButton : MonoBehaviour
     }
     public void quitGame()
     {
-        Debug.Log("I Quit");
+        Debug.Log("Application Quit");
         Application.Quit();
     }
     public void SetHover(int y) {
