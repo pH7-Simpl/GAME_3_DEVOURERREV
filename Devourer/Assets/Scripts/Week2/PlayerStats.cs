@@ -20,13 +20,13 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private Animator animator;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Sword" || other.gameObject.name == "lightningStrike" || other.gameObject.name == "windStrike" || other.gameObject.name == "fireStrike")
+        if (other.gameObject.tag == "Sword" || other.gameObject.name == "lightningStrike" || other.gameObject.name == "windStrike" || other.gameObject.name == "fireStrike" || other.gameObject.name == "waterStrike")
         {
             PlayerTakesDamage(0.5f, 10);
         }
     }
     private void OnTriggerExit2D(Collider2D other) {
-        if (other.gameObject.tag == "Sword" || other.gameObject.name == "lightningStrike" || other.gameObject.name == "windStrike" || other.gameObject.name == "fireStrike")
+        if (other.gameObject.tag == "Sword" || other.gameObject.name == "lightningStrike" || other.gameObject.name == "windStrike" || other.gameObject.name == "fireStrike" || other.gameObject.name == "waterStrike")
         {
             Delay();
         }
@@ -139,11 +139,11 @@ public class PlayerStats : MonoBehaviour
         Destroy(textPopup);
     }
 
-    public void PFDE()
+    public void PFED()
     {
         StartCoroutine(PlayerGetPoints(10));
     }
-    public void PFDB()
+    public void PFBD()
     {
         StartCoroutine(PlayerGetPoints(100));
     }

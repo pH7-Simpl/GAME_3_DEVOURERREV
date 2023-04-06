@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightningStrike: {fileID: 6083165782619926683, guid: b5f747b5285788849b1851f1c51d8080, type: 3}
-  waterStrike: {fileID: 0}
+  waterStrike: {fileID: 1219058222146738051, guid: 099796712240078478071df9843f38e9, type: 3}
   windStrike: {fileID: 1003604292641303502, guid: 54102d48c65dd3447b17d2788f23aeb8, type: 3}
   fireStrike: {fileID: 4304993438160818046, guid: 3b7064d0d1667ef4fa1aa5048b36c418, type: 3}
 --- !u!95 &5335456980380495366

@@ -82,7 +82,7 @@ public class BossStats : MonoBehaviour
         died = true;
         animator.SetBool("died", died);
         yield return new WaitForSeconds(1f);
-        ps.PFDB();
+        ps.PFBD();
         Destroy(gameObject);
     }
 

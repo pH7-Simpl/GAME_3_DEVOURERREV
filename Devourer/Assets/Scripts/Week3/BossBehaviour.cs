@@ -43,7 +43,7 @@ public class BossBehaviour : MonoBehaviour
     private IEnumerator AttackSequence() {
         animator.SetBool("blinking", true);
         //EDIT FOR EACH SKILL DEBUG HERE
-        AttackStart(Random.Range(3, 4));
+        AttackStart(Random.Range(0, 4));
         yield return new WaitForSeconds(4f + Random.Range(0f, 1f));
         animator.SetBool("blinking", false);
         attacking = false;
@@ -86,7 +86,6 @@ public class BossBehaviour : MonoBehaviour
         setSkillEnabledIfAlreadyUnlocked(true);
         mcp.enabled = true;
         yield return new WaitForSeconds(2f);
-        //bool to start attack set to true after playing animation
         timeToAttack = true;
     }
     
@@ -124,14 +123,21 @@ public class BossBehaviour : MonoBehaviour
         l3.name = "lightningStrike";
         yield return new WaitForSeconds(0.5f);
         Destroy(l3);
-        Debug.Log("Lightning Strike Finished");
     }
     private void WaterStrikeOnce() {
         StartCoroutine(WaterStrike());
     }
     private IEnumerator WaterStrike() {
         yield return new WaitForSeconds(0.5f);
-        Debug.Log("Water Strike Finished");
+        GameObject ws1 = Instantiate(waterStrike, new Vector3(6f,28f,0f), Quaternion.identity, transform);
+        ws1.name = "waterStrike";
+        yield return new WaitForSeconds(0.5f);
+        GameObject ws2 = Instantiate(waterStrike, new Vector3(-1f,28f,0f), Quaternion.identity, transform);
+        ws2.name = "waterStrike";
+        yield return new WaitForSeconds(0.5f);
+        GameObject ws3 = Instantiate(waterStrike, new Vector3(-7.7f,28f,0f), Quaternion.identity, transform);
+        ws3.name = "waterStrike";
+        yield return new WaitForSeconds(0.5f);
     }
     private void WindStrikeOnce() {
         StartCoroutine(WindStrike());
@@ -140,7 +146,6 @@ public class BossBehaviour : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         GameObject ws = GameObject.Instantiate(windStrike, transform.position, Quaternion.identity, transform);
         ws.name = "windStrike";
-        Debug.Log("Wind Strike Finished");
     }
     private void FireStrikeOnce() {
         StartCoroutine(FireStrike());
@@ -152,7 +157,6 @@ public class BossBehaviour : MonoBehaviour
             fs.transform.position = fs.transform.position - new Vector3(0f, 3.5f, 0f);
         }
         fs.name = "fireStrike";
-        Debug.Log("Fire Strike Finished");
     }
     private void setSkillEnabledIfAlreadyUnlocked(bool x)
     {
