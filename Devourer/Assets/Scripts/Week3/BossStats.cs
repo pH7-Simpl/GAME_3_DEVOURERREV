@@ -105,7 +105,15 @@ public class BossStats : BossBehaviour
         }
         mainCamera.transform.position = bossPos;
         ps.PFBD();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
+        elapsedTime = 0f;
+        while (elapsedTime <= duration)
+        {
+            t = elapsedTime / duration;
+            mainCamera.transform.position = Vector3.Lerp(bossPos, oriPos, t);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
         if(player != null) {
             player.GetComponent<PlayerMovement>().enabled = true;
         }
