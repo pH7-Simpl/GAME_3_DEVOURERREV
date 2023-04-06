@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 15880
+  controlID: 34600
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 15881
+  controlID: 34601
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 15882
+  controlID: 34602
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -227,10 +227,10 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 376.66666}
-      m_SelectedIDs: 8ca8ffff
-      m_LastClickedID: -22388
-      m_ExpandedIDs: 5ef9ffff16faffff02600000266000004a60000044610000
+      scrollPos: {x: 0, y: 192}
+      m_SelectedIDs: 4aff0100
+      m_LastClickedID: 130890
+      m_ExpandedIDs: 769affff5ef9ffff16faffff02600000266000004a60000044610000c4fb01004aff0100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -534,7 +534,7 @@ MonoBehaviour:
       containerId: overlay-toolbar__top
       floating: 0
       collapsed: 0
-      displayed: 0
+      displayed: 1
       snapOffset: {x: 0, y: 25.333334}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
@@ -563,9 +563,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 2.830788, y: 29.739302, z: 0.0038088858}
+    m_Target: {x: -8.567761, y: 27.10955, z: -0.10671903}
     speed: 2
-    m_Value: {x: 2.830788, y: 29.739302, z: 0.0038088858}
+    m_Value: {x: 0.23920827, y: 0.39016202, z: 0.00014042493}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -616,9 +616,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 5.226124
+    m_Target: 8.319464
     speed: 2
-    m_Value: 5.226124
+    m_Value: 1.9093384
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -717,14 +717,14 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
-    - e00: 0.9398841
+    - e00: 0.9011127
       e01: 0
       e02: 0
-      e03: -328.9595
+      e03: -409.1113
       e10: 0
-      e11: 0.9398841
+      e11: 0.9011127
       e12: 0
-      e13: 49.000786
+      e13: -93.898094
       e20: 0
       e21: 0
       e22: 1
@@ -829,14 +829,14 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
-    - e00: 1
+    - e00: 0.61610574
       e01: 0
       e02: 0
-      e03: 0
+      e03: -33.795303
       e10: 0
-      e11: 1
+      e11: 0.61610574
       e12: 0
-      e13: 0
+      e13: 25.407135
       e20: 0
       e21: 0
       e22: 1
@@ -846,9 +846,9 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 582a8b2737e726447a028cceca64dee2, type: 2}
+  m_AnimatorController: {fileID: 9100000, guid: 14e9b6e6c854dd04c80fd28e370607a6, type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 2558336602556138578, guid: 582a8b2737e726447a028cceca64dee2, type: 2}
+  - m_Target: {fileID: -4280988405567733726, guid: 14e9b6e6c854dd04c80fd28e370607a6, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
@@ -871,7 +871,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ProjectBrowser
+  m_Name: AnimationWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -880,15 +880,15 @@ MonoBehaviour:
     y: 273.33334
     width: 892.6667
     height: 305.99997
-  m_MinSize: {x: 231, y: 271}
-  m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 12}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 11}
   - {fileID: 12}
   - {fileID: 13}
   - {fileID: 14}
-  m_Selected: 1
+  m_Selected: 3
   m_LastSelected: 0
 --- !u!114 &11
 MonoBehaviour:
@@ -932,22 +932,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Week3
+    - Assets/Prefabs/Enemies
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 66
   m_LastFolders:
-  - Assets/Scripts/Week3
+  - Assets/Prefabs/Enemies
   m_LastFoldersGridSize: 66
   m_LastProjectPath: C:\Users\ASUS\Documents\GitHub\GAME_3_Devourer\Devourer
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 279.00003}
-    m_SelectedIDs: dc670000
-    m_LastClickedID: 26588
-    m_ExpandedIDs: 0000000026670000286700002a6700002c6700002e670000306700003267000034670000366700003867000000ca9a3b
+    scrollPos: {x: 0, y: 215}
+    m_SelectedIDs: c4670000
+    m_LastClickedID: 26564
+    m_ExpandedIDs: 0000000026670000286700002a6700002c6700002e6700003067000032670000346700003667000038670000b467000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -975,7 +975,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000026670000286700002a6700002c6700002e670000306700003267000034670000366700003867000000ca9a3b
+    m_ExpandedIDs: 0000000026670000286700002a6700002c6700002e6700003067000032670000346700003667000038670000b467000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1000,9 +1000,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 562b0200
+    m_LastClickedInstanceID: 142166
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c623000010720000266400002c6400002a630000746400004a600000a0660000a8660000c064000000000000ee6400000e660000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1073,22 +1073,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Week3
+    - Assets/Images/Enemy/Boss
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 83
   m_LastFolders:
-  - Assets/Scripts/Week3
+  - Assets/Images/Enemy/Boss
   m_LastFoldersGridSize: 83
   m_LastProjectPath: C:\Users\ASUS\Documents\GitHub\GAME_3_Devourer\Devourer
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 279.00003}
-    m_SelectedIDs: dc670000
-    m_LastClickedID: 26588
-    m_ExpandedIDs: 0000000026670000286700002a6700002c6700002e670000306700003267000034670000366700003867000000ca9a3b
+    scrollPos: {x: 0, y: 99.00003}
+    m_SelectedIDs: 506e0000
+    m_LastClickedID: 28240
+    m_ExpandedIDs: 0000000026670000286700002a6700002c6700002e6700003067000032670000346700003667000038670000b467000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1116,7 +1116,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000026670000286700002a6700002c6700002e670000306700003267000034670000366700003867000000ca9a3b
+    m_ExpandedIDs: 0000000026670000286700002a6700002c6700002e6700003067000032670000346700003667000038670000b467000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1141,8 +1141,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 8ca8ffff
-    m_LastClickedInstanceID: -22388
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 266400002c64000000000000f6810400
     m_RenameOverlay:
@@ -1232,7 +1232,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -1698
+  m_LastSelectedObjectID: 130890
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1295,7 +1295,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 218
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:

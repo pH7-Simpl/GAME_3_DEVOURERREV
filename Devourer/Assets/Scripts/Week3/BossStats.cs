@@ -104,8 +104,8 @@ public class BossStats : BossBehaviour
             yield return null;
         }
         mainCamera.transform.position = bossPos;
-        ps.PFBD();
-        yield return new WaitForSeconds(3f);
+        animator.SetBool("died", died);
+        yield return new WaitForSeconds(2f);
         elapsedTime = 0f;
         while (elapsedTime <= duration)
         {
@@ -136,6 +136,7 @@ public class BossStats : BossBehaviour
     {
         if (bossHealth <= 0 && !died)
         {
+            ps.PFBD();
             StartCoroutine(Die());
         }
     }

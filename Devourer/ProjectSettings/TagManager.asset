@@ -11,6 +11,7 @@ TagManager:
   - Door
   - Marks
   - Coll
+  - waterStrike
   layers:
   - Default
   - TransparentFX
