@@ -65,7 +65,6 @@ public class DoorOpen : MonoBehaviour
             }
             if (EnemiesDefeated() && !doorIsOpened && pm.IsGrounded() && enemySpawned)
             {
-                Debug.Log(enemiesInArea.Count);
                 dm.openDoer();
                 this.enabled = false;
             }

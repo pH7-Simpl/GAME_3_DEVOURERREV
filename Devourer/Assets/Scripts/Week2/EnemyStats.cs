@@ -41,12 +41,25 @@ public class EnemyStats : MonoBehaviour
         if (other.gameObject.name == "FireBreath")
         {
             enemyHealth -=1;
-            EnemyTakesDamage(0.2f, 0);
+            EnemyTakesDamage(1f, 0);
         }
         if (other.gameObject.tag == "Coll")
         {
             EnemyKnockBack(0.5f);
         }
+    }
+    private void OnTriggerExit2D(Collider2D other) {
+        if (other.gameObject.name == "LightningDash" || other.gameObject.name == "WindSlash" || other.gameObject.name == "FireBreath")
+        {
+           Delay();
+        }
+    }
+    private void Delay() {
+        StartCoroutine(delay());
+    }
+    private IEnumerator delay() {
+        yield return new WaitForSeconds(0.5f);
+        healthBar.SetActive(false);
     }
 
     private void Awake()
@@ -76,12 +89,6 @@ public class EnemyStats : MonoBehaviour
             StartCoroutine("Die");
         }
     }
-    private IEnumerator ShowHealthBar(float duration)
-    {
-        healthBar.SetActive(true);
-        yield return new WaitForSeconds(duration);
-        healthBar.SetActive(false);
-    }
     public void EnemyTakesDamage(float duration, int damage) {
         StartCoroutine(EnemyHit(duration, damage));
     }
@@ -91,8 +98,8 @@ public class EnemyStats : MonoBehaviour
             StartCoroutine(colorForDamaged(duration));
             enemyHealth -= damage;
             damaged = true;
+            healthBar.SetActive(true);
         }
-        StartCoroutine(ShowHealthBar(duration));
         hit = true;
         animator.SetBool("hit", hit);
         yield return new WaitForSeconds(duration);

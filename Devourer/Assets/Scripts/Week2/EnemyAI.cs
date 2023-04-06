@@ -65,6 +65,19 @@ public class EnemyAI : MonoBehaviour
             }
         }
     }
+    private void OnTriggerExit2D(Collider2D other) {
+        if (other.gameObject.name == "LightningDash" || other.gameObject.name == "WindSlash")
+        {
+           Delay();
+        }
+    }
+    private void Delay() {
+        StartCoroutine(delay());
+    }
+    private IEnumerator delay() {
+        yield return new WaitForSeconds(0.5f);
+        healthBar.SetActive(false);
+    }
     private void Awake()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -103,7 +116,6 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     private void Update()
     {
         if (enemyHealth <= 0)
@@ -170,12 +182,6 @@ public class EnemyAI : MonoBehaviour
             Debug.Log("test");
         }
     }
-    private IEnumerator ShowHealthBar(float duration)
-    {
-        healthBar.SetActive(true);
-        yield return new WaitForSeconds(duration);
-        healthBar.SetActive(false);
-    }
     public void EnemyTakesDamage(float duration, int damage)
     {
         StartCoroutine(EnemyHit(duration, damage));
@@ -187,8 +193,8 @@ public class EnemyAI : MonoBehaviour
             StartCoroutine(colorForDamaged(duration));
             enemyHealth -= damage;
             damaged = true;
+            healthBar.SetActive(true);
         }
-        StartCoroutine(ShowHealthBar(duration));
         hit = true;
         yield return new WaitForSeconds(duration);
         damaged = false;
