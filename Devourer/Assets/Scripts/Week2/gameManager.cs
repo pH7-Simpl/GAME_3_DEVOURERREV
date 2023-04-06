@@ -58,6 +58,7 @@ public class gameManager : MonoBehaviour
     {
         lift2 = x;
     }
+    private gameEndMovement gem;
     public void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -75,6 +76,7 @@ public class gameManager : MonoBehaviour
         MC.enabled = true;
         MapCam.enabled = false; 
         skillTaken = false;
+        gem = player.GetComponent<gameEndMovement>();
     }
 
     void Update()

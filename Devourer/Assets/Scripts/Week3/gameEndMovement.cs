@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class gameEndMovement : MonoBehaviour
 {
@@ -22,10 +22,9 @@ public class gameEndMovement : MonoBehaviour
     private float lastPressTime;
     private bool canDash;
     private bool isDashing;
-    private zoomOut zo;
+    public bool running;
     private void Awake()
     {
-        zo = Camera.main.GetComponent<zoomOut>();
         speed = 8f;
         jumpPower = 8f;
         maxJumps = 1;
@@ -40,11 +39,17 @@ public class gameEndMovement : MonoBehaviour
         isDashing = false;
         canDash = true;
         isFacingRight = true;
+        running = true;
+        groundCheck = transform.GetChild(0).transform;
+        rb2D = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
-        if (isDashing || zo.running)
+        if(Input.GetKeyDown(KeyCode.Escape) && !running) {
+            SceneManager.LoadScene(0);
+        }
+        if (isDashing || running)
         {
             return;
         }

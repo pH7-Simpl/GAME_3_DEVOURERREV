@@ -6,17 +6,15 @@ public class zoomOut : GoingOutside
     public Transform player;
     public float zoomDuration = 5f;
     gameEndMovement gem;
-    public bool running;
 
     private void Awake()
     {
-        running = true;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         gem = player.GetComponent<gameEndMovement>();
         StartCoroutine(ZoomOutCoroutine());
     }
     private void Update() {
-        if (running) {
+        if (gem.running) {
             gem.horizontal = -1;
             player.transform.localScale = new Vector3(-1f, 1f, 1f);
             gem.isFacingRight = false;
@@ -40,7 +38,7 @@ public class zoomOut : GoingOutside
             yield return new WaitForEndOfFrame();
         }
         GetComponent<Camera>().orthographicSize = endOrthoSize;
-        running = false;
+        gem.running = false;
         this.enabled = false;
     }
 }

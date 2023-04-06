@@ -6,7 +6,7 @@ using System.Collections;
 public class GoingOutside : MonoBehaviour
 {
     public Image fadeImage;
-    private Color oriColor;
+    public Color oriColor;
     private void Awake() {
         oriColor = fadeImage.color;
     }
