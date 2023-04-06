@@ -149,7 +149,7 @@ public class BossBehaviour : MonoBehaviour
         }
         fs.name = "fireStrike";
     }
-    private void SetCripple(bool x)
+    public void SetCripple(bool x)
     {
         if(player != null) {
             player.GetComponent<PlayerMovement>().SetCanMove(x);

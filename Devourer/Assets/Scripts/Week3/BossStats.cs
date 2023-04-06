@@ -84,11 +84,7 @@ public class BossStats : BossBehaviour
     private IEnumerator Die()
     {
         died = true;
-        player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        player.GetComponent<PlayerMovement>().enabled = false;
         SetCripple(false);
-        MainCameraPlaying mcp = mainCamera.GetComponent<MainCameraPlaying>();
-        mcp.enabled = false;
         Vector3 oriPos = GameObject.FindGameObjectWithTag("Player").transform.position + new Vector3(0, 0, -5f);
         Vector3 bossPos = transform.position + new Vector3(0, 0, -5f);
         float elapsedTime = 0f;
@@ -116,7 +112,6 @@ public class BossStats : BossBehaviour
             player.GetComponent<PlayerMovement>().enabled = true;
         }
         SetCripple(true);
-        mcp.enabled = true;
         Destroy(gameObject);
     }
 
