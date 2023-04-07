@@ -50,6 +50,7 @@ public class gameEndMovement : GoingOutside
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape) && !running) {
+            Cursor.lockState = CursorLockMode.None;
             running = true;
             horizontal = 0f;
             rb2D.velocity = new Vector2(0f, rb2D.velocity.y);
