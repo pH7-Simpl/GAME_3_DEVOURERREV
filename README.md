@@ -49,27 +49,29 @@ Semua package tambahan setelah week 2 dibuat oleh Eleazar Tadeo eman kecuali pad
 
 #### Scripts Addition for week 3
 <ol>
-<li> BossBehaviour.cs - EleazarTadeo Eman </li>
-<li> BossStats.cs - EleazarTadeo Eman </li>
-<li> CreditsLerper.cs - EleazarTadeo Eman </li>
-<li> DoorMechanism.cs - EleazarTadeo Eman </li>
-<li> DoorOpen.cs - EleazarTadeo Eman </li>
-<li> EnemySpawner.cs - EleazarTadeo Eman </li>
-<li> Explosion.cs - EleazarTadeo Eman </li>
-<li> fireBall.cs - EleazarTadeo Eman </li>
-<li> gameEndMovement.cs - Bayusatya Mufti Muhammad </li>
-<li> GoingOutside.cs - EleazarTadeo Eman </li>
-<li> GoToBoss.cs - EleazarTadeo Eman </li>
-<li> HoverAnimation.cs - Bayusatya Mufti Muhammad </li>
-<li> Inside.cs - EleazarTadeo Eman </li>
-<li> LiftEnabled.cs - EleazarTadeo Eman </li>
-<li> LiftMechanism.cs - EleazarTadeo Eman </li>
-<li> MenuButton.cs - Bayusatya Mufti Muhammad </li>
-<li> RespawnEnemy.cs - EleazarTadeo Eman </li>
-<li> SkillAcquiredNotification.cs - Bayusatya Mufti Muhammad </li>
-<li> waterStrike.cs - EleazarTadeo Eman </li>
-<li> windGoBrrr.cs - EleazarTadeo Eman </li>
-<li> zoomOut.cs - EleazarTadeo Eman </li>
+<li>BossBehaviour.cs - EleazarTadeo Eman </li>
+<li>BossStats.cs - EleazarTadeo Eman </li>
+<li>ButtonAnimation.cs - Eleazar Tadeo Eman </li>
+<li>CreditsLerper.cs - EleazarTadeo Eman </li>
+<li>DoorMechanism.cs - EleazarTadeo Eman </li>
+<li>DoorOpen.cs - EleazarTadeo Eman </li>
+<li>EnemySpawner.cs - EleazarTadeo Eman </li>
+<li>Explosion.cs - EleazarTadeo Eman </li>
+<li>fireBall.cs - EleazarTadeo Eman </li>
+<li>gameEndMovement.cs - Bayusatya Mufti Muhammad </li>
+<li>GoingOutside.cs - EleazarTadeo Eman </li>
+<li>GoToBoss.cs - EleazarTadeo Eman </li>
+<li>HoverAnimation.cs - Bayusatya Mufti Muhammad </li>
+<li>Inside.cs - EleazarTadeo Eman </li>
+<li>LiftEnabled.cs - EleazarTadeo Eman </li>
+<li>LiftMechanism.cs - EleazarTadeo Eman </li>
+<li>MenuButton.cs - Bayusatya Mufti Muhammad </li>
+<li>RespawnEnemy.cs - EleazarTadeo Eman </li>
+<li>SkillAcquiredNotification.cs - Bayusatya Mufti Muhammad </li>
+<li>StartGame.cs - Eleazar Tadeo Eman</li>
+<li>waterStrike.cs - EleazarTadeo Eman </li>
+<li>windGoBrrr.cs - EleazarTadeo Eman </li>
+<li>zoomOut.cs - EleazarTadeo Eman </li>
 </ol>
 
 
