@@ -12,6 +12,7 @@ public class windGoBrrr : MonoBehaviour
     private Seeker seeker;
     private Rigidbody2D rb;
     private Transform img;
+    private float cooldown;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == 7)
@@ -35,6 +36,7 @@ public class windGoBrrr : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         InvokeRepeating("UpdatePath", 0f, 0.5f);
+        cooldown = 3f;
     }
     private void UpdatePath() {
         if(seeker.IsDone()) {
@@ -50,6 +52,10 @@ public class windGoBrrr : MonoBehaviour
 
     private void FixedUpdate()
     {
+        cooldown -= Time.deltaTime;
+        if(cooldown <= 0) {
+            Destroy(gameObject);
+        }
         if(path == null) {
             return;
         }

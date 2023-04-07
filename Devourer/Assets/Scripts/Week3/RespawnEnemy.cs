@@ -13,7 +13,7 @@ public class RespawnEnemy : EnemySpawner
     private void Awake() {
         leftRoom = false;
         player = GameObject.FindGameObjectWithTag("Player");
-        spawnAgain = true;
+        spawnAgain = false;
         maxCoolDown = 30f;
         coolDown = maxCoolDown;
     }
@@ -22,7 +22,6 @@ public class RespawnEnemy : EnemySpawner
             SpawnEnemy();
             leftRoom = false;
             spawnAgain = false;
-            startCooldown = true;
             if(coolDown <= 0) {
                 coolDown = maxCoolDown;
             }
@@ -31,14 +30,16 @@ public class RespawnEnemy : EnemySpawner
     private void OnTriggerExit2D(Collider2D other) {
         if(other.CompareTag("Player")) {
             leftRoom = true;
+            startCooldown = true;
         }
     }
     private void FixedUpdate() {
-        if(startCooldown && coolDown >= 0f) {
-            coolDown -= Time.deltaTime;
-        }
-        if(coolDown <= 0) {
-            spawnAgain = true;
+        if(startCooldown) {
+            if(coolDown >=0f) {
+                coolDown -= Time.deltaTime;
+            } else {
+                spawnAgain = true;
+            }
         }
     }
 }

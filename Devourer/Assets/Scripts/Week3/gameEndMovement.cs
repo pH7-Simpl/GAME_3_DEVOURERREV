@@ -15,6 +15,7 @@ public class gameEndMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] public Animator animator;
+    private Transform background;
     public float horizontal;
     public bool isFacingRight;
     private bool jumping;
@@ -34,7 +35,7 @@ public class gameEndMovement : MonoBehaviour
         dashingCooldown = 1f;
         jumpsRemaining = maxJumps;
         GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        mainCamera.transform.position = transform.position + new Vector3(0f, 0f, -5f);
+        mainCamera.transform.position = transform.position + new Vector3(0f, 3f, -5f);
         mainCamera.transform.SetParent(transform);
         isDashing = false;
         canDash = true;
@@ -42,6 +43,7 @@ public class gameEndMovement : MonoBehaviour
         running = true;
         groundCheck = transform.GetChild(0).transform;
         rb2D = GetComponent<Rigidbody2D>();
+        background = transform.GetChild(1);
     }
 
     private void Update()
@@ -82,8 +84,11 @@ public class gameEndMovement : MonoBehaviour
         {
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;
+            Vector3 bgLocalscale = background.localScale;
             localScale.x *= -1f;
+            bgLocalscale.x *= -1f;
             transform.localScale = localScale;
+            background.localScale = bgLocalscale;
         }
     }
     private void Jump()
