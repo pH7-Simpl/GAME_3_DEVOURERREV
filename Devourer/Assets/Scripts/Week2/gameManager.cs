@@ -61,6 +61,7 @@ public class gameManager : MonoBehaviour
     private gameEndMovement gem;
     public void Awake()
     {
+        this.enabled = true;
         player = GameObject.FindGameObjectWithTag("Player");
         playerMarker = Instantiate(playerMarkerObj, player.transform.position, Quaternion.identity);
         ps = FindObjectOfType<PlayerStats>();
@@ -168,12 +169,13 @@ public class gameManager : MonoBehaviour
     }
     public void MainMenu()
     {
-        Cursor.lockState = CursorLockMode.None;
         gameOver = false;
         if(paused) {
             paused = false;
         }
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(0);
+        this.enabled = false;
     }
     public void Restart()
     {
