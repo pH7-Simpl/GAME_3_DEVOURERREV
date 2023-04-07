@@ -120,6 +120,7 @@ public class gameManager : MonoBehaviour
         }
         else
         {
+            Cursor.lockState = CursorLockMode.None;
             doorOpening = false;
             seeMap = false;
             paused = false;
@@ -167,6 +168,7 @@ public class gameManager : MonoBehaviour
     }
     public void MainMenu()
     {
+        Cursor.lockState = CursorLockMode.None;
         gameOver = false;
         if(paused) {
             paused = false;
