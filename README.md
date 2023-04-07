@@ -73,4 +73,4 @@ Semua package tambahan setelah week 2 dibuat oleh Eleazar Tadeo eman kecuali pad
 
 ## Kendala:
 <br />
-Untuk programming sendiri tidak ada kendala kecuali kurangnya waktu pembuatan game, karena semakin belajar semakin tau bahwa kode yang dibuat tidak efisien sehingga sebenarnya masih banyak sekali ruangan untuk perkembangan (theres many things that can be further improved)
+Untuk programming sendiri tidak ada kendala kecuali kurangnya waktu pembuatan game, karena semakin belajar semakin tau bahwa kode yang dibuat tidak efisien sehingga sebenarnya masih banyak sekali ruangan untuk perkembangan (there are many things that can be further improved)
