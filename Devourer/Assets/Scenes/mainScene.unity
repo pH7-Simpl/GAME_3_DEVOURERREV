@@ -5440,6 +5440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightningDashPrefab: {fileID: 2073920882940407367, guid: 78d6d8641bb445149b4e50fc0d29a621, type: 3}
+  theDash: {fileID: 0}
 --- !u!95 &1008127378
 Animator:
   serializedVersion: 5
