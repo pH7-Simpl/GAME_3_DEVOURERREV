@@ -5,34 +5,22 @@ https://github.com/pH7-Simpl/GAME_3_Devourer
 
 ## Credits:
 ### Week 1
+<ol>
 breathing.cs - Eleazar Tadeo Eman
-<br />
 downSlash.cs - Bayusatya Mufti Muhammad
-<br />
 fireBreath.cs - Eleazar Tadeo Eman
-<br />
 fireStone.cs - Eleazar Tadeo Eman
-<br />
 geyserSeed.cs - Bayusatya Mufti Muhammad
-<br />
 geyserSeedSpawn.cs - Bayusatya Mufti Muhammad
-<br />
 geyserSprouting.cs - Bayusatya Mufti Muhammad
-<br />
 lightningDash.cs - Eleazar Tadeo Eman
-<br />
 lightningStone.cs - Eleazar Tadeo Eman
-<br />
 playerMovement.cs - Eleazar Tadeo Eman
-<br />
 slashing.cs - Eleazar Tadeo Eman
-<br />
 waterStone.cs - Eleazar Tadeo Eman
-<br />
 windSlash.cs - Eleazar Tadeo Eman
-<br />
 windStone.cs - Eleazar Tadeo Eman
-<br />
+</ol>
 ### Week 2
 Semua package dalam game ini dibuat oleh Eleazar Tadeo Eman kecuali script dan aset Image dan untuk pada bagian prefab, prefab yang dibuat oleh Bayusatya Mufti Muhammad adalah:
 <br />
@@ -60,11 +48,10 @@ PlayerStats.cs - Eleazar Tadeo Eman
 <br />
 RevealMap.cs - Bayusatya Mufti Muhammad
 <br />
-## Planning untuk kedepan:
-- membuat mapnya serta mekanisme mapnya
-
-- Buat bos 
+### Week 2
+script.cs - EleazarTadeo Eman
+<br / >
 
 ## Kendala:
 <br />
-Untuk programming sendiri masih belum ada kendala kecuali kurangnya waktu pembuatan game
+Untuk programming sendiri tidak ada kendala kecuali kurangnya waktu pembuatan game, karena semakin belajar semakin tau bahwa kode yang dibuat tidak efisien sehingga sebenarnya masih banyak sekali ruangan untuk perkembangan (theres many things that can be further improved)
