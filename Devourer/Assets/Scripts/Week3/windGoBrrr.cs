@@ -52,7 +52,7 @@ public class windGoBrrr : MonoBehaviour
         if(cooldown <= 0) {
             Destroy(gameObject);
         }
-        if(path == null) {
+        if(path == null || currentWayPoint >= path.vectorPath.Count) {
             return;
         }
         Vector2 dir = ((Vector2) path.vectorPath[currentWayPoint] - rb.position).normalized;
