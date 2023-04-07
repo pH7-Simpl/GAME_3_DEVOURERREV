@@ -71,8 +71,8 @@ public class gameManager : MonoBehaviour
         paused = false;
         seeMap = false;
         doorOpening = false;
-        MapCam = Instantiate(MapCamObj, new Vector3(-1f, 7f, -5f), Quaternion.identity).GetComponent<Camera>();
-        MapCam.orthographicSize = 30f;
+        MapCam = Instantiate(MapCamObj, new Vector3(0f, 3f, -5f), Quaternion.identity).GetComponent<Camera>();
+        MapCam.orthographicSize = 35f;
         MapCam.transform.SetParent(transform);
         MC.enabled = true;
         MapCam.enabled = false; 
@@ -173,6 +173,7 @@ public class gameManager : MonoBehaviour
         if(paused) {
             paused = false;
         }
+        Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(0);
         this.enabled = false;
