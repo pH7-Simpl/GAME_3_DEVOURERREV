@@ -91,9 +91,11 @@ public class gameEndMovement : GoingOutside
         {
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;
+            Vector3 bgLocalscale = background.localScale;
             localScale.x *= -1f;
+            bgLocalscale.x *= -1f;
             transform.localScale = localScale;
-            background.localScale = new Vector3(2.5f, 2.5f, 1f);
+            background.localScale = bgLocalscale;
         }
     }
     private void Jump()
