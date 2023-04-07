@@ -8,6 +8,10 @@ public class Inside : GoingOutside
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Player")) {
             other.GetComponent<PlayerMovement>().enabled = false;
+            other.GetComponent<Slashing>().enabled = false;
+            other.GetComponent<Breathing>().enabled = false;
+            other.GetComponent<LightningDash>().enabled = false;
+            other.GetComponent<GeyserSeedSpawn>().enabled = false;
             GameObject.Find("gameManager").GetComponent<gameManager>().enabled = false;
             Animator animator = other.GetComponent<Animator>();
             Rigidbody2D rb2D = other.GetComponent<Rigidbody2D>();
