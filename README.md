@@ -5,6 +5,8 @@ https://github.com/pH7-Simpl/GAME_3_Devourer
 
 ## Credits
 ### Week 1
+Semua package inisial dalam game ini dibuat oleh Eleazar Tadeo Eman
+#### Scripts Addition for week 1
 <ol>
 <li>breathing.cs - Eleazar Tadeo Eman</li>
 <li>downSlash.cs - Bayusatya Mufti Muhammad</li>
