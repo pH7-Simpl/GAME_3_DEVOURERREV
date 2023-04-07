@@ -133,7 +133,6 @@ public class gameManager : MonoBehaviour
         if (paused)
         {
             paused = false;
-            UnpauseCommand();
         }
     }
     private void PauseCommand()
