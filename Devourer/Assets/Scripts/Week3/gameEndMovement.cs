@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class gameEndMovement : MonoBehaviour
+public class gameEndMovement : GoingOutside
 {
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
@@ -44,12 +44,19 @@ public class gameEndMovement : MonoBehaviour
         groundCheck = transform.GetChild(0).transform;
         rb2D = GetComponent<Rigidbody2D>();
         background = transform.GetChild(1);
+        this.enabled = true;
     }
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape) && !running) {
-            SceneManager.LoadScene(0);
+            running = true;
+            horizontal = 0f;
+            rb2D.velocity = new Vector2(0f, rb2D.velocity.y);
+            animator.SetFloat("speed", Mathf.Abs(horizontal));
+            animator.SetBool("isJumping",false);
+            LoadScene(0);
+            this.enabled = false;
         }
         if (isDashing || running)
         {
