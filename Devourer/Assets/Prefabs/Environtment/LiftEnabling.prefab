@@ -94,13 +94,13 @@ MonoBehaviour:
   enemy2Count: 3
   enemy3Count: 0
   enemy1Pos:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: 52, y: 6, z: 0}
+  - {x: 54, y: 6, z: 0}
+  - {x: 56, y: 6, z: 0}
   enemy2Pos:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: 45, y: 14.5, z: 0}
+  - {x: 50, y: 14.5, z: 0}
+  - {x: 55, y: 14.5, z: 0}
   enemy3Pos: []
 --- !u!114 &6205197455068409550
 MonoBehaviour:
@@ -122,13 +122,13 @@ MonoBehaviour:
   enemy2Count: 3
   enemy3Count: 0
   enemy1Pos:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: 52, y: 6, z: 0}
+  - {x: 54, y: 6, z: 0}
+  - {x: 56, y: 6, z: 0}
   enemy2Pos:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: 45, y: 14.5, z: 0}
+  - {x: 50, y: 14.5, z: 0}
+  - {x: 55, y: 14.5, z: 0}
   enemy3Pos: []
 --- !u!1 &1881216531085039650
 GameObject:
