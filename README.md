@@ -6,51 +6,68 @@ https://github.com/pH7-Simpl/GAME_3_Devourer
 ## Credits:
 ### Week 1
 <ol>
-breathing.cs - Eleazar Tadeo Eman
-downSlash.cs - Bayusatya Mufti Muhammad
-fireBreath.cs - Eleazar Tadeo Eman
-fireStone.cs - Eleazar Tadeo Eman
-geyserSeed.cs - Bayusatya Mufti Muhammad
-geyserSeedSpawn.cs - Bayusatya Mufti Muhammad
-geyserSprouting.cs - Bayusatya Mufti Muhammad
-lightningDash.cs - Eleazar Tadeo Eman
-lightningStone.cs - Eleazar Tadeo Eman
-playerMovement.cs - Eleazar Tadeo Eman
-slashing.cs - Eleazar Tadeo Eman
-waterStone.cs - Eleazar Tadeo Eman
-windSlash.cs - Eleazar Tadeo Eman
-windStone.cs - Eleazar Tadeo Eman
+<li>breathing.cs - Eleazar Tadeo Eman</li>
+<li>downSlash.cs - Bayusatya Mufti Muhammad</li>
+<li>fireBreath.cs - Eleazar Tadeo Eman</li>
+<li>fireStone.cs - Eleazar Tadeo Eman</li>
+<li>geyserSeed.cs - Bayusatya Mufti Muhammad</li>
+<li>geyserSeedSpawn.cs - Bayusatya Mufti Muhammad</li>
+<li>geyserSprouting.cs - Bayusatya Mufti Muhammad</li>
+<li>lightningDash.cs - Eleazar Tadeo Eman</li>
+<li>lightningStone.cs - Eleazar Tadeo Eman</li>
+<li>playerMovement.cs - Eleazar Tadeo Eman</li>
+<li>slashing.cs - Eleazar Tadeo Eman</li>
+<li>waterStone.cs - Eleazar Tadeo Eman</li>
+<li>windSlash.cs - Eleazar Tadeo Eman</li>
+<li>windStone.cs - Eleazar Tadeo Eman</li>
 </ol>
+
 ### Week 2
 Semua package dalam game ini dibuat oleh Eleazar Tadeo Eman kecuali script dan aset Image dan untuk pada bagian prefab, prefab yang dibuat oleh Bayusatya Mufti Muhammad adalah:
 <br />
 MapArea, MapGrid, MapMask, MaskGrid, PlayArea, dan PlayerMarker prefab
+
 #### Scripts Addition for week 2:
-EnemyAI.cs - EleazarTadeoEman
-<br />
-EnemyHB.cs - Eleazar Tadeo Eman
-<br />
-EnemyMovement.cs - Eleazar Tadeo Eman
-<br />
-EnemyStats.cs - Eleazar Tadeo Eman
-<br />
-FlyEnemyGFX.cs - EleazarTadeo Eman
-<br />
-gameManager.cs - Eleazar Tadeo Eman
-<br />
-MainCameraPlaying.cs - Eleazar Tadeo Eman
-<br />
-MapMarker.cs - Bayusatya Mufti Muhammad
-<br />
-PlayerHB.cs - Eleazar Tadeo Eman
-<br />
-PlayerStats.cs - Eleazar Tadeo Eman
-<br />
-RevealMap.cs - Bayusatya Mufti Muhammad
-<br />
-### Week 2
-script.cs - EleazarTadeo Eman
-<br / >
+<ol>
+<li>EnemyAI.cs - EleazarTadeoEman</li>
+<li>EnemyHB.cs - Eleazar Tadeo Eman</li>
+<li>EnemyMovement.cs - Eleazar Tadeo Eman</li>
+<li>EnemyStats.cs - Eleazar Tadeo Eman</li>
+<li>FlyEnemyGFX.cs - EleazarTadeo Eman</li>
+<li>gameManager.cs - Eleazar Tadeo Eman</li>
+<li>MainCameraPlaying.cs - Eleazar Tadeo Eman</li>
+<li>MapMarker.cs - Bayusatya Mufti Muhammad</li>
+<li>PlayerHB.cs - Eleazar Tadeo Eman</li>
+<li>PlayerStats.cs - Eleazar Tadeo Eman</li>
+<li>RevealMap.cs - Bayusatya Mufti Muhammad</li>
+</ol>
+
+### Week 3:
+Semua package tambahan setelah week 2 dibuat oleh Eleazar Tadeo eman kecuali pada script.
+<ol>
+<li> BossBehaviour.cs - EleazarTadeo Eman </li>
+<li> BossStats.cs - EleazarTadeo Eman </li>
+<li> CreditsLerper.cs - EleazarTadeo Eman </li>
+<li> DoorMechanism.cs - EleazarTadeo Eman </li>
+<li> DoorOpen.cs - EleazarTadeo Eman </li>
+<li> EnemySpawner.cs - EleazarTadeo Eman </li>
+<li> Explosion.cs - EleazarTadeo Eman </li>
+<li> fireBall.cs - EleazarTadeo Eman </li>
+<li> gameEndMovement.cs - EleazarTadeo Eman </li>
+<li> GoingOutside.cs - EleazarTadeo Eman </li>
+<li> GoToBoss.cs - EleazarTadeo Eman </li>
+<li> HoverAnimation.cs - EleazarTadeo Eman </li>
+<li> Inside.cs - EleazarTadeo Eman </li>
+<li> LiftEnabled.cs - EleazarTadeo Eman </li>
+<li> LiftMechanism.cs - EleazarTadeo Eman </li>
+<li> MenuButton.cs - EleazarTadeo Eman </li>
+<li> RespawnEnemy.cs - EleazarTadeo Eman </li>
+<li> SkillAcquiredNotification.cs - EleazarTadeo Eman </li>
+<li> waterStrike.cs - EleazarTadeo Eman </li>
+<li> windGoBrrr.cs - EleazarTadeo Eman </li>
+<li> zoomOut.cs - EleazarTadeo Eman </li>
+</ol>
+
 
 ## Kendala:
 <br />
