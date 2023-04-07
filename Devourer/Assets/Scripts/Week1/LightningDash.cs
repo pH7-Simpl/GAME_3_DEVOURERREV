@@ -11,7 +11,7 @@ public class LightningDash : MonoBehaviour
     private float animationCooldown;
     public GameObject lightningDashPrefab;
     private Image coolDownImage;
-    private GameObject theDash = null;
+    public GameObject theDash = null;
     private GameObject player;
     private PlayerMovement pm;
     private int wallLayerMask;

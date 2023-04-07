@@ -12,10 +12,14 @@ public class Inside : GoingOutside
             other.GetComponent<PlayerMovement>().enabled = false;
             other.GetComponent<Slashing>().enabled = false;
             other.GetComponent<Breathing>().enabled = false;
+            Destroy(other.GetComponent<LightningDash>().theDash);
             other.GetComponent<LightningDash>().enabled = false;
             other.GetComponent<GeyserSeedSpawn>().enabled = false;
             for (var i = other.transform.childCount - 1; i >= 0; i--)
             {
+                if(Camera.main.gameObject == other.transform.GetChild(i).gameObject) {
+                    continue;
+                }
                 Object.Destroy(other.transform.GetChild(i).gameObject);
             }
             GameObject.Find("gameManager").GetComponent<gameManager>().enabled = false;
