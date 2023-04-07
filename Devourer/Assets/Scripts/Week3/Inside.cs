@@ -5,13 +5,19 @@ using System.Collections;
 
 public class Inside : GoingOutside
 {
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("Player")) {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
             other.GetComponent<PlayerMovement>().enabled = false;
             other.GetComponent<Slashing>().enabled = false;
             other.GetComponent<Breathing>().enabled = false;
             other.GetComponent<LightningDash>().enabled = false;
             other.GetComponent<GeyserSeedSpawn>().enabled = false;
+            for (var i = other.transform.childCount - 1; i >= 0; i--)
+            {
+                Object.Destroy(other.transform.GetChild(i).gameObject);
+            }
             GameObject.Find("gameManager").GetComponent<gameManager>().enabled = false;
             Animator animator = other.GetComponent<Animator>();
             Rigidbody2D rb2D = other.GetComponent<Rigidbody2D>();
