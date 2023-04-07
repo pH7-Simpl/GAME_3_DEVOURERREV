@@ -139,12 +139,14 @@ public class gameManager : MonoBehaviour
     private void PauseCommand()
     {
         Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
         pauseUI.SetActive(true);
         mainUI.SetActive(false);
     }
     private void UnpauseCommand()
     {
         Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
         pauseUI.SetActive(false);
         mainUI.SetActive(true);
     }
