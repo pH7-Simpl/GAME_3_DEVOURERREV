@@ -8,7 +8,6 @@ public class windGoBrrr : MonoBehaviour
     private float nextWaypointDistance;
     private Path path;
     private int currentWayPoint;
-    private bool reachEndOfPath;
     private Seeker seeker;
     private Rigidbody2D rb;
     private Transform img;
@@ -24,7 +23,6 @@ public class windGoBrrr : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     private void Awake()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -32,7 +30,6 @@ public class windGoBrrr : MonoBehaviour
         speed = 400f;
         nextWaypointDistance = 1f;
         currentWayPoint = 0;
-        reachEndOfPath = false;
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         InvokeRepeating("UpdatePath", 0f, 0.5f);
@@ -49,7 +46,6 @@ public class windGoBrrr : MonoBehaviour
             currentWayPoint = 0;
         }
     }
-
     private void FixedUpdate()
     {
         cooldown -= Time.deltaTime;
@@ -59,13 +55,6 @@ public class windGoBrrr : MonoBehaviour
         if(path == null) {
             return;
         }
-        if(currentWayPoint >= path.vectorPath.Count) {
-            reachEndOfPath = true;
-            return;
-        } else {
-            reachEndOfPath = false;
-        }
-
         Vector2 dir = ((Vector2) path.vectorPath[currentWayPoint] - rb.position).normalized;
         Vector2 force = dir*speed*Time.deltaTime;
         rb.velocity = force; 
