@@ -3,7 +3,7 @@ Devourer game project:
 <br />
 https://github.com/pH7-Simpl/GAME_3_Devourer
 
-## Credits:
+## Credits
 ### Week 1
 <ol>
 <li>breathing.cs - Eleazar Tadeo Eman</li>
@@ -27,7 +27,7 @@ Semua package dalam game ini dibuat oleh Eleazar Tadeo Eman kecuali script dan a
 <br />
 MapArea, MapGrid, MapMask, MaskGrid, PlayArea, dan PlayerMarker prefab
 
-#### Scripts Addition for week 2:
+#### Scripts Addition for week 2
 <ol>
 <li>EnemyAI.cs - EleazarTadeoEman</li>
 <li>EnemyHB.cs - Eleazar Tadeo Eman</li>
@@ -42,10 +42,10 @@ MapArea, MapGrid, MapMask, MaskGrid, PlayArea, dan PlayerMarker prefab
 <li>RevealMap.cs - Bayusatya Mufti Muhammad</li>
 </ol>
 
-### Week 3:
+### Week 3
 Semua package tambahan setelah week 2 dibuat oleh Eleazar Tadeo eman kecuali pada script.
 
-#### Scripts Addition for week 3:
+#### Scripts Addition for week 3
 <ol>
 <li> BossBehaviour.cs - EleazarTadeo Eman </li>
 <li> BossStats.cs - EleazarTadeo Eman </li>
@@ -71,5 +71,5 @@ Semua package tambahan setelah week 2 dibuat oleh Eleazar Tadeo eman kecuali pad
 </ol>
 
 
-## Kendala:
+## Kendala
 Untuk programming sendiri tidak ada kendala kecuali kurangnya waktu pembuatan game, karena semakin belajar semakin tau bahwa kode yang dibuat tidak efisien sehingga sebenarnya masih banyak sekali ruangan untuk perkembangan (there are many things that can be further improved)
