@@ -101,7 +101,7 @@ MonoBehaviour:
   displayTime: 0
   slideDuration: 0
   rectTransform: {fileID: 0}
-  startPos: {x: 0, y: 0}
+  startPos: {x: 0, y: 1280}
   endPos: {x: 0, y: 0}
   startAtAwake: 0
 --- !u!61 &11587886584294294

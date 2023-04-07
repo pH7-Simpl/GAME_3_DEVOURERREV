@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StartGame : GoingOutside
 {
     void Awake() {
+        Screen.fullScreen = true;
         StartScene();
     }
 }
