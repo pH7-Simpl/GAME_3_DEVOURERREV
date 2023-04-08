@@ -8,9 +8,17 @@ public class GoToBoss : MonoBehaviour
     private void Awake() {
         executed = false;
         GetComponent<Collider2D>().enabled = false;
-    }
+    }a
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Player") {
+            Destroy(other.GetComponent<LightningDash>().theDash);
+            for (var i = other.transform.childCount - 1; i >= 0; i--)
+            {
+                if(Camera.main.gameObject == other.transform.GetChild(i).gameObject) {
+                    continue;
+                }
+                Object.Destroy(other.transform.GetChild(i).gameObject);
+            }
             executed = true;
         }
     }
