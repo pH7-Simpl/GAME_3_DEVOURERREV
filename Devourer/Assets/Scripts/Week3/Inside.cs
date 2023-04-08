@@ -15,9 +15,12 @@ public class Inside : GoingOutside
             Destroy(other.GetComponent<LightningDash>().theDash);
             other.GetComponent<LightningDash>().enabled = false;
             other.GetComponent<GeyserSeedSpawn>().enabled = false;
-            for (var i = 3; i < other.transform.childCount; i++)
+            if (other.transform.childCount > 3)
             {
-                Object.Destroy(other.transform.GetChild(i).gameObject);
+                for (var i = 4; i < other.transform.childCount; i++)
+                {
+                    Object.Destroy(other.transform.GetChild(i).gameObject);
+                }
             }
             GameObject.Find("gameManager").GetComponent<gameManager>().enabled = false;
             Animator animator = other.GetComponent<Animator>();

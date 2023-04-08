@@ -12,17 +12,16 @@ public class LightningDash : MonoBehaviour
     public GameObject lightningDashPrefab;
     private Image coolDownImage;
     public GameObject theDash = null;
-    private GameObject player;
     private PlayerMovement pm;
     private int wallLayerMask;
     private bool canSkill;
+    private Vector3 playerPos;
     public void SetCanSkill(bool x) {
         canSkill = x;
     }
 
-    private void Start()
+    private void Awake()
     {
-        player = GameObject.Find("Player");
         pm = GetComponent<PlayerMovement>();
         coolDownImage = GameObject.Find("MainCanvas/MainUI/SkillPanel/LightningSkill/Cooldown").GetComponent<Image>();
         doublePressTime = 0.2f;
@@ -40,7 +39,6 @@ public class LightningDash : MonoBehaviour
         {
             if (theDash != null)
             {
-                theDash.transform.SetParent(player.transform);
                 theDash.name = "LightningDash";
             }
 
@@ -61,11 +59,9 @@ public class LightningDash : MonoBehaviour
 
                 return;
             }
-
-            Vector2 playerPos = player.transform.position;
-
             if (Input.GetKeyDown(KeyCode.D) && (Time.time - lastPressTime) < doublePressTime)
             {
+                playerPos = GetComponent<Transform>().position;
                 RaycastHit2D hit = Physics2D.Raycast(playerPos, Vector2.right, dashLength, wallLayerMask);
 
                 if (hit.collider != null)
@@ -76,14 +72,11 @@ public class LightningDash : MonoBehaviour
                 {
                     playerPos.x += dashLength;
                 }
-
-                player.transform.position = playerPos;
-                theDash = Instantiate(lightningDashPrefab, transform.position + new Vector3(-1.6f, 0.01f), transform.rotation);
-                animationCooldown = 0.2f;
-                currentCooldown = cooldownDuration;
+                instansiasu();
             }
             else if (Input.GetKeyDown(KeyCode.A) && (Time.time - lastPressTime) < doublePressTime)
             {
+                playerPos = GetComponent<Transform>().position;
                 RaycastHit2D hit = Physics2D.Raycast(playerPos, Vector2.left, dashLength, wallLayerMask);
 
                 if (hit.collider != null)
@@ -94,23 +87,19 @@ public class LightningDash : MonoBehaviour
                 {
                     playerPos.x -= dashLength;
                 }
-
-                player.transform.position = playerPos;
-                theDash = Instantiate(lightningDashPrefab, transform.position + new Vector3(1.6f, 0.01f), transform.rotation);
-                if (theDash != null)
-                {
-                    Vector3 localScale = theDash.transform.localScale;
-                    localScale.x *= -1;
-                    theDash.transform.localScale = localScale;
-                }
-                animationCooldown = 0.2f;
-                currentCooldown = cooldownDuration;
+                instansiasu();
             }
             else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A))
             {
                 lastPressTime = Time.time;
             }
         }
+    }
+    private void instansiasu() {
+        transform.position = playerPos;
+        theDash = Instantiate(lightningDashPrefab, transform.position + new Vector3(transform.localScale.x*-1.6f, 0.01f), transform.rotation, transform);
+        animationCooldown = 0.2f;
+        currentCooldown = cooldownDuration;
     }
 
 }

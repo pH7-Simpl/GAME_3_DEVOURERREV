@@ -11,9 +11,12 @@ public class GoToBoss : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Player") {
-            for (var i = 3; i < other.transform.childCount; i++)
+            if (other.transform.childCount > 3)
             {
-                Object.Destroy(other.transform.GetChild(i).gameObject);
+                for (var i = 4; i < other.transform.childCount; i++)
+                {
+                    Object.Destroy(other.transform.GetChild(i).gameObject);
+                }
             }
             executed = true;
         }
