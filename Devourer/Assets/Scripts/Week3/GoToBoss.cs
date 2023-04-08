@@ -11,12 +11,8 @@ public class GoToBoss : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Player") {
-            Destroy(other.GetComponent<LightningDash>().theDash);
-            for (var i = other.transform.childCount - 1; i >= 0; i--)
+            for (var i = 3; i < other.transform.childCount; i++)
             {
-                if(Camera.main.gameObject == other.transform.GetChild(i).gameObject) {
-                    continue;
-                }
                 Object.Destroy(other.transform.GetChild(i).gameObject);
             }
             executed = true;
