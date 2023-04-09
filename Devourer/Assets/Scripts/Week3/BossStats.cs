@@ -63,9 +63,7 @@ public class BossStats : BossBehaviour
             damaged = true;
         }
         damaged = false;
-        animator.SetBool("hit", true);
-        yield return new WaitForSeconds(duration);
-        animator.SetBool("hit", false);
+        yield return null;
     }
     private IEnumerator colorForDamaged(float duration)
     {
